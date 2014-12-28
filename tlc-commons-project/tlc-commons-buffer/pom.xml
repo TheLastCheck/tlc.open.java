@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.thelastcheck.commons</groupId>
+    <artifactId>tlc-commons-project</artifactId>
+    <version>2.0.3</version>
+  </parent>
+  <artifactId>tlc-commons-buffer</artifactId>
+  <name>tlc-commons-buffer</name>
+  <description>
+      The buffer management utilities used for managing streams of bytes that need to be treated 
+      as structured data. These are typically used to map structured records in files to and from 
+      systems that use these files types, i.e. IBM mainframe systems.
+  </description>
+  <url>http://www.thelastcheck.com</url>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <dependencies>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit-version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
