@@ -39,6 +39,16 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>com.thelastcheck.commons</groupId>
+        <artifactId>tlc-commons-base</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.thelastcheck.commons</groupId>
+        <artifactId>tlc-commons-buffer</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
         <version>${commons-lang3-version}</version>
@@ -77,41 +87,6 @@
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-log4j12</artifactId>
         <version>${slf4j-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.thelastcheck.commons</groupId>
-        <artifactId>tlc-commons-base</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.thelastcheck.commons</groupId>
-        <artifactId>tlc-commons-buffer</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.thelastcheck.commons</groupId>
-        <artifactId>tlc-io-base</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.thelastcheck.commons</groupId>
-        <artifactId>tlc-io-cims</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.thelastcheck.commons</groupId>
-        <artifactId>tlc-io-vir</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.thelastcheck.commons</groupId>
-        <artifactId>tlc-io-x937</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.thelastcheck.commons</groupId>
-        <artifactId>tlc-io-services</artifactId>
-        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.google.guava</groupId>
