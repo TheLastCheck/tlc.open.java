@@ -1,11 +1,14 @@
 package com.thelastcheck.commons.buffer;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
-public class ByteArrayWriterTest extends TestCase {
+public class ByteArrayWriterTest {
 
+    @Test
     public void testWriteCharArrayIntInt() throws IOException {
         ByteArray ba = new ByteArray(100, ByteArray.EBCDIC_CHARSET_NAME);
         write(ba);

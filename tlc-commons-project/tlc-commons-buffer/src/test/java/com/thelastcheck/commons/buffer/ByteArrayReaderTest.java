@@ -2,10 +2,11 @@ package com.thelastcheck.commons.buffer;
 
 import java.io.IOException;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
-public class ByteArrayReaderTest extends TestCase {
+public class ByteArrayReaderTest {
 
+    @Test
     public void testReadCharArrayIntInt() throws IOException {
         String s = "ABCDEFG1234--ABCDEFG1234--ABCDEFG1234--12345";
 
