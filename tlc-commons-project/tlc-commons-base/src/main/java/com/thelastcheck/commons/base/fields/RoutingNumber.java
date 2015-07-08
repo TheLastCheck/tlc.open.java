@@ -16,7 +16,6 @@
 
 package com.thelastcheck.commons.base.fields;
 
-
 import com.thelastcheck.commons.base.utils.CheckDigitVerifier;
 import com.thelastcheck.commons.base.utils.CheckDigitVerifiers;
 

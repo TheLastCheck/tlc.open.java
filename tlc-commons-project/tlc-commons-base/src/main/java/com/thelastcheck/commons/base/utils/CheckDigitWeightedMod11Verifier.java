@@ -16,13 +16,6 @@
 
 package com.thelastcheck.commons.base.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-/**
- * @author Jerry Bowman
- *         (c) 2013, The Last Check, All Rights Reserved.
- */
 public class CheckDigitWeightedMod11Verifier implements CheckDigitVerifier {
 
     private final int[] weights;
@@ -38,7 +31,6 @@ public class CheckDigitWeightedMod11Verifier implements CheckDigitVerifier {
     public boolean isValid(String id) {
         int totalWeight = 0;
         int wIndex = 0;
-        int idIndex = 0;
         byte[] digits = id.getBytes();
         for (int i = 0; i < digits.length; i++) {
             byte digit = digits[i];

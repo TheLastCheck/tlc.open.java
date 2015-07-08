@@ -16,6 +16,7 @@
 
 package com.thelastcheck.commons.base.io
 
+import com.thelastcheck.commons.base.exception.InvalidDirectoryException
 import com.thelastcheck.commons.base.utils.FileUtilities
 import groovy.util.logging.Slf4j
 
@@ -104,9 +105,10 @@ public class MonitorFileDirectory extends java.util.Observable implements Runnab
         long currentSystemTime = System.currentTimeMillis();
         currentFileMap.keySet().each { fileName ->
             if (previousFileMap.containsKey(fileName)) {
-                long previousTime = previousFileMap.get(fileName)
-                long currentTime = currentFileMap.get(fileName)
-                if ((previousTime == currentTime) && ((currentSystemTime - currentTime) > stableTime)) {
+                long previousFileModifiedTime = previousFileMap.get(fileName)
+                long currentFileModifiedTime = currentFileMap.get(fileName)
+                if ((previousFileModifiedTime == currentFileModifiedTime)
+                        && ((currentSystemTime - currentFileModifiedTime) > stableTime)) {
                     File fileReady = new File(directory, fileName)
                     log.info(fileName + " : Arrived")
                     log.info(fileName + " : Size . . . . . . . . " + fileReady.length())

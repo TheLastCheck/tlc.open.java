@@ -16,11 +16,6 @@
 
 package com.thelastcheck.commons.base.utils;
 
-/**
- * @author Jerry Bowman
- *         (c) 2013, The Last Check, All Rights Reserved.
- */
 public interface CheckDigitVerifier {
-    public boolean isValid(String number);
-
+    boolean isValid(String number);
 }

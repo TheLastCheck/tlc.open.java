@@ -14,24 +14,26 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.thelastcheck.commons.base.utils;
+package com.thelastcheck.commons.base.exception;
 
-import org.junit.Test;
+public class InvalidDirectoryException extends Exception {
 
-import static com.thelastcheck.commons.base.utils.CheckDigitVerifiers.Verifier.LuhnMod10;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+	private static final long serialVersionUID = 1L;
 
-public class CheckDigitLuhnMod10VerifierTest {
+	public InvalidDirectoryException() {
+		super();
+	}
 
-    @Test
-    public void testIsValid() {
-        CheckDigitVerifier verifier = CheckDigitVerifiers.getVerifier(LuhnMod10);
-        assertTrue(verifier.isValid("79927398713"));
-        assertTrue(verifier.isValid("49927398716"));
-        assertFalse(verifier.isValid("49927398717"));
-        assertTrue(verifier.isValid("1234567812345670"));
-        assertFalse(verifier.isValid("1234567812345678"));
-        assertFalse(verifier.isValid("294217778"));
-    }
+	public InvalidDirectoryException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+	public InvalidDirectoryException(String message) {
+		super(message);
+	}
+
+	public InvalidDirectoryException(Throwable cause) {
+		super(cause);
+	}
+
 }

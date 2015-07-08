@@ -14,24 +14,43 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.thelastcheck.commons.base.utils;
+package com.thelastcheck.io.base.exception;
 
-import org.junit.Test;
 
-import static com.thelastcheck.commons.base.utils.CheckDigitVerifiers.Verifier.LuhnMod10;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+public class InvalidFormatException extends X9Exception {
 
-public class CheckDigitLuhnMod10VerifierTest {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    @Test
-    public void testIsValid() {
-        CheckDigitVerifier verifier = CheckDigitVerifiers.getVerifier(LuhnMod10);
-        assertTrue(verifier.isValid("79927398713"));
-        assertTrue(verifier.isValid("49927398716"));
-        assertFalse(verifier.isValid("49927398717"));
-        assertTrue(verifier.isValid("1234567812345670"));
-        assertFalse(verifier.isValid("1234567812345678"));
-        assertFalse(verifier.isValid("294217778"));
-    }
+	/**
+	 * 
+	 */
+	public InvalidFormatException() {
+		super();
+	}
+
+	/**
+	 * @param message
+	 */
+	public InvalidFormatException(String message) {
+		super(message);
+	}
+
+	/**
+	 * @param message
+	 * @param cause
+	 */
+	public InvalidFormatException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+	/**
+	 * @param cause
+	 */
+	public InvalidFormatException(Throwable cause) {
+		super(cause);
+	}
+
 }

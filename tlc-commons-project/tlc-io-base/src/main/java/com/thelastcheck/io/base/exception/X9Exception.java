@@ -14,24 +14,24 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.thelastcheck.commons.base.utils;
+package com.thelastcheck.io.base.exception;
 
-import org.junit.Test;
+@SuppressWarnings("serial")
+public class X9Exception extends RuntimeException {
 
-import static com.thelastcheck.commons.base.utils.CheckDigitVerifiers.Verifier.LuhnMod10;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+	public X9Exception() {
+	}
 
-public class CheckDigitLuhnMod10VerifierTest {
+	public X9Exception(String message) {
+		super(message);
+	}
 
-    @Test
-    public void testIsValid() {
-        CheckDigitVerifier verifier = CheckDigitVerifiers.getVerifier(LuhnMod10);
-        assertTrue(verifier.isValid("79927398713"));
-        assertTrue(verifier.isValid("49927398716"));
-        assertFalse(verifier.isValid("49927398717"));
-        assertTrue(verifier.isValid("1234567812345670"));
-        assertFalse(verifier.isValid("1234567812345678"));
-        assertFalse(verifier.isValid("294217778"));
-    }
+	public X9Exception(Throwable cause) {
+		super(cause);
+	}
+
+	public X9Exception(String message, Throwable cause) {
+		super(message, cause);
+	}
+
 }

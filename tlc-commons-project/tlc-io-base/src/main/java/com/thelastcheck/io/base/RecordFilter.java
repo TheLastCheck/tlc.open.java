@@ -14,25 +14,18 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.thelastcheck.commons.base.io;
+package com.thelastcheck.io.base;
 
-@SuppressWarnings("serial")
-public class InvalidDirectoryException extends Exception {
+public interface RecordFilter {
 
-	public InvalidDirectoryException() {
-		super();
-	}
-
-	public InvalidDirectoryException(String message, Throwable cause) {
-		super(message, cause);
-	}
-
-	public InvalidDirectoryException(String message) {
-		super(message);
-	}
-
-	public InvalidDirectoryException(Throwable cause) {
-		super(cause);
-	}
+    /**
+     * This filter method can modify the record, return a different record (like
+     * a proxy version), or return null to indicate this record should be
+     * ignored.
+     * 
+     * @param record
+     * @return The original record, a replacement record or null.
+     */
+    public Record filter(Record record);
 
 }

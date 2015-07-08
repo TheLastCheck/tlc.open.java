@@ -15,6 +15,7 @@
   <modules>
     <module>tlc-commons-buffer</module>
     <module>tlc-commons-base</module>
+    <module>tlc-io-base</module>
   </modules>
   <repositories>
     <repository>

@@ -14,24 +14,42 @@
  * limitations under the License.
  ******************************************************************************/
 
-package com.thelastcheck.commons.base.utils;
+package com.thelastcheck.io.base.exception;
 
-import org.junit.Test;
+public class InvalidStandardLevelException extends X9Exception {
 
-import static com.thelastcheck.commons.base.utils.CheckDigitVerifiers.Verifier.LuhnMod10;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-public class CheckDigitLuhnMod10VerifierTest {
+	/**
+	 * 
+	 */
+	public InvalidStandardLevelException() {
+		super();
+	}
 
-    @Test
-    public void testIsValid() {
-        CheckDigitVerifier verifier = CheckDigitVerifiers.getVerifier(LuhnMod10);
-        assertTrue(verifier.isValid("79927398713"));
-        assertTrue(verifier.isValid("49927398716"));
-        assertFalse(verifier.isValid("49927398717"));
-        assertTrue(verifier.isValid("1234567812345670"));
-        assertFalse(verifier.isValid("1234567812345678"));
-        assertFalse(verifier.isValid("294217778"));
-    }
+	/**
+	 * @param message
+	 */
+	public InvalidStandardLevelException(String message) {
+		super(message);
+	}
+
+	/**
+	 * @param message
+	 * @param cause
+	 */
+	public InvalidStandardLevelException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+	/**
+	 * @param cause
+	 */
+	public InvalidStandardLevelException(Throwable cause) {
+		super(cause);
+	}
+
 }

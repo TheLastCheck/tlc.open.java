@@ -16,16 +16,7 @@
 
 package com.thelastcheck.commons.base.utils;
 
-import com.google.common.base.Preconditions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-/**
- * @author Jerry Bowman
- *         (c) 2013, The Last Check, All Rights Reserved.
- */
 public abstract class CheckDigitVerifiers {
-    private static Logger log = LoggerFactory.getLogger(CheckDigitVerifiers.class);
 
     public enum Verifier {
         LuhnMod10, WeightedMod11, RoutingNumber
@@ -33,7 +24,7 @@ public abstract class CheckDigitVerifiers {
 
     public static CheckDigitVerifier getVerifier(Verifier verifierType) {
         if (verifierType == Verifier.WeightedMod11) {
-            throw new IllegalArgumentException("Weigthed Mod 11 requires weight values");
+            throw new IllegalArgumentException("Weighted Mod 11 requires weight values");
         }
         return getVerifier(verifierType, null);
     }
@@ -50,6 +41,5 @@ public abstract class CheckDigitVerifiers {
         }
         return null;
     }
-
 
 }

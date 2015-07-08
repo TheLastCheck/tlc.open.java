@@ -19,15 +19,12 @@ package com.thelastcheck.commons.base.utils;
 
 public class Timer {
 
-	private static String synch = new String("");
+	private static Object synch = new Object();
 	private static int unnamedCounter;
 	private String name;
 	private long milliseconds;
 	private long startTime;
 
-	/**
-	 * 
-	 */
 	public Timer() {
 		synchronized (synch) {
 			unnamedCounter++;
@@ -56,16 +53,10 @@ public class Timer {
 		startTime = 0;
 	}
 
-	/**
-	 * @return
-	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * @param string
-	 */
 	public void setName(String string) {
 		name = string;
 	}
@@ -74,9 +65,6 @@ public class Timer {
 		return name + " - elapsed time (ms): " + milliseconds;
 	}
 
-	/**
-	 * @return
-	 */
 	public long getMilliseconds() {
 		return milliseconds;
 	}

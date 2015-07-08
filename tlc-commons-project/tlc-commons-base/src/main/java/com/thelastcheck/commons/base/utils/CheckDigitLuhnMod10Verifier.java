@@ -16,10 +16,6 @@
 
 package com.thelastcheck.commons.base.utils;
 
-/**
- * @author Jerry Bowman
- *         (c) 2013, The Last Check, All Rights Reserved.
- */
 public class CheckDigitLuhnMod10Verifier implements CheckDigitVerifier {
 
     private static CheckDigitVerifier instance = new CheckDigitLuhnMod10Verifier();
@@ -35,7 +31,7 @@ public class CheckDigitLuhnMod10Verifier implements CheckDigitVerifier {
 
         int currentDigit;
         int idSum = 0;
-        int position = 0; //the current process number (to calc odd/even proc)
+        int position = 0; //the current position number (to calc odd/even proc)
 
         for (int i = id.length() - 1; i >= 0; i--) {
             //get the current rightmost digit from the string

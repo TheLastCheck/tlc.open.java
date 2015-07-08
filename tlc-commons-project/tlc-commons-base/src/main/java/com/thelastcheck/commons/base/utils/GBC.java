@@ -19,8 +19,9 @@ package com.thelastcheck.commons.base.utils;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
-@SuppressWarnings("serial")
 public class GBC extends GridBagConstraints {
+
+    private static final long serialVersionUID = 1L;
 
     public GBC(int row, int column) {
         super();

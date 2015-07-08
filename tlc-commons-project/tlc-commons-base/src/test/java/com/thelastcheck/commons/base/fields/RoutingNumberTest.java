@@ -16,73 +16,72 @@
 
 package com.thelastcheck.commons.base.fields;
 
-import junit.framework.Assert;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-/**
- * @author Jerry Bowman
- *         (c) 2013, The Last Check, All Rights Reserved.
- */
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 public class RoutingNumberTest {
-    private static Logger log = LoggerFactory.getLogger(RoutingNumberTest.class);
 
     @Test
     public void testRt9() {
         RoutingNumber rt = RoutingNumber.valueOf("084000026");
-        Assert.assertEquals("084000026", rt.toString());
-        Assert.assertEquals("08400002", rt.getRoutingNumber());
-        Assert.assertEquals('6', rt.getCheckDigit());
-        Assert.assertTrue(rt.hasCheckDigit());
-        Assert.assertTrue(rt.isValid());
+        assertEquals("084000026", rt.toString());
+        assertEquals("08400002", rt.getRoutingNumber());
+        assertEquals('6', rt.getCheckDigit());
+        assertTrue(rt.hasCheckDigit());
+        assertTrue(rt.isValid());
     }
 
     @Test
     public void testRt8NoDash() {
         RoutingNumber rt = RoutingNumber.valueOf("08400002");
-        Assert.assertTrue(rt.isValid());
-        Assert.assertEquals("08400002 ", rt.toString());
+        assertTrue(rt.isValid());
+        assertEquals("08400002 ", rt.toString());
+    }
 
-        rt = RoutingNumber.valueOf("0840");
-        Assert.assertFalse(rt.isValid());
-        Assert.assertEquals("0840     ", rt.toString());
+    @Test
+    public void testInvalidRt() {
+        RoutingNumber rt = RoutingNumber.valueOf("0840");
+        assertFalse(rt.isValid());
+        assertEquals("0840     ", rt.toString());
     }
 
     @Test
     public void testRt8() {
         RoutingNumber rt = RoutingNumber.valueOf("0840-0002");
-        Assert.assertEquals("08400002 ", rt.toString());
-        Assert.assertEquals("08400002", rt.getRoutingNumber());
-        Assert.assertEquals(' ', rt.getCheckDigit());
-        Assert.assertFalse(rt.hasCheckDigit());
-        Assert.assertTrue(rt.isValid());
+        assertEquals("08400002 ", rt.toString());
+        assertEquals("08400002", rt.getRoutingNumber());
+        assertEquals(' ', rt.getCheckDigit());
+        assertFalse(rt.hasCheckDigit());
+        assertTrue(rt.isValid());
 
         rt.calculateAndSaveCheckDigit();
-        Assert.assertEquals("084000026", rt.toString());
-        Assert.assertEquals("08400002", rt.getRoutingNumber());
-        Assert.assertEquals('6', rt.getCheckDigit());
-        Assert.assertTrue(rt.hasCheckDigit());
-        Assert.assertTrue(rt.isValid());
+        assertEquals("084000026", rt.toString());
+        assertEquals("08400002", rt.getRoutingNumber());
+        assertEquals('6', rt.getCheckDigit());
+        assertTrue(rt.hasCheckDigit());
+        assertTrue(rt.isValid());
     }
 
     @Test
     public void testBadRt() {
         RoutingNumber rt = RoutingNumber.valueOf("084000025");
-        Assert.assertFalse(rt.isValid());
+        assertFalse(rt.isValid());
 
         rt = RoutingNumber.valueOf("0876*7777");
-        Assert.assertFalse(rt.isValid());
+        assertFalse(rt.isValid());
     }
 
     @Test
     public void testCanadian() {
         RoutingNumber rt = RoutingNumber.valueOf("084000026");
-        Assert.assertFalse(rt.isCanadian());
+        assertFalse(rt.isCanadian());
 
         rt = RoutingNumber.valueOf("08304-222");
-        Assert.assertTrue(rt.isCanadian());
-        Assert.assertFalse(rt.hasCheckDigit());
-        Assert.assertTrue(rt.isValid());
+        assertTrue(rt.isCanadian());
+        assertFalse(rt.hasCheckDigit());
+        assertTrue(rt.isValid());
     }
 }

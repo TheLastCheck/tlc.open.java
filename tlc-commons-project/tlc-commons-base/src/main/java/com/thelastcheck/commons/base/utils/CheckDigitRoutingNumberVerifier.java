@@ -16,13 +16,6 @@
 
 package com.thelastcheck.commons.base.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-/**
- * @author Jerry Bowman
- *         (c) 2013, The Last Check, All Rights Reserved.
- */
 public class CheckDigitRoutingNumberVerifier implements CheckDigitVerifier {
 
     private static int[] weights = {3, 7, 1, 3, 7, 1, 3, 7, 1};
