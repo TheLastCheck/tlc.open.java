@@ -16,6 +16,8 @@
     <module>tlc-commons-buffer</module>
     <module>tlc-commons-base</module>
     <module>tlc-io-base</module>
+    <module>tlc-io-x937-utils</module>
+    <module>tlc-io-x937</module>
   </modules>
   <repositories>
     <repository>
@@ -47,6 +49,21 @@
       <dependency>
         <groupId>com.thelastcheck.commons</groupId>
         <artifactId>tlc-commons-buffer</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.thelastcheck.commons</groupId>
+        <artifactId>tlc-io-base</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.thelastcheck.commons</groupId>
+        <artifactId>tlc-io-x937-utils</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.thelastcheck.commons</groupId>
+        <artifactId>tlc-io-x937</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

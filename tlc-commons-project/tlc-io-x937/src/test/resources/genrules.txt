@@ -1,0 +1,320 @@
+C X937FileHeaderRecord 01 14 TYPE FILE HEADER 
+F 1 RecordType M 01 02 2 S 
+F 2 StandardLevel M 03 04 2 S 
+F 3 TestFileIndicator  M 05 05 1 S 
+F 4 ImmediateDestinationRoutingNumber  M 06 14 9 R 
+F 5 ImmediateOriginRoutingNumber  M 15 23 9 R 
+F 6 FileCreationDate  M 24 31 8 D 
+F 7 FileCreationTime  M 32 35 4 T 
+F 8 ResendIndicator  M 36 36 1 S 
+F 9 ImmediateDestinationName  C 37 54 18 S 
+F 10 ImmediateOriginName  C 55 72 18 S 
+F 11 FileIDModifier C 73 73 1 S 
+F 12 CountryCode C 74 75 2 S 
+F 13 UserField C 76 79 4 S
+F 14 Reserved M 80 80 1 S
+
+C X937CashLetterHeaderRecord 10 15 TYPE CASH LETTER HEADER 
+F 1 RecordType M 01  02 2 S 
+F 2 CollectionTypeIndicator M 03  04 2 S 
+F 3 DestinationRoutingNumber M 05  13 9 R 
+F 4 ECEInstitutionRoutingNumber M 14  22 9 R 
+F 5 CashLetterBusinessDate M 23  30 8 D 
+F 6 CashLetterCreationDate M 31  38 8 D 
+F 7 CashLetterCreationTime M 39  42 4 T 
+F 8 CashLetterRecordTypeIndicator M 43  43 1 S 
+F 9 CashLetterDocumentationTypeIndicator C 44  44 1 S 
+F 10 CashLetterID C 45  52 8 S
+F 11 OriginatorContactName C 53  66 14 S 
+F 12 OriginatorContactPhoneNumber C 67  76 10 S 
+F 13 FedWorkType C 77  77 1 S
+F 14 UserField C 78  79 2 S 
+F 15 Reserved M 80  80 1 S
+ 
+C X937BundleHeaderRecord 20 12 TYPE BUNDLE HEADER  
+F 1 RecordType M 01  02 2 S 
+F 2 CollectionTypeIndicator M 03  04 2 S 
+F 3 DestinationRoutingNumber M 05  13 9 R 
+F 4 ECEInstitutionRoutingNumber M 14  22 9 R 
+F 5 BundleBusinessDate M 23  30 8 D
+F 6 BundleCreationDate M 31  38 8 D 
+F 7 BundleID C 39  48 10 S
+F 8 BundleSequenceNumber C 49  52 4 S 
+F 9 CycleNumber C 53  54 2 S
+F 10 ReturnLocationRoutingNumber C 55  63 9 R 
+F 11 UserField C 64  68 5 S
+F 12 Reserved M 69  80 12 S 
+ 
+C X937CheckDetailRecord 25 15 TYPE CHECK DETAIL
+F 1 RecordType M 01  02 2 S 
+F 2 AuxiliaryOnUs C 03  17 15 S 
+F 3 ExternalProcessingCode C 18  18 1 S 
+F 4 PayorBankRoutingNumber M 19  26 8 R 
+F 5 PayorBankRoutingNumberCheckDigit C 27  27 1 S 
+F 6 OnUs C 28  47 20 S
+F 7 ItemAmount M 48  57 10 N 
+F 8 ECEInstitutionItemSequenceNumber M 58  72 15 S 
+F 9 DocumentationTypeIndicator C 73  73 1 S 
+F 10 ReturnAcceptanceIndicator C 74  74 1 S 
+F 11 MICRValidIndicator C 75  75 1 S
+F 12 BOFDIndicator M 76  76 1 S
+F 13 CheckDetailRecordAddendumCount M 77  78 2 N 
+F 14 CorrectionIndicator C 79  79 1 S
+F 15 ArchiveTypeIndicator C 80 - 80 1 S 
+  
+C X937CheckDetailAddendumARecord 26 13 TYPE CHECK DETAIL ADDENDUM A 
+F 1 RecordType M 01  02 2 S
+F 2 CheckDetailAddendumARecordNumber M 03 - 03 1 N 
+F 3 BOFDRoutingNumber C 04  12 9 R
+F 4 BOFDBusinessDate C 13  20 8 D
+F 5 BOFDItemSequenceNumber C 21  35 15 S 
+F 6 DepositAccountNumberAtBOFD C 36  53 18 S 
+F 7 BOFDDepositBranch C 54  58 5 S
+F 8 PayeeName C 59  73 15 S
+F 9 TruncationIndicator C 74  74 1 S 
+F 10 BOFDConversionIndicator C 75  75 1 S 
+F 11 BOFDCorrectionIndicator C 76  76 1 S 
+F 12 UserField C 77  77 1 S
+F 13 Reserved M 78  80 3 S
+ 
+C X937CheckDetailAddendumBRecord 27 8 TYPE CHECK DETAIL ADDENDUM B 
+F 1 RecordType M 01  02 2 S 
+F 2 VariableSizeRecordIndicator M 03  03 1 S 
+F 3 MicrofilmArchiveSequenceNumber C 04  18 15 S 
+F 4 LengthOfImageArchiveSequenceNumber M 19  22 4 N 
+F 5 ImageArchiveSequenceNumber C 23  56 34 S
+F 6 Description C 57  71 15 S
+F 7 UserField C 72  75 4 S
+F 8 Reserved M 76  80 5 S 
+  
+C X937CheckDetailAddendumCRecord 28 11 TYPE CHECK DETAIL ADDENDUM C
+F 1 RecordType M 01  02 2 S 
+F 2 CheckDetailAddendumCRecordNumber M 03  04 2 N 
+F 3 EndorsingBankRoutingNumber C 05  13 9 R
+F 4 EndorsingBankEndorsementDate C 14  21 8 D 
+F 5 EndorsingBankItemSequenceNumber C 22  36 15 S 
+F 6 TruncationIndicator C 37 - 37 1 S 
+F 7 EndorsingBankConversionIndicator C 38  38 1 S 
+F 8 EndorsingBankCorrectionIndicator C 39  39 1 S 
+F 9 ReturnReason  C 40  40 1 S
+F 10 UserField C 41  55 15 S 
+F 11 Reserved M 56  80 15 S
+ 
+C X937ReturnRecord 31 14 TYPE RETURN
+F 1 RecordType M 01  02 2 S 
+F 2 PayorBankRoutingNumber M 03  10 8 R
+F 3 PayorBankRoutingNumberCheckDigit C 11  11 1 S 
+F 4 OnUsReturnRecord C 12  31 20 S 
+F 5 ItemAmount M 32  41 10 N 
+F 6 ReturnReason M 42  42 1 S 
+F 7 ReturnRecordAddendumCount M 43  44 2 N 
+F 8 ReturnDocumentationTypeIndicator C 45  45 1 S 
+F 9 ForwardBundleDate C 46  53 8 D
+F 10 ECEInstitutionItemSequenceNumber C 54  68 15 S 
+F 11 ExternalProcessingCode C 69 - 69 1 S
+F 12 ReturnNotificationIndicator C 70 - 70 1 S 
+F 13 ReturnArchiveTypeIndicator C 71  71 1 S
+F 14 NumberOfTimesReturned C 72 - 72 1 S
+F 15 Reserved M 73 - 80 8 S
+ 
+C X937ReturnAddendumARecord 32 13 TYPE RETURN ADDENDUM A 
+F 1 RecordType M 01  02 2 S 
+F 2 ReturnAddendumARecordNumber M 03  03 1 N 
+F 3 BOFDRoutingNumber C 04  12 9 R
+F 4 BOFDBusinessDate C 13  20 8 D 
+F 5 BOFDItemSequenceNumber C 21  35 15 S 
+F 6 DepositAccountNumberAtBOFD C 36  53 18 S 
+F 7 BOFDDepositBranch  C 54  58 5 S
+F 8 PayeeName C 59  73 15 S
+F 9 TruncationIndicator C 74 74 1 S 
+F 10 BOFDConversionIndicator C 75  75 1 S 
+F 11 BOFDCorrectionIndicator C 76  76 1 S 
+F 12 UserField C 77  77 1 S
+F 13 Reserved M 78  80 3 S
+ 
+C X937ReturnAddendumBRecord 33 6 TYPE RETURN ADDENDUM B
+F 1 RecordType M 01  02 2 S 
+F 2 PayorBankName C 03  20 18 S 
+F 3 AuxiliaryOnUs C 21  35 15 S 
+F 4 PayorBankItemSequenceNumber  C 36  50 15 S 
+F 5 PayorBankBusinessDate C 51  58 8 D
+F 6 PayorAccountName C 59  80 22 S
+ 
+C X937ReturnAddendumCRecord 34 8 TYPE RETURN ADDENDUM C
+F 1 RecordType M 01  02 2 S
+F 2 VariableSizeRecordIndicator M 03  03 1 S 
+F 3 MicrofilmArchiveSequenceNumber C 04  18 15 S 
+F 4 LengthOfImageArchiveSequenceNumber M 19  22 4 N 
+F 5 ImageArchiveSequenceNumber C 23  56 34 S
+F 6 Description C 57  71 15 S
+F 7 UserField C 72  75 4 S
+F 8 Reserved M 76  80 5 S
+  
+C X937ReturnAddendumDRecord 35 11 TYPE RETURN ADDENDUM D
+F 1 RecordType M 01  02 2 S 
+F 2 ReturnAddendumDRecordNumber M 03  04 2 N 
+F 3 EndorsingBankRoutingNumber C 05  13 9 R
+F 4 EndorsingBankEndorsementDate C 14  21 8 D 
+F 5 EndorsingBankItemSequenceNumber C 22  36 15 S 
+F 6 TruncationIndicator C 37 - 37 1 S
+F 7 EndorsingBankConversionIndicator C 38  38 1 S 
+F 8 EndorsingBankCorrectionIndicator C 39  39 1 S 
+F 9 ReturnReason  C 40  40 1 S
+F 10 UserField C 41  59 19 S 
+F 11 Reserved M 60  80 21 S
+
+C X937AccountTotalsDetailRecord 40 8 TYPE ACCOUNT TOTALS DETAIL 
+F 1 RecordType M 01 02 2 S
+F 2 DestinationRoutingNumber M 03 11 9 R 
+F 3 KeyAccountOrLowAccountInKeyAccountRange M 12 29 18 S 
+F 4 KeyAccountOrHighAccountInKeyAccountRange M 30 47 18 S 
+F 5 TotalItemCount M 48 59 12 N 
+F 6 TotalItemAmount M 60 73 14 N 
+F 7 UserField C 74 77 4 S
+F 8 Reserved M 78 80 3 S
+
+C X937NonHitTotalsDetailRecord 41 7 TYPE NON HIT TOTALS DETAIL
+F 1 RecordType M 01  02 2 S 
+F 2 DestinationRoutingNumber M 03  11 9 R 
+F 3 NonHitIndicator  M 12  12 1 S
+F 4 TotalItemCount M 13  24 12 N 
+F 5 TotalItemAmount M 25  38 14 N 
+F 6 UserField C 39  50 12 S
+F 7 Reserved  M 51  80 30 S 
+ 
+C X937ImageViewDetailRecord 50 17 TYPE IMAGE VIEW DETAIL
+F 1 RecordType M 01  02 2 S 
+F 2 ImageIndicator M 03  03 1 S 
+F 3 ImageCreatorRoutingNumber M 04  12 9 R 
+F 4 ImageCreatorDate M 13  20 8 D
+F 5 ImageViewFormatIndicator M 21  22 2 S 
+F 6 ImageViewCompressionAlgorithmIdentifier M 23  24 2 S 
+F 7 ImageViewDataSize C 25  31 7 N 
+F 8 ViewSideIndicator M 32  32 1 S
+F 9 ViewDescriptor M 33  34 2 S
+F 10 DigitalSignatureIndicator  M 35  35 1 S 
+F 11 DigitalSignatureMethod C 36  37 2 S
+F 12 SecurityKeySize C 38  42 5 N 
+F 13 StartOfProtectedData C 43  49 7 S 
+F 14 LengthofProtectedData C 50  56 7 N 
+F 15 ImageRecreateIndicator C 57  57 1 S 
+F 16 UserField C 58  65 8 S
+F 17 ImageTiffVarianceIndicator C 66  66 1 S
+F 18 ImageTiffVarianceIndicator C 67  67 1 S
+F 19 Reserved M 68  80 13 S 
+ 
+C X937ImageViewDataRecord 52 19 TYPE IMAGE VIEW DATA
+F 1 RecordType  M 01  02 2 S 
+F 2 ECEInstitutionRoutingNumber M 03  11 9 R 
+F 3 BundleBusinessDate M 12  19 8 D
+F 4 CycleNumber C 20  21 2 S
+F 5 ECEInstitutionItemSequenceNumber M 22  36 15 S 
+F 6 SecurityOriginatorName C  37  52 16 S
+F 7 SecurityAuthenticatorName C  53  68 16 S 
+F 8 SecurityKeyName C  69  84 16 S
+F 9 ClippingOrigin M 85  85 1 S
+F 10 ClippingCoordinateH1 C 86  89 4 S 
+F 11 ClippingCoordinateH2 C 90  93 4 S 
+F 12 ClippingCoordinateV1 C 94  97 4 S 
+F 13 ClippingCoordinateV2 C 98  101 4 S
+F 14 LengthOfImageReferenceKey M 102  105 4 N 
+F 15 ImageReferenceKey C 106  105 0 S
+F 16 LengthOfDigitalSignature M 106  110 5 N 
+F 17 DigitalSignature C 111  110 0 B
+F 18 LengthOfImageData M 111 117  7 N 
+F 19 ImageData M  118    117  0 B  
+ 
+C X937ImageViewAnalysisRecord 54 46 TYPE IMAGE VIEW ANALYSIS
+F 1 RecordType M 01  02 2 S
+F 2 GlobalImageQuality M 03  03 1 S 
+F 3 GlobalImageUsability M 04  04 1 S 
+F 4 ImagingBankSpecificTest M 05  05 1 S
+F 5 PartialImage C 06  06 1 S
+F 6 ExcessiveImageSkew C 07  07 1 S 
+F 7 PiggybackImage C 08  08 1 S
+F 8 TooLightOrTooDark C 09  09 1 S 
+F 9 StreaksAndOrBands C 10  10 1 S 
+F 10 BelowMinimumImageSize C 11  11 1 S 
+F 11 ExceedsMaximumImageSize C 12  12 1 S 
+F 12 Reserved12 C 13  13 1 S
+F 13 Reserved13 C 14  14 1 S 
+F 14 Reserved14 C 15  15 1 S 
+F 15 Reserved15 C 16  16 1 S 
+F 16 Reserved16 C 17  17 1 S 
+F 17 Reserved17 C 18  18 1 S 
+F 18 Reserved18 C 19  19 1 S 
+F 19 Reserved19 C 20  20 1 S 
+F 20 Reserved20 C 21  21 1 S 
+F 21 Reserved21 C 22  22 1 S 
+F 22 Reserved22 C 23  23 1 S 
+F 23 Reserved23 C 24  24 1 S 
+F 24 Reserved24 C 25  25 1 S 
+F 25 ImageEnabledPOD C 26  26 1 S 
+F 26 SourceDocumentBad C 27  27 1 S 
+F 27 DateUsability C 28  28 1 S
+F 28 PayeeUsability C 29  29 1 S 
+F 29 ConvenienceAmountUsability C 30  30 1 S 
+F 30 LegalAmountUsability C 31  31 1 S
+F 31 SignatureUsability C 32  32 1 S
+F 32 PayorNameAndAddressUsability C 33  33 1 S 
+F 33 MICRLineUsability C 34  34 1 S
+F 34 MemoLineUsability C 35  35 1 S 
+F 35 PayorBankNameAndAddressUsability C 36  36 1 S 
+F 36 PayeeEndorsementUsability C 37  37 1 S
+F 37 BankOfFirstDepositEndorsementUsability C 38  38 1 S 
+F 38 TransitEndorsementUsability C 39  39 1 S
+F 39 Reserved39 C 40  40 1 S
+F 40 Reserved40 C 41  41 1 S 
+F 41 Reserved41 C 42  42 1 S 
+F 42 Reserved42 C 43  43 1 S 
+F 43 Reserved43 C 44  44 1 S 
+F 44 Reserved44 C 45  45 1 S 
+F 45 UserField C 46  65 20 S 
+F 46 Reserved M 66  80 15 S
+  
+C X937BundleControlRecord 70 7 TYPE BUNDLE CONTROL 
+F 1 RecordType M 01  02 2 S 
+F 2 ItemsWithinBundleCount M 03  06 4 N 
+F 3 BundleTotalAmount M 07  18 12 N 
+F 4 MICRValidTotalAmount C 19  30 12 N 
+F 5 ImagesWithinBundleCount C 31 - 35 5 N 
+F 6 UserField C 36  55 20 S
+F 7 Reserved M 56  80 25 S
+ 
+C X937BoxSummaryRecord 75 7 TYPE BOX SUMMARY
+F 1 RecordType M 01  02 2 S 
+F 2 DestinationRoutingNumber M 03  11 9 R 
+F 3 BoxSequenceNumber M 12  14 3 S
+F 4 BoxBundleCount M 15  18 4 N 
+F 5 BoxNumberID M 19  26 8 S
+F 6 BoxTotalAmount M 27  40 14 N 
+F 7 Reserved M 41  80 40 S
+ 
+C X937RoutingNumberSummaryRecord 85 6 TYPE ROUTING NUMBER SUMMARY 
+F 1 RecordType M 01  02 2 S 
+F 2 RoutingNumberWithinCashLetter M 03  11 9 R 
+F 3 RoutingNumberTotalAmount M 12  25 14 N 
+F 4 RoutingNumberItemCount M 26  31 6 N 
+F 5 UserField C 32 - 55 24 S
+F 6 Reserved M 56  80 25 S
+ 
+C X937CashLetterControlRecord 90 8 TYPE CASH LETTER CONTROL
+F 1 RecordType M 01  02 2 S 
+F 2 BundleCount M 03  08 6 N 
+F 3 ItemsWithinCashletterCount M 09  16 8 N 
+F 4 CashLetterTotalAmount M 17  30 14 N 
+F 5 ImagesWithinCashLetterCount  C 31  39 9 A 
+F 6 ECEInstitutionName C 40  57 18 S 
+F 7 SettlementDate C 58  65 8 D 
+F 8 Reserved M 66  80 15 S
+ 
+C X937FileControlRecord 99 8 TYPE FILE CONTROL
+F 1 RecordType M 01  02 2 S 
+F 2 CashLetterCount M 03  08 6 N 
+F 3 TotalRecordCount M 09  16 8 N 
+F 4 TotalItemCount M 17  24 8 N 
+F 5 FileTotalAmount M 25  40 16 N 
+F 6 ImmediateOriginContactName C 41  54 14 S 
+F 7 ImmediateOriginContactPhoneNumber C 55  64 10 S 
+F 8 Reserved M 65  80 16 S 
+ 

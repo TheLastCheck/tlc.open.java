@@ -1,0 +1,14 @@
+#Tue Dec 15 21:38:00 CST 2009
+com.tlc.x937.xml.X937GenRules=com.tlc.x937.xml.descriptors.X937GenRulesDescriptor
+com.tlc.x937.xml.InterfaceDefinition=com.tlc.x937.xml.descriptors.InterfaceDefinitionDescriptor
+com.tlc.x937.xml.InterfaceDefinitionItem=com.tlc.x937.xml.descriptors.InterfaceDefinitionItemDescriptor
+com.tlc.x937.xml.ClassDefinitionListItem=com.tlc.x937.xml.descriptors.ClassDefinitionListItemDescriptor
+com.tlc.x937.xml.ClassFieldItem=com.tlc.x937.xml.descriptors.ClassFieldItemDescriptor
+com.tlc.x937.xml.ClassDefinitionList=com.tlc.x937.xml.descriptors.ClassDefinitionListDescriptor
+com.tlc.x937.xml.ClassField=com.tlc.x937.xml.descriptors.ClassFieldDescriptor
+com.tlc.x937.xml.InterfaceField=com.tlc.x937.xml.descriptors.InterfaceFieldDescriptor
+com.tlc.x937.xml.ClassDefinitionItem=com.tlc.x937.xml.descriptors.ClassDefinitionItemDescriptor
+com.tlc.x937.xml.InterfaceDefinitionList=com.tlc.x937.xml.descriptors.InterfaceDefinitionListDescriptor
+com.tlc.x937.xml.ClassDefinition=com.tlc.x937.xml.descriptors.ClassDefinitionDescriptor
+com.tlc.x937.xml.InterfaceDefinitionListItem=com.tlc.x937.xml.descriptors.InterfaceDefinitionListItemDescriptor
+com.tlc.x937.xml.X937GenRulesItem=com.tlc.x937.xml.descriptors.X937GenRulesItemDescriptor

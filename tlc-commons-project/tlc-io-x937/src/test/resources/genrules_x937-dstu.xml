@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ Copyright (c) 2009-2015 The Last Check, LLC, All Rights Reserved
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ You may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<x937GenRules>
+    <classDefinitionList standard="dstu" package="com.thelastcheck.io.x937.records">
+        <classDefinition recordType="01" type="TYPE_FILE_HEADER"
+            name="X937FileHeaderRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="2" type="N"
+                name="StandardLevel" />
+            <classField number="3" offset="4" length="1" type="S"
+                name="TestFileIndicator" />
+            <classField number="4" offset="5" length="9" type="R"
+                name="ImmediateDestinationRoutingNumber" />
+            <classField number="5" offset="14" length="9" type="R"
+                name="ImmediateOriginRoutingNumber" />
+            <classField number="6" offset="23" length="8" type="D"
+                name="FileCreationDate" />
+            <classField number="7" offset="31" length="4" type="T"
+                name="FileCreationTime" />
+            <classField number="8" offset="35" length="1" type="S"
+                name="ResendIndicator" />
+            <classField number="9" offset="36" length="18" type="S"
+                name="ImmediateDestinationName" />
+            <classField number="10" offset="54" length="18" type="S"
+                name="ImmediateOriginName" />
+            <classField number="11" offset="72" length="1" type="S"
+                name="FileIDModifier" />
+            <classField number="12" offset="73" length="2" type="S"
+                name="CountryCode" />
+            <classField number="13" offset="75" length="4" type="S"
+                name="UserField" />
+            <classField number="14" offset="79" length="1" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="10"
+            type="TYPE_CASH_LETTER_HEADER" name="X937CashLetterHeaderRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="2" type="S"
+                name="CollectionTypeIndicator" />
+            <classField number="3" offset="4" length="9" type="R"
+                name="DestinationRoutingNumber" />
+            <classField number="4" offset="13" length="9" type="R"
+                name="ECEInstitutionRoutingNumber" />
+            <classField number="5" offset="22" length="8" type="D"
+                name="CashLetterBusinessDate" />
+            <classField number="6" offset="30" length="8" type="D"
+                name="CashLetterCreationDate" />
+            <classField number="7" offset="38" length="4" type="T"
+                name="CashLetterCreationTime" />
+            <classField number="8" offset="42" length="1" type="S"
+                name="CashLetterRecordTypeIndicator" />
+            <classField number="9" offset="43" length="1" type="S"
+                name="CashLetterDocumentationTypeIndicator" />
+            <classField number="10" offset="44" length="8" type="S"
+                name="CashLetterID" />
+            <classField number="11" offset="52" length="14" type="S"
+                name="OriginatorContactName" />
+            <classField number="12" offset="66" length="10" type="S"
+                name="OriginatorContactPhoneNumber" />
+            <classField number="13" offset="76" length="1" type="S"
+                name="FedWorkType" />
+            <classField number="14" offset="77" length="2" type="S"
+                name="UserField" />
+            <classField number="15" offset="79" length="1" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="20" type="TYPE_BUNDLE_HEADER"
+            name="X937BundleHeaderRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="2" type="S"
+                name="CollectionTypeIndicator" />
+            <classField number="3" offset="4" length="9" type="R"
+                name="DestinationRoutingNumber" />
+            <classField number="4" offset="13" length="9" type="R"
+                name="ECEInstitutionRoutingNumber" />
+            <classField number="5" offset="22" length="8" type="D"
+                name="BundleBusinessDate" />
+            <classField number="6" offset="30" length="8" type="D"
+                name="BundleCreationDate" />
+            <classField number="7" offset="38" length="10" type="S"
+                name="BundleID" />
+            <classField number="8" offset="48" length="4" type="S"
+                name="BundleSequenceNumber" />
+            <classField number="9" offset="52" length="2" type="S"
+                name="CycleNumber" />
+            <classField number="10" offset="54" length="9" type="R"
+                name="ReturnLocationRoutingNumber" />
+            <classField number="11" offset="63" length="5" type="S"
+                name="UserField" />
+            <classField number="12" offset="68" length="12" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="25" type="TYPE_CHECK_DETAIL"
+            name="X937CheckDetailRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="15" type="S"
+                name="AuxiliaryOnUs" />
+            <classField number="3" offset="17" length="1" type="S"
+                name="ExternalProcessingCode" />
+            <classField number="4" offset="18" length="9" type="R"
+                name="PayorBankRoutingNumber" />
+            <classField number="5" offset="26" length="1" type="S"
+                name="PayorBankRoutingNumberCheckDigit" />
+            <classField number="6" offset="27" length="20" type="U"
+                name="OnUs" />
+            <classField number="7" offset="47" length="10" type="N"
+                name="ItemAmount" />
+            <classField number="8" offset="57" length="15" type="S"
+                name="ECEInstitutionItemSequenceNumber" />
+            <classField number="9" offset="72" length="1" type="S"
+                name="DocumentationTypeIndicator" />
+            <classField number="10" offset="73" length="1" type="S"
+                name="ReturnAcceptanceIndicator" />
+            <classField number="11" offset="74" length="1" type="S"
+                name="MICRValidIndicator" />
+            <classField number="12" offset="75" length="1" type="S"
+                name="BOFDIndicator" />
+            <classField number="13" offset="76" length="2" type="N"
+                name="CheckDetailRecordAddendumCount" />
+            <classField number="14" offset="78" length="1" type="S"
+                name="CorrectionIndicator" />
+            <classField number="15" offset="79" length="1" type="S"
+                name="ArchiveTypeIndicator" />
+        </classDefinition>
+        <classDefinition recordType="26"
+            type="TYPE_CHECK_DETAIL_ADDENDUM_A"
+            name="X937CheckDetailAddendumARecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="1" type="N"
+                name="CheckDetailAddendumARecordNumber" />
+            <classField number="3" offset="3" length="9" type="R"
+                name="BOFDRoutingNumber" />
+            <classField number="4" offset="12" length="8" type="D"
+                name="BOFDBusinessDate" />
+            <classField number="5" offset="20" length="15" type="S"
+                name="BOFDItemSequenceNumber" />
+            <classField number="6" offset="35" length="18" type="S"
+                name="DepositAccountNumberAtBOFD" />
+            <classField number="7" offset="53" length="5" type="S"
+                name="BOFDDepositBranch" />
+            <classField number="8" offset="58" length="15" type="S"
+                name="PayeeName" />
+            <classField number="9" offset="73" length="1" type="S"
+                name="TruncationIndicator" />
+            <classField number="10" offset="74" length="1" type="S"
+                name="BOFDConversionIndicator" />
+            <classField number="11" offset="75" length="1" type="S"
+                name="BOFDCorrectionIndicator" />
+            <classField number="12" offset="76" length="1" type="S"
+                name="UserField" />
+            <classField number="13" offset="77" length="3" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="27"
+            type="TYPE_CHECK_DETAIL_ADDENDUM_B"
+            name="X937CheckDetailAddendumBRecord" fieldDynamic="true">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="1" type="S"
+                name="VariableSizeRecordIndicator" />
+            <classField number="3" offset="3" length="15" type="S"
+                name="MicrofilmArchiveSequenceNumber" />
+            <classField number="4" offset="18" length="4" type="N"
+                name="LengthOfImageArchiveSequenceNumber" setter="private"/>
+            <classField number="5" offset="22" length="34" type="S"
+                name="ImageArchiveSequenceNumber" fieldDynamic="true" setDynamic="true">
+                <calculateField>
+        int X = 34;
+        if (variableSizeRecordIndicator().equals("1")) {
+            try {
+                X = lengthOfImageArchiveSequenceNumberAsInt();
+            } catch (InvalidDataException e) {
+            }
+        }
+        return new Field("ImageArchiveSequenceNumber", 5, 22, X);
+                </calculateField>
+                <setField>
+        if (variableSizeRecordIndicator().equals("0")) {
+            setField(34, field(4));
+            setField(value, field(5));
+            return this;
+        }
+        int currentLength = 0;
+        try {
+            currentLength = lengthOfImageArchiveSequenceNumberAsInt();
+        } catch (InvalidDataException e) {
+        }
+        if (currentLength != value.length()) {
+            allocateNewRecord(currentLength, value.length(), 4, 5);
+        }
+        setField(value, field(5));
+                </setField>
+            </classField>
+            <classField number="6" offset="56" length="15" type="S"
+                name="Description" fieldDynamic="true">
+                <calculateField>
+        int X = 34;
+        if (variableSizeRecordIndicator().equals("1")) {
+            try {
+                X = lengthOfImageArchiveSequenceNumberAsInt();
+            } catch (InvalidDataException e) {
+            }
+        }
+        return new Field("Description", 6, 22 + X, 15);
+                </calculateField>
+            </classField>
+            <classField number="7" offset="71" length="4" type="S"
+                name="UserField" fieldDynamic="true">
+                <calculateField>
+        int X = 34;
+        if (variableSizeRecordIndicator().equals("1")) {
+            try {
+                X = lengthOfImageArchiveSequenceNumberAsInt();
+            } catch (InvalidDataException e) {
+            }
+        }
+        return new Field("UserField", 7, 37 + X, 4);
+                </calculateField>
+            </classField>
+            <classField number="8" offset="75" length="5" type="S"
+                name="Reserved" fieldDynamic="true">
+                <calculateField>
+        int X = 34;
+        if (variableSizeRecordIndicator().equals("1")) {
+            try {
+                X = lengthOfImageArchiveSequenceNumberAsInt();
+            } catch (InvalidDataException e) {
+            }
+        }
+        return new Field("Reserved", 8, 41 + X, 5);
+                </calculateField>
+            </classField>
+        </classDefinition>
+        <classDefinition recordType="28"
+            type="TYPE_CHECK_DETAIL_ADDENDUM_C"
+            name="X937CheckDetailAddendumCRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="2" type="N"
+                name="CheckDetailAddendumCRecordNumber" />
+            <classField number="3" offset="4" length="9" type="R"
+                name="EndorsingBankRoutingNumber" />
+            <classField number="4" offset="13" length="8" type="D"
+                name="EndorsingBankEndorsementDate" />
+            <classField number="5" offset="21" length="15" type="S"
+                name="EndorsingBankItemSequenceNumber" />
+            <classField number="6" offset="36" length="1" type="S"
+                name="TruncationIndicator" />
+            <classField number="7" offset="37" length="1" type="S"
+                name="EndorsingBankConversionIndicator" />
+            <classField number="8" offset="38" length="1" type="S"
+                name="EndorsingBankCorrectionIndicator" />
+            <classField number="9" offset="39" length="1" type="S"
+                name="ReturnReason" />
+            <classField number="10" offset="40" length="15" type="S"
+                name="UserField" />
+            <classField number="11" offset="55" length="15" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="31" type="TYPE_RETURN"
+            name="X937ReturnRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="9" type="R"
+                name="PayorBankRoutingNumber" />
+            <classField number="3" offset="10" length="1" type="S"
+                name="PayorBankRoutingNumberCheckDigit" />
+            <classField number="4" offset="11" length="20" type="U"
+                name="OnUsReturnRecord" />
+            <classField number="5" offset="31" length="10" type="N"
+                name="ItemAmount" />
+            <classField number="6" offset="41" length="1" type="S"
+                name="ReturnReason" />
+            <classField number="7" offset="42" length="2" type="N"
+                name="ReturnRecordAddendumCount" />
+            <classField number="8" offset="44" length="1" type="S"
+                name="ReturnDocumentationTypeIndicator" />
+            <classField number="9" offset="45" length="8" type="D"
+                name="ForwardBundleDate" />
+            <classField number="10" offset="53" length="15" type="S"
+                name="ECEInstitutionItemSequenceNumber" />
+            <classField number="11" offset="68" length="1" type="S"
+                name="ExternalProcessingCode" />
+            <classField number="12" offset="69" length="1" type="S"
+                name="ReturnNotificationIndicator" />
+            <classField number="13" offset="70" length="1" type="S"
+                name="ReturnArchiveTypeIndicator" />
+            <classField number="14" offset="71" length="1" type="S"
+                name="NumberOfTimesReturned" />
+            <classField number="15" offset="72" length="8" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="32"
+            type="TYPE_RETURN_ADDENDUM_A" name="X937ReturnAddendumARecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="1" type="N"
+                name="ReturnAddendumARecordNumber" />
+            <classField number="3" offset="3" length="9" type="R"
+                name="BOFDRoutingNumber" />
+            <classField number="4" offset="12" length="8" type="D"
+                name="BOFDBusinessDate" />
+            <classField number="5" offset="20" length="15" type="S"
+                name="BOFDItemSequenceNumber" />
+            <classField number="6" offset="35" length="18" type="S"
+                name="DepositAccountNumberAtBOFD" />
+            <classField number="7" offset="53" length="5" type="S"
+                name="BOFDDepositBranch" />
+            <classField number="8" offset="58" length="15" type="S"
+                name="PayeeName" />
+            <classField number="9" offset="73" length="1" type="S"
+                name="TruncationIndicator" />
+            <classField number="10" offset="74" length="1" type="S"
+                name="BOFDConversionIndicator" />
+            <classField number="11" offset="75" length="1" type="S"
+                name="BOFDCorrectionIndicator" />
+            <classField number="12" offset="76" length="1" type="S"
+                name="UserField" />
+            <classField number="13" offset="77" length="3" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="33"
+            type="TYPE_RETURN_ADDENDUM_B" name="X937ReturnAddendumBRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="18" type="S"
+                name="PayorBankName" />
+            <classField number="3" offset="20" length="15" type="S"
+                name="AuxiliaryOnUs" />
+            <classField number="4" offset="35" length="15" type="S"
+                name="PayorBankItemSequenceNumber" />
+            <classField number="5" offset="50" length="8" type="D"
+                name="PayorBankBusinessDate" />
+            <classField number="6" offset="58" length="22" type="S"
+                name="PayorAccountName" />
+        </classDefinition>
+        <classDefinition recordType="34"
+            type="TYPE_RETURN_ADDENDUM_C" name="X937ReturnAddendumCRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="1" type="S"
+                name="VariableSizeRecordIndicator" />
+            <classField number="3" offset="3" length="15" type="S"
+                name="MicrofilmArchiveSequenceNumber" />
+            <classField number="4" offset="18" length="4" type="N"
+                name="LengthOfImageArchiveSequenceNumber" setter="private"/>
+            <classField number="5" offset="22" length="34" type="S"
+                name="ImageArchiveSequenceNumber" fieldDynamic="true" setDynamic="true">
+                <calculateField>
+        int X = 34;
+        if (variableSizeRecordIndicator().equals("1")) {
+            try {
+                X = lengthOfImageArchiveSequenceNumberAsInt();
+            } catch (InvalidDataException e) {
+            }
+        }
+        return new Field("ImageArchiveSequenceNumber", 5, 22, X);
+                </calculateField>
+                <setField>
+        if (variableSizeRecordIndicator().equals("0")) {
+            setField(34, field(4));
+            setField(value, field(5));
+            return this;
+        }
+        int currentLength = 0;
+        try {
+            currentLength = lengthOfImageArchiveSequenceNumberAsInt();
+        } catch (InvalidDataException e) {
+        }
+        if (currentLength != value.length()) {
+            allocateNewRecord(currentLength, value.length(), 4, 5);
+        }
+        setField(value, field(5));
+                </setField>
+            </classField>    
+            <classField number="6" offset="56" length="15" type="S"
+                name="Description" fieldDynamic="true">
+                <calculateField>
+        int X = 34;
+        if (variableSizeRecordIndicator().equals("1")) {
+            try {
+                X = lengthOfImageArchiveSequenceNumberAsInt();
+            } catch (InvalidDataException e) {
+            }
+        }
+        return new Field("Description", 6, 22 + X, 15);
+                </calculateField>
+            </classField>
+            <classField number="7" offset="71" length="4" type="S"
+                name="UserField" fieldDynamic="true">
+                <calculateField>
+        int X = 34;
+        if (variableSizeRecordIndicator().equals("1")) {
+            try {
+                X = lengthOfImageArchiveSequenceNumberAsInt();
+            } catch (InvalidDataException e) {
+            }
+        }
+        return new Field("UserField", 7, 37 + X, 4);
+                </calculateField>
+            </classField>
+            <classField number="8" offset="75" length="5" type="S"
+                name="Reserved" fieldDynamic="true">
+                <calculateField>
+        int X = 34;
+        if (variableSizeRecordIndicator().equals("1")) {
+            try {
+                X = lengthOfImageArchiveSequenceNumberAsInt();
+            } catch (InvalidDataException e) {
+            }
+        }
+        return new Field("Reserved", 8, 41 + X, 5);
+                </calculateField>
+            </classField>
+        </classDefinition>
+        <classDefinition recordType="35"
+            type="TYPE_RETURN_ADDENDUM_D" name="X937ReturnAddendumDRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="2" type="N"
+                name="ReturnAddendumDRecordNumber" />
+            <classField number="3" offset="4" length="9" type="R"
+                name="EndorsingBankRoutingNumber" />
+            <classField number="4" offset="13" length="8" type="D"
+                name="EndorsingBankEndorsementDate" />
+            <classField number="5" offset="21" length="15" type="S"
+                name="EndorsingBankItemSequenceNumber" />
+            <classField number="6" offset="36" length="1" type="S"
+                name="TruncationIndicator" />
+            <classField number="7" offset="37" length="1" type="S"
+                name="EndorsingBankConversionIndicator" />
+            <classField number="8" offset="38" length="1" type="S"
+                name="EndorsingBankCorrectionIndicator" />
+            <classField number="9" offset="39" length="1" type="S"
+                name="ReturnReason" />
+            <classField number="10" offset="40" length="19" type="S"
+                name="UserField" />
+            <classField number="11" offset="59" length="21" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="40"
+            type="TYPE_ACCOUNT_TOTALS_DETAIL"
+            name="X937AccountTotalsDetailRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="9" type="R"
+                name="DestinationRoutingNumber" />
+            <classField number="3" offset="11" length="18" type="S"
+                name="KeyAccountOrLowAccountInKeyAccountRange" />
+            <classField number="4" offset="29" length="18" type="S"
+                name="KeyAccountOrHighAccountInKeyAccountRange" />
+            <classField number="5" offset="47" length="12" type="N"
+                name="TotalItemCount" />
+            <classField number="6" offset="59" length="14" type="N"
+                name="TotalItemAmount" />
+            <classField number="7" offset="73" length="4" type="S"
+                name="UserField" />
+            <classField number="8" offset="77" length="3" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="41"
+            type="TYPE_NON_HIT_TOTALS_DETAIL"
+            name="X937NonHitTotalsDetailRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="9" type="R"
+                name="DestinationRoutingNumber" />
+            <classField number="3" offset="11" length="1" type="S"
+                name="NonHitIndicator" />
+            <classField number="4" offset="12" length="12" type="N"
+                name="TotalItemCount" />
+            <classField number="5" offset="24" length="14" type="N"
+                name="TotalItemAmount" />
+            <classField number="6" offset="38" length="12" type="S"
+                name="UserField" />
+            <classField number="7" offset="50" length="30" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="50"
+            type="TYPE_IMAGE_VIEW_DETAIL" name="X937ImageViewDetailRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="1" type="S"
+                name="ImageIndicator" />
+            <classField number="3" offset="3" length="9" type="R"
+                name="ImageCreatorRoutingNumber" />
+            <classField number="4" offset="12" length="8" type="D"
+                name="ImageCreatorDate" />
+            <classField number="5" offset="20" length="2" type="S"
+                name="ImageViewFormatIndicator" />
+            <classField number="6" offset="22" length="2" type="S"
+                name="ImageViewCompressionAlgorithmIdentifier" />
+            <classField number="7" offset="24" length="7" type="N"
+                name="ImageViewDataSize" />
+            <classField number="8" offset="31" length="1" type="S"
+                name="ViewSideIndicator" />
+            <classField number="9" offset="32" length="2" type="S"
+                name="ViewDescriptor" />
+            <classField number="10" offset="34" length="1" type="S"
+                name="DigitalSignatureIndicator" />
+            <classField number="11" offset="35" length="2" type="S"
+                name="DigitalSignatureMethod" />
+            <classField number="12" offset="37" length="5" type="N"
+                name="SecurityKeySize" />
+            <classField number="13" offset="42" length="7" type="S"
+                name="StartOfProtectedData" />
+            <classField number="14" offset="49" length="7" type="N"
+                name="LengthofProtectedData" />
+            <classField number="15" offset="56" length="1" type="S"
+                name="ImageRecreateIndicator" />
+            <classField number="16" offset="57" length="8" type="S"
+                name="UserField" />
+            <classField number="17" offset="65" length="1" type="S"
+                name="ImageTiffVarianceIndicator" />
+            <classField number="18" offset="66" length="1" type="S"
+                name="OverrideIndicator" />
+            <classField number="19" offset="67" length="13" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="52" type="TYPE_IMAGE_VIEW_DATA"
+            name="X937ImageViewDataRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="9" type="R"
+                name="ECEInstitutionRoutingNumber" />
+            <classField number="3" offset="11" length="8" type="D"
+                name="BundleBusinessDate" />
+            <classField number="4" offset="19" length="2" type="S"
+                name="CycleNumber" />
+            <classField number="5" offset="21" length="15" type="S"
+                name="ECEInstitutionItemSequenceNumber" />
+            <classField number="6" offset="36" length="16" type="S"
+                name="SecurityOriginatorName" />
+            <classField number="7" offset="52" length="16" type="S"
+                name="SecurityAuthenticatorName" />
+            <classField number="8" offset="68" length="16" type="S"
+                name="SecurityKeyName" />
+            <classField number="9" offset="84" length="1" type="S"
+                name="ClippingOrigin" />
+            <classField number="10" offset="85" length="4" type="S"
+                name="ClippingCoordinateH1" />
+            <classField number="11" offset="89" length="4" type="S"
+                name="ClippingCoordinateH2" />
+            <classField number="12" offset="93" length="4" type="S"
+                name="ClippingCoordinateV1" />
+            <classField number="13" offset="97" length="4" type="S"
+                name="ClippingCoordinateV2" />
+            <classField number="14" offset="101" length="4" type="N"
+                name="LengthOfImageReferenceKey" setter="private"/>
+            <classField number="15" offset="105" length="0" type="S"
+                name="ImageReferenceKey" fieldDynamic="true" setDynamic="true">
+                <calculateField>
+        int X = 0;
+        try {
+            X = lengthOfImageReferenceKeyAsInt();
+        } catch (InvalidDataException e) {
+        }
+        return new Field("ImageReferenceKey", 15, 105, X, FieldType.STRING);
+                </calculateField>
+                <setField>
+        int currentLength = 0;
+        try {
+            currentLength = lengthOfImageReferenceKeyAsInt();
+        } catch (InvalidDataException e) {
+        }
+        if (currentLength != value.length()) {
+            allocateNewRecord(currentLength, value.length(), 14, 15);
+        }
+        setField(value, field(15));
+        lengthOfImageReferenceKey(value.length());
+                </setField>
+            </classField>
+            <classField number="16" offset="105" length="5" type="N"
+                name="LengthOfDigitalSignature" setter="private" fieldDynamic="true" >
+                <calculateField>
+        int X = 0;
+        try {
+            X = lengthOfImageReferenceKeyAsInt();
+        } catch (InvalidDataException e) {
+        }
+        return new Field("LengthOfDigitalSignature", 16, 105+X, 5, FieldType.INT);
+                </calculateField>
+            </classField>
+            <classField number="17" offset="110" length="0" type="B"
+                name="DigitalSignature" fieldDynamic="true" setDynamic="true">
+                <calculateField>
+        int X = 0;
+        int Y = 0;
+        try {
+            X = lengthOfImageReferenceKeyAsInt();
+        } catch (InvalidDataException e) {
+        }
+        try {
+            Y = lengthOfDigitalSignatureAsInt();
+        } catch (InvalidDataException e) {
+        }
+        return new Field("DigitalSignature", 17, 110+X, Y, FieldType.BINARY);
+                </calculateField>
+                <setField>
+        int currentLength = 0;
+        try {
+            currentLength = lengthOfDigitalSignatureAsInt();
+        } catch (InvalidDataException e) {
+        }
+        if (currentLength != value.getLength()) {
+            allocateNewRecord(currentLength, value.getLength(), 16, 17);
+        }
+        setField(value, field(17));
+        lengthOfDigitalSignature(value.getLength());
+                </setField>
+            </classField>
+            <classField number="18" offset="110" length="7" type="N"
+                name="LengthOfImageData" setter="private" fieldDynamic="true" >
+                <calculateField>
+        int X = 0;
+        int Y = 0;
+        try {
+            X = lengthOfImageReferenceKeyAsInt();
+        } catch (InvalidDataException e) {
+        }
+        try {
+            Y = lengthOfDigitalSignatureAsInt();
+        } catch (InvalidDataException e) {
+        }
+        return new Field("LengthOfImageData", 18, 110+X+Y, 7, FieldType.INT);
+                </calculateField>
+            </classField>
+            <classField number="19" offset="117" length="0" type="B"
+                name="ImageData" fieldDynamic="true" setDynamic="true">
+                <calculateField>
+        int X = 0;
+        int Y = 0;
+        int Z = 0;
+        try {
+            X = lengthOfImageReferenceKeyAsInt();
+        } catch (InvalidDataException e) {
+        }
+        try {
+            Y = lengthOfDigitalSignatureAsInt();
+        } catch (InvalidDataException e) {
+        }
+        try {
+            Z = lengthOfImageDataAsInt();
+        } catch (InvalidDataException e) {
+        }
+        return new Field("ImageData", 19, 117+X+Y, Z, FieldType.BINARY);
+                </calculateField>
+                <setField>
+        int currentLength = 0;
+        try {
+            currentLength = lengthOfImageDataAsInt();
+        } catch (InvalidDataException e) {
+        }
+        if (currentLength != value.getLength()) {
+            allocateNewRecord(currentLength, value.getLength(), 18, 19);
+        }
+        setField(value, field(19));
+        lengthOfImageData(value.getLength());
+                </setField>
+            </classField>
+        </classDefinition>
+        <classDefinition recordType="54"
+            type="TYPE_IMAGE_VIEW_ANALYSIS" name="X937ImageViewAnalysisRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="1" type="S"
+                name="GlobalImageQuality" />
+            <classField number="3" offset="3" length="1" type="S"
+                name="GlobalImageUsability" />
+            <classField number="4" offset="4" length="1" type="S"
+                name="ImagingBankSpecificTest" />
+            <classField number="5" offset="5" length="1" type="S"
+                name="PartialImage" />
+            <classField number="6" offset="6" length="1" type="S"
+                name="ExcessiveImageSkew" />
+            <classField number="7" offset="7" length="1" type="S"
+                name="PiggybackImage" />
+            <classField number="8" offset="8" length="1" type="S"
+                name="TooLightOrTooDark" />
+            <classField number="9" offset="9" length="1" type="S"
+                name="StreaksAndOrBands" />
+            <classField number="10" offset="10" length="1" type="S"
+                name="BelowMinimumImageSize" />
+            <classField number="11" offset="11" length="1" type="S"
+                name="ExceedsMaximumImageSize" />
+            <classField number="12" offset="12" length="1" type="S"
+                name="Reserved12" />
+            <classField number="13" offset="13" length="1" type="S"
+                name="Reserved13" />
+            <classField number="14" offset="14" length="1" type="S"
+                name="Reserved14" />
+            <classField number="15" offset="15" length="1" type="S"
+                name="Reserved15" />
+            <classField number="16" offset="16" length="1" type="S"
+                name="Reserved16" />
+            <classField number="17" offset="17" length="1" type="S"
+                name="Reserved17" />
+            <classField number="18" offset="18" length="1" type="S"
+                name="Reserved18" />
+            <classField number="19" offset="19" length="1" type="S"
+                name="Reserved19" />
+            <classField number="20" offset="20" length="1" type="S"
+                name="Reserved20" />
+            <classField number="21" offset="21" length="1" type="S"
+                name="Reserved21" />
+            <classField number="22" offset="22" length="1" type="S"
+                name="Reserved22" />
+            <classField number="23" offset="23" length="1" type="S"
+                name="Reserved23" />
+            <classField number="24" offset="24" length="1" type="S"
+                name="Reserved24" />
+            <classField number="25" offset="25" length="1" type="S"
+                name="ImageEnabledPOD" />
+            <classField number="26" offset="26" length="1" type="S"
+                name="SourceDocumentBad" />
+            <classField number="27" offset="27" length="1" type="S"
+                name="DateUsability" />
+            <classField number="28" offset="28" length="1" type="S"
+                name="PayeeUsability" />
+            <classField number="29" offset="29" length="1" type="S"
+                name="ConvenienceAmountUsability" />
+            <classField number="30" offset="30" length="1" type="S"
+                name="LegalAmountUsability" />
+            <classField number="31" offset="31" length="1" type="S"
+                name="SignatureUsability" />
+            <classField number="32" offset="32" length="1" type="S"
+                name="PayorNameAndAddressUsability" />
+            <classField number="33" offset="33" length="1" type="S"
+                name="MICRLineUsability" />
+            <classField number="34" offset="34" length="1" type="S"
+                name="MemoLineUsability" />
+            <classField number="35" offset="35" length="1" type="S"
+                name="PayorBankNameAndAddressUsability" />
+            <classField number="36" offset="36" length="1" type="S"
+                name="PayeeEndorsementUsability" />
+            <classField number="37" offset="37" length="1" type="S"
+                name="BankOfFirstDepositEndorsementUsability" />
+            <classField number="38" offset="38" length="1" type="S"
+                name="TransitEndorsementUsability" />
+            <classField number="39" offset="39" length="1" type="S"
+                name="Reserved39" />
+            <classField number="40" offset="40" length="1" type="S"
+                name="Reserved40" />
+            <classField number="41" offset="41" length="1" type="S"
+                name="Reserved41" />
+            <classField number="42" offset="42" length="1" type="S"
+                name="Reserved42" />
+            <classField number="43" offset="43" length="1" type="S"
+                name="Reserved43" />
+            <classField number="44" offset="44" length="1" type="S"
+                name="Reserved44" />
+            <classField number="45" offset="45" length="20" type="S"
+                name="UserField" />
+            <classField number="46" offset="65" length="15" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="70" type="TYPE_BUNDLE_CONTROL"
+            name="X937BundleControlRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="4" type="N"
+                name="ItemsWithinBundleCount" />
+            <classField number="3" offset="6" length="12" type="N"
+                name="BundleTotalAmount" />
+            <classField number="4" offset="18" length="12" type="N"
+                name="MICRValidTotalAmount" />
+            <classField number="5" offset="30" length="5" type="N"
+                name="ImagesWithinBundleCount" />
+            <classField number="6" offset="35" length="20" type="S"
+                name="UserField" />
+            <classField number="7" offset="55" length="25" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="75" type="TYPE_BOX_SUMMARY"
+            name="X937BoxSummaryRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="9" type="R"
+                name="DestinationRoutingNumber" />
+            <classField number="3" offset="11" length="3" type="S"
+                name="BoxSequenceNumber" />
+            <classField number="4" offset="14" length="4" type="N"
+                name="BoxBundleCount" />
+            <classField number="5" offset="18" length="8" type="S"
+                name="BoxNumberID" />
+            <classField number="6" offset="26" length="14" type="N"
+                name="BoxTotalAmount" />
+            <classField number="7" offset="40" length="40" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="85"
+            type="TYPE_ROUTING_NUMBER_SUMMARY"
+            name="X937RoutingNumberSummaryRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="9" type="R"
+                name="RoutingNumberWithinCashLetter" />
+            <classField number="3" offset="11" length="14" type="N"
+                name="RoutingNumberTotalAmount" />
+            <classField number="4" offset="25" length="6" type="N"
+                name="RoutingNumberItemCount" />
+            <classField number="5" offset="31" length="24" type="S"
+                name="UserField" />
+            <classField number="6" offset="55" length="25" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="90"
+            type="TYPE_CASH_LETTER_CONTROL" name="X937CashLetterControlRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="6" type="N"
+                name="BundleCount" />
+            <classField number="3" offset="8" length="8" type="N"
+                name="ItemsWithinCashletterCount" />
+            <classField number="4" offset="16" length="14" type="A"
+                name="CashLetterTotalAmount" />
+            <classField number="5" offset="30" length="9" type="N"
+                name="ImagesWithinCashLetterCount" />
+            <classField number="6" offset="39" length="18" type="S"
+                name="ECEInstitutionName" />
+            <classField number="7" offset="57" length="8" type="D"
+                name="SettlementDate" />
+            <classField number="8" offset="65" length="15" type="S"
+                name="Reserved" />
+        </classDefinition>
+        <classDefinition recordType="99" type="TYPE_FILE_CONTROL"
+            name="X937FileControlRecord">
+            <classField number="1" offset="0" length="2" type="S"
+                name="RecordType" />
+            <classField number="2" offset="2" length="6" type="N"
+                name="CashLetterCount" />
+            <classField number="3" offset="8" length="8" type="N"
+                name="TotalRecordCount" />
+            <classField number="4" offset="16" length="8" type="N"
+                name="TotalItemCount" />
+            <classField number="5" offset="24" length="16" type="N"
+                name="FileTotalAmount" />
+            <classField number="6" offset="40" length="14" type="S"
+                name="ImmediateOriginContactName" />
+            <classField number="7" offset="54" length="10" type="S"
+                name="ImmediateOriginContactPhoneNumber" />
+            <classField number="8" offset="64" length="16" type="S"
+                name="Reserved" />
+        </classDefinition>
+    </classDefinitionList>
+</x937GenRules>

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ Copyright (c) 2009-2015 The Last Check, LLC, All Rights Reserved
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ You may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<x937GenRules>
+	<interfaceDefinitionList package="com.thelastcheck.io.x937.records">
+		<interfaceDefinition recordType="01" type="TYPE_FILE_HEADER"
+			name="X937FileHeaderRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="N" name="StandardLevel" />
+			<interfaceField type="S" name="TestFileIndicator" />
+			<interfaceField type="R" name="ImmediateDestinationRoutingNumber" />
+			<interfaceField type="R" name="ImmediateOriginRoutingNumber" />
+			<interfaceField type="D" name="FileCreationDate" />
+			<interfaceField type="T" name="FileCreationTime" />
+			<interfaceField type="S" name="ResendIndicator" />
+			<interfaceField type="S" name="ImmediateDestinationName" />
+			<interfaceField type="S" name="ImmediateOriginName" />
+			<interfaceField type="S" name="FileIDModifier" />
+			<interfaceField type="S" name="CountryCode" />
+			<interfaceField type="S" name="UserField" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="10"
+			type="TYPE_CASH_LETTER_HEADER" name="X937CashLetterHeaderRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="S" name="CollectionTypeIndicator" />
+			<interfaceField type="R" name="DestinationRoutingNumber" />
+			<interfaceField type="R" name="ECEInstitutionRoutingNumber" />
+			<interfaceField type="D" name="CashLetterBusinessDate" />
+			<interfaceField type="D" name="CashLetterCreationDate" />
+			<interfaceField type="T" name="CashLetterCreationTime" />
+            <interfaceField type="S" name="CashLetterRecordTypeIndicator" />
+            <interfaceField type="S" name="CashLetterDocumentationTypeIndicator" />
+            <interfaceField type="S" name="EmptyCashLetterIndicator" />
+            <interfaceField type="S" name="TruncationIndicator" />
+			<interfaceField type="S" name="CashLetterID" />
+			<interfaceField type="S" name="OriginatorContactName" />
+			<interfaceField type="S" name="OriginatorContactPhoneNumber" />
+			<interfaceField type="S" name="FedWorkType" />
+			<interfaceField type="S" name="UserField" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="20" type="TYPE_BUNDLE_HEADER"
+			name="X937BundleHeaderRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="S" name="CollectionTypeIndicator" />
+			<interfaceField type="R" name="DestinationRoutingNumber" />
+			<interfaceField type="R" name="ECEInstitutionRoutingNumber" />
+			<interfaceField type="D" name="BundleBusinessDate" />
+			<interfaceField type="D" name="BundleCreationDate" />
+			<interfaceField type="S" name="BundleID" />
+			<interfaceField type="S" name="BundleSequenceNumber" />
+			<interfaceField type="S" name="CycleNumber" />
+			<interfaceField type="R" name="ReturnLocationRoutingNumber" />
+			<interfaceField type="S" name="UserField" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="25" type="TYPE_CHECK_DETAIL"
+			name="X937CheckDetailRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="S" name="AuxiliaryOnUs" />
+			<interfaceField type="S" name="ExternalProcessingCode" />
+			<interfaceField type="R" name="PayorBankRoutingNumber" />
+			<interfaceField type="S" name="PayorBankRoutingNumberCheckDigit" />
+			<interfaceField type="U" name="OnUs" />
+			<interfaceField type="N" name="ItemAmount" length="10" />
+			<interfaceField type="S" name="ECEInstitutionItemSequenceNumber" />
+			<interfaceField type="S" name="DocumentationTypeIndicator" />
+			<interfaceField type="S" name="ReturnAcceptanceIndicator" />
+			<interfaceField type="S" name="MICRValidIndicator" />
+			<interfaceField type="S" name="BOFDIndicator" />
+			<interfaceField type="N" name="CheckDetailRecordAddendumCount" />
+			<interfaceField type="S" name="CorrectionIndicator" />
+			<interfaceField type="S" name="ArchiveTypeIndicator" />
+            <interfaceField type="S" name="OnusFormatIndicator" />
+            <interfaceField type="S" name="UserField" />
+            <interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="26"
+			type="TYPE_CHECK_DETAIL_ADDENDUM_A"
+			name="X937CheckDetailAddendumARecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="N" name="CheckDetailAddendumARecordNumber" />
+			<interfaceField type="R" name="BOFDRoutingNumber" />
+			<interfaceField type="D" name="BOFDBusinessDate" />
+			<interfaceField type="S" name="BOFDItemSequenceNumber" />
+			<interfaceField type="S" name="DepositAccountNumberAtBOFD" />
+			<interfaceField type="S" name="BOFDDepositBranch" />
+			<interfaceField type="S" name="PayeeName" />
+			<interfaceField type="S" name="TruncationIndicator" />
+			<interfaceField type="S" name="BOFDConversionIndicator" />
+			<interfaceField type="S" name="BOFDCorrectionIndicator" />
+			<interfaceField type="S" name="UserField" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="27"
+			type="TYPE_CHECK_DETAIL_ADDENDUM_B"
+			name="X937CheckDetailAddendumBRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="S" name="VariableSizeRecordIndicator" />
+			<interfaceField type="S" name="MicrofilmArchiveSequenceNumber" />
+			<interfaceField type="N" name="LengthOfImageArchiveSequenceNumber" setter="private"/>
+			<interfaceField type="S" name="ImageArchiveSequenceNumber" fieldDynamic="true"/>
+			<interfaceField type="S" name="Description" />
+			<interfaceField type="S" name="UserField" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="28"
+			type="TYPE_CHECK_DETAIL_ADDENDUM_C"
+			name="X937CheckDetailAddendumCRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="N" name="CheckDetailAddendumCRecordNumber" />
+			<interfaceField type="R" name="EndorsingBankRoutingNumber" />
+			<interfaceField type="D" name="EndorsingBankEndorsementDate" />
+			<interfaceField type="S" name="EndorsingBankItemSequenceNumber" />
+			<interfaceField type="S" name="TruncationIndicator" />
+			<interfaceField type="S" name="EndorsingBankConversionIndicator" />
+			<interfaceField type="S" name="EndorsingBankCorrectionIndicator" />
+			<interfaceField type="S" name="ReturnReason" />
+			<interfaceField type="S" name="UserField" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="31" type="TYPE_RETURN"
+			name="X937ReturnRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="R" name="PayorBankRoutingNumber" />
+			<interfaceField type="S" name="PayorBankRoutingNumberCheckDigit" />
+			<interfaceField type="U" name="OnUsReturnRecord" />
+			<interfaceField type="N" name="ItemAmount" length="10" />
+			<interfaceField type="S" name="ReturnReason" />
+			<interfaceField type="N" name="ReturnRecordAddendumCount" />
+			<interfaceField type="S" name="ReturnDocumentationTypeIndicator" />
+			<interfaceField type="D" name="ForwardBundleDate" />
+			<interfaceField type="S" name="ECEInstitutionItemSequenceNumber" />
+			<interfaceField type="S" name="ExternalProcessingCode" />
+			<interfaceField type="S" name="ReturnNotificationIndicator" />
+			<interfaceField type="S" name="ReturnArchiveTypeIndicator" />
+            <interfaceField type="S" name="NumberOfTimesReturned" />
+			<interfaceField type="S" name="Reserved" />
+            <interfaceField type="S" name="PayorAccountName" />
+            <interfaceField type="S" name="UserField" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="32"
+			type="TYPE_RETURN_ADDENDUM_A" name="X937ReturnAddendumARecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="N" name="ReturnAddendumARecordNumber" />
+			<interfaceField type="R" name="BOFDRoutingNumber" />
+			<interfaceField type="S" name="BOFDBusinessDateConfidenceIndicator" />
+			<interfaceField type="D" name="BOFDBusinessDate" />
+			<interfaceField type="S" name="BOFDItemSequenceNumberConfidenceIndicator" />
+			<interfaceField type="S" name="BOFDItemSequenceNumber" />
+			<interfaceField type="S" name="DepositAccountNumberAtBOFDConfidenceIndicator" />
+			<interfaceField type="S" name="DepositAccountNumberAtBOFD" />
+			<interfaceField type="S" name="BOFDDepositBranchConfidenceIndicator" />
+			<interfaceField type="S" name="BOFDDepositBranch" />
+            <interfaceField type="S" name="PayeeNameConfidenceIndicator" />
+			<interfaceField type="S" name="PayeeName" />
+			<interfaceField type="S" name="TruncationIndicator" />
+			<interfaceField type="S" name="BOFDConversionIndicator" />
+			<interfaceField type="S" name="BOFDCorrectionIndicator" />
+			<interfaceField type="S" name="UserField" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="33"
+			type="TYPE_RETURN_ADDENDUM_B" name="X937ReturnAddendumBRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="S" name="PayorBankName" />
+			<interfaceField type="S" name="AuxiliaryOnUs" />
+			<interfaceField type="S" name="PayorBankItemSequenceNumber" />
+			<interfaceField type="D" name="PayorBankBusinessDate" />
+			<interfaceField type="S" name="PayorAccountName" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="34"
+			type="TYPE_RETURN_ADDENDUM_C" name="X937ReturnAddendumCRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="S" name="VariableSizeRecordIndicator" />
+			<interfaceField type="S" name="MicrofilmArchiveSequenceNumber" />
+            <interfaceField type="N" name="LengthOfImageArchiveSequenceNumber" setter="private"/>
+            <interfaceField type="S" name="ImageArchiveSequenceNumber" fieldDynamic="true"/>
+			<interfaceField type="S" name="Description" />
+			<interfaceField type="S" name="UserField" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="35"
+			type="TYPE_RETURN_ADDENDUM_D" name="X937ReturnAddendumDRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="N" name="ReturnAddendumDRecordNumber" />
+			<interfaceField type="R" name="EndorsingBankRoutingNumber" />
+			<interfaceField type="D" name="EndorsingBankEndorsementDate" />
+			<interfaceField type="S" name="EndorsingBankItemSequenceNumber" />
+			<interfaceField type="S" name="TruncationIndicator" />
+			<interfaceField type="S" name="EndorsingBankConversionIndicator" />
+			<interfaceField type="S" name="EndorsingBankCorrectionIndicator" />
+			<interfaceField type="S" name="ReturnReason" />
+			<interfaceField type="S" name="UserField" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="40"
+			type="TYPE_ACCOUNT_TOTALS_DETAIL"
+			name="X937AccountTotalsDetailRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="R" name="DestinationRoutingNumber" />
+			<interfaceField type="S" name="KeyAccountOrLowAccountInKeyAccountRange" />
+			<interfaceField type="S" name="KeyAccountOrHighAccountInKeyAccountRange" />
+			<interfaceField type="N" name="TotalItemCount" length="12" />
+			<interfaceField type="N" name="TotalItemAmount" length="14" />
+			<interfaceField type="S" name="UserField" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="41"
+			type="TYPE_NON_HIT_TOTALS_DETAIL"
+			name="X937NonHitTotalsDetailRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="R" name="DestinationRoutingNumber" />
+			<interfaceField type="S" name="NonHitIndicator" />
+			<interfaceField type="N" name="TotalItemCount" length="12" />
+			<interfaceField type="N" name="TotalItemAmount" length="14" />
+			<interfaceField type="S" name="UserField" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="50"
+			type="TYPE_IMAGE_VIEW_DETAIL" name="X937ImageViewDetailRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="S" name="ImageIndicator" />
+			<interfaceField type="R" name="ImageCreatorRoutingNumber" />
+			<interfaceField type="D" name="ImageCreatorDate" />
+			<interfaceField type="S" name="ImageViewFormatIndicator" />
+			<interfaceField type="S" name="ImageViewCompressionAlgorithmIdentifier" />
+			<interfaceField type="N" name="ImageViewDataSize" />
+			<interfaceField type="S" name="ViewSideIndicator" />
+			<interfaceField type="S" name="ViewDescriptor" />
+			<interfaceField type="S" name="DigitalSignatureIndicator" />
+			<interfaceField type="S" name="DigitalSignatureMethod" />
+			<interfaceField type="N" name="SecurityKeySize" />
+			<interfaceField type="S" name="StartOfProtectedData" />
+			<interfaceField type="N" name="LengthofProtectedData" />
+			<interfaceField type="S" name="ImageRecreateIndicator" />
+			<interfaceField type="S" name="UserField" />
+            <interfaceField type="S" name="ImageTiffVarianceIndicator" />
+            <interfaceField type="S" name="OverrideIndicator" />
+            <interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="52" type="TYPE_IMAGE_VIEW_DATA"
+			name="X937ImageViewDataRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="R" name="ECEInstitutionRoutingNumber" />
+			<interfaceField type="D" name="BundleBusinessDate" />
+			<interfaceField type="S" name="CycleNumber" />
+			<interfaceField type="S" name="ECEInstitutionItemSequenceNumber" />
+			<interfaceField type="S" name="SecurityOriginatorName" />
+			<interfaceField type="S" name="SecurityAuthenticatorName" />
+			<interfaceField type="S" name="SecurityKeyName" />
+			<interfaceField type="S" name="ClippingOrigin" />
+			<interfaceField type="S" name="ClippingCoordinateH1" />
+			<interfaceField type="S" name="ClippingCoordinateH2" />
+			<interfaceField type="S" name="ClippingCoordinateV1" />
+			<interfaceField type="S" name="ClippingCoordinateV2" />
+			<interfaceField type="N" name="LengthOfImageReferenceKey" setter="private"/>
+			<interfaceField type="S" name="ImageReferenceKey" fieldDynamic="true"/>
+			<interfaceField type="N" name="LengthOfDigitalSignature" fieldDynamic="true" setter="private"/>
+			<interfaceField type="B" name="DigitalSignature" fieldDynamic="true"/>
+			<interfaceField type="N" name="LengthOfImageData" fieldDynamic="true" setter="private"/>
+			<interfaceField type="B" name="ImageData" fieldDynamic="true"/>
+		</interfaceDefinition>
+		<interfaceDefinition recordType="54"
+			type="TYPE_IMAGE_VIEW_ANALYSIS" name="X937ImageViewAnalysisRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="S" name="GlobalImageQuality" />
+			<interfaceField type="S" name="GlobalImageUsability" />
+			<interfaceField type="S" name="ImagingBankSpecificTest" />
+			<interfaceField type="S" name="PartialImage" />
+			<interfaceField type="S" name="ExcessiveImageSkew" />
+			<interfaceField type="S" name="PiggybackImage" />
+			<interfaceField type="S" name="TooLightOrTooDark" />
+			<interfaceField type="S" name="StreaksAndOrBands" />
+			<interfaceField type="S" name="BelowMinimumImageSize" />
+			<interfaceField type="S" name="ExceedsMaximumImageSize" />
+			<interfaceField type="S" name="Reserved12" />
+			<interfaceField type="S" name="Reserved13" />
+			<interfaceField type="S" name="Reserved14" />
+			<interfaceField type="S" name="Reserved15" />
+			<interfaceField type="S" name="Reserved16" />
+			<interfaceField type="S" name="Reserved17" />
+			<interfaceField type="S" name="Reserved18" />
+			<interfaceField type="S" name="Reserved19" />
+			<interfaceField type="S" name="Reserved20" />
+			<interfaceField type="S" name="Reserved21" />
+			<interfaceField type="S" name="Reserved22" />
+			<interfaceField type="S" name="Reserved23" />
+			<interfaceField type="S" name="Reserved24" />
+			<interfaceField type="S" name="ImageEnabledPOD" />
+			<interfaceField type="S" name="SourceDocumentBad" />
+			<interfaceField type="S" name="DateUsability" />
+			<interfaceField type="S" name="PayeeUsability" />
+			<interfaceField type="S" name="ConvenienceAmountUsability" />
+			<interfaceField type="S" name="LegalAmountUsability" />
+			<interfaceField type="S" name="SignatureUsability" />
+			<interfaceField type="S" name="PayorNameAndAddressUsability" />
+			<interfaceField type="S" name="MICRLineUsability" />
+			<interfaceField type="S" name="MemoLineUsability" />
+			<interfaceField type="S" name="PayorBankNameAndAddressUsability" />
+			<interfaceField type="S" name="PayeeEndorsementUsability" />
+			<interfaceField type="S" name="BankOfFirstDepositEndorsementUsability" />
+			<interfaceField type="S" name="TransitEndorsementUsability" />
+			<interfaceField type="S" name="Reserved39" />
+			<interfaceField type="S" name="Reserved40" />
+			<interfaceField type="S" name="Reserved41" />
+			<interfaceField type="S" name="Reserved42" />
+			<interfaceField type="S" name="Reserved43" />
+			<interfaceField type="S" name="Reserved44" />
+			<interfaceField type="S" name="UserField" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="70" type="TYPE_BUNDLE_CONTROL"
+			name="X937BundleControlRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="N" name="ItemsWithinBundleCount" length="4" />
+			<interfaceField type="N" name="BundleTotalAmount" length="12" />
+			<interfaceField type="N" name="MICRValidTotalAmount" length="12" />
+			<interfaceField type="N" name="ImagesWithinBundleCount" length="5" />
+			<interfaceField type="S" name="UserField" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="75" type="TYPE_BOX_SUMMARY"
+			name="X937BoxSummaryRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="R" name="DestinationRoutingNumber" />
+			<interfaceField type="S" name="BoxSequenceNumber" />
+			<interfaceField type="N" name="BoxBundleCount" length="4" />
+			<interfaceField type="S" name="BoxNumberID" />
+			<interfaceField type="N" name="BoxTotalAmount" length="14" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="85"
+			type="TYPE_ROUTING_NUMBER_SUMMARY"
+			name="X937RoutingNumberSummaryRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="R" name="RoutingNumberWithinCashLetter" />
+			<interfaceField type="N" name="RoutingNumberTotalAmount" length="14" />
+			<interfaceField type="N" name="RoutingNumberItemCount" length="6" />
+			<interfaceField type="S" name="UserField" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="90"
+			type="TYPE_CASH_LETTER_CONTROL" name="X937CashLetterControlRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="N" name="BundleCount" />
+			<interfaceField type="N" name="ItemsWithinCashletterCount" />
+			<interfaceField type="N" name="CashLetterTotalAmount" length="14" />
+			<interfaceField type="A" name="ImagesWithinCashLetterCount" length="9" />
+            <interfaceField type="S" name="FinalDestinationName" />
+			<interfaceField type="S" name="ECEInstitutionName" />
+			<interfaceField type="D" name="SettlementDate" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+		<interfaceDefinition recordType="99" type="TYPE_FILE_CONTROL"
+			name="X937FileControlRecord">
+			<interfaceField type="S" name="RecordType" />
+			<interfaceField type="N" name="CashLetterCount" />
+			<interfaceField type="N" name="TotalRecordCount" />
+			<interfaceField type="N" name="TotalItemCount" />
+			<interfaceField type="N" name="FileTotalAmount" length="16" />
+			<interfaceField type="S" name="ImmediateOriginContactName" />
+			<interfaceField type="S" name="ImmediateOriginContactPhoneNumber" />
+			<interfaceField type="S" name="Reserved" />
+		</interfaceDefinition>
+	</interfaceDefinitionList>
+</x937GenRules>
