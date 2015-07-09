@@ -1,24 +1,25 @@
-/**
- * ****************************************************************************
+/*******************************************************************************
  * Copyright (c) 2009-2015 The Last Check, LLC, All Rights Reserved
- * <p/>
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p/>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p/>
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ****************************************************************************
- */
+ ******************************************************************************/
 
 package com.thelastcheck.io.x937.records.stddstu;
 
+import java.util.Date;
+
 import com.thelastcheck.commons.base.exception.InvalidDataException;
+import com.thelastcheck.commons.base.fields.OnUsField;
 import com.thelastcheck.commons.base.fields.RoutingNumber;
 import com.thelastcheck.commons.buffer.ByteArray;
 import com.thelastcheck.io.base.Field;
@@ -26,13 +27,11 @@ import com.thelastcheck.io.base.FieldType;
 import com.thelastcheck.io.x937.records.X937ImageViewDataRecord;
 import com.thelastcheck.io.x937.records.base.X937ImageViewDataRecordBase;
 
-import java.util.Date;
-
 public class X937ImageViewDataRecordImpl extends X937ImageViewDataRecordBase {
 
     private static int maxFieldNumber = 19;
-    private static Field fields[] = new Field[maxFieldNumber + 1];
-    private Field localFieldCache[] = new Field[maxFieldNumber + 1];
+    private static Field fields[] = new Field[maxFieldNumber+1];
+    private Field localFieldCache[] = new Field[maxFieldNumber+1];
 
     static {
         fields[0] = null;
@@ -99,23 +98,23 @@ public class X937ImageViewDataRecordImpl extends X937ImageViewDataRecordBase {
         }
         if (localFieldCache[fieldNumber] == null) {
             switch (fieldNumber) {
-                case 15:
-                    localFieldCache[15] = calculateFieldImageReferenceKey();
-                    break;
-                case 16:
-                    localFieldCache[16] = calculateFieldLengthOfDigitalSignature();
-                    break;
-                case 17:
-                    localFieldCache[17] = calculateFieldDigitalSignature();
-                    break;
-                case 18:
-                    localFieldCache[18] = calculateFieldLengthOfImageData();
-                    break;
-                case 19:
-                    localFieldCache[19] = calculateFieldImageData();
-                    break;
-                default:
-                    localFieldCache[fieldNumber] = fields[fieldNumber];
+            case 15:
+                localFieldCache[15] = calculateFieldImageReferenceKey();
+                break;
+            case 16:
+                localFieldCache[16] = calculateFieldLengthOfDigitalSignature();
+                break;
+            case 17:
+                localFieldCache[17] = calculateFieldDigitalSignature();
+                break;
+            case 18:
+                localFieldCache[18] = calculateFieldLengthOfImageData();
+                break;
+            case 19:
+                localFieldCache[19] = calculateFieldImageData();
+                break;
+            default:
+                localFieldCache[fieldNumber] = fields[fieldNumber];
             }
         }
         return localFieldCache[fieldNumber];
@@ -139,7 +138,7 @@ public class X937ImageViewDataRecordImpl extends X937ImageViewDataRecordBase {
             X = lengthOfImageReferenceKeyAsInt();
         } catch (InvalidDataException e) {
         }
-        return new Field("LengthOfDigitalSignature", 16, 105 + X, 5, FieldType.INT);
+        return new Field("LengthOfDigitalSignature", 16, 105+X, 5, FieldType.INT);
         // above is code for dynamically building field
     }
 
@@ -155,7 +154,7 @@ public class X937ImageViewDataRecordImpl extends X937ImageViewDataRecordBase {
             Y = lengthOfDigitalSignatureAsInt();
         } catch (InvalidDataException e) {
         }
-        return new Field("DigitalSignature", 17, 110 + X, Y, FieldType.BINARY);
+        return new Field("DigitalSignature", 17, 110+X, Y, FieldType.BINARY);
         // above is code for dynamically building field
     }
 
@@ -171,7 +170,7 @@ public class X937ImageViewDataRecordImpl extends X937ImageViewDataRecordBase {
             Y = lengthOfDigitalSignatureAsInt();
         } catch (InvalidDataException e) {
         }
-        return new Field("LengthOfImageData", 18, 110 + X + Y, 7, FieldType.INT);
+        return new Field("LengthOfImageData", 18, 110+X+Y, 7, FieldType.INT);
         // above is code for dynamically building field
     }
 
@@ -192,7 +191,7 @@ public class X937ImageViewDataRecordImpl extends X937ImageViewDataRecordBase {
             Z = lengthOfImageDataAsInt();
         } catch (InvalidDataException e) {
         }
-        return new Field("ImageData", 19, 117 + X + Y, Z, FieldType.BINARY);
+        return new Field("ImageData", 19, 117+X+Y, Z, FieldType.BINARY);
         // above is code for dynamically building field
     }
 
@@ -216,13 +215,12 @@ public class X937ImageViewDataRecordImpl extends X937ImageViewDataRecordBase {
     }
 
     public Date bundleBusinessDate()
-            throws InvalidDataException {
+        throws InvalidDataException {
         return getFieldAsDate(field(3), x9TimeZone);
     }
 
     public X937ImageViewDataRecord bundleBusinessDate(Date value) {
-        setFieldDate(value, field(3), x9TimeZone);
-        return this;
+        setFieldDate(value, field(3), x9TimeZone);        return this;
     }
 
     public String bundleBusinessDateAsString() {
@@ -334,7 +332,7 @@ public class X937ImageViewDataRecordImpl extends X937ImageViewDataRecordBase {
     }
 
     public int lengthOfImageReferenceKeyAsInt()
-            throws InvalidDataException {
+        throws InvalidDataException {
         return getFieldAsInt(field(14));
     }
 
@@ -371,7 +369,7 @@ public class X937ImageViewDataRecordImpl extends X937ImageViewDataRecordBase {
     }
 
     public int lengthOfDigitalSignatureAsInt()
-            throws InvalidDataException {
+        throws InvalidDataException {
         return getFieldAsInt(field(16));
     }
 
@@ -408,7 +406,7 @@ public class X937ImageViewDataRecordImpl extends X937ImageViewDataRecordBase {
     }
 
     public int lengthOfImageDataAsInt()
-            throws InvalidDataException {
+        throws InvalidDataException {
         return getFieldAsInt(field(18));
     }
 

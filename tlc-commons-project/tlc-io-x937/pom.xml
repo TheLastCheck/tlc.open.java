@@ -70,7 +70,7 @@
                     <argument>-f</argument>
                     <argument>${project.basedir}/src/test/resources/genrules_x937.xml</argument>
                     <argument>-s</argument>
-                    <argument>src/main/java</argument>
+                    <argument>${project.basedir}/src/main/java</argument>
                   </arguments>
                 </configuration>
               </execution>
@@ -87,7 +87,7 @@
                     <argument>-f</argument>
                     <argument>${project.basedir}/src/test/resources/genrules_x937-1994.xml</argument>
                     <argument>-s</argument>
-                    <argument>src/main/java</argument>
+                    <argument>${project.basedir}/src/main/java</argument>
                   </arguments>
                 </configuration>
               </execution>
@@ -104,7 +104,7 @@
                     <argument>-f</argument>
                     <argument>${project.basedir}/src/test/resources/genrules_x937-2001.xml</argument>
                     <argument>-s</argument>
-                    <argument>src/main/java</argument>
+                    <argument>${project.basedir}/src/main/java</argument>
                   </arguments>
                 </configuration>
               </execution>
@@ -121,7 +121,7 @@
                     <argument>-f</argument>
                     <argument>${project.basedir}/src/test/resources/genrules_x937-dstu.xml</argument>
                     <argument>-s</argument>
-                    <argument>src/main/java</argument>
+                    <argument>${project.basedir}/src/main/java</argument>
                   </arguments>
                 </configuration>
               </execution>
