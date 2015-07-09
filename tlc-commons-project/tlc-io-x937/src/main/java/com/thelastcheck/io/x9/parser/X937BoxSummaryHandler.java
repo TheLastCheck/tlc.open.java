@@ -19,6 +19,6 @@ import com.thelastcheck.io.x937.records.X937BoxSummaryRecord;
 
 public interface X937BoxSummaryHandler {
 
-    public void handle(X937CashLetterGraph graph, X937BoxSummaryRecord record);
+    void handle(X937CashLetterGraph graph, X937BoxSummaryRecord record);
 
 }

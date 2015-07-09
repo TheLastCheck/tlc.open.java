@@ -26,14 +26,14 @@ public interface Record {
 	 * this is spaces or nulls. If a space is the value, then the space value
 	 * should be based on the encoding.
 	 */
-	public abstract void clearRecord();
+	void clearRecord();
 
 	/**
 	 * The number of fields defined for this record.
 	 * 
 	 * @return an int for the number of fields.
 	 */
-	public abstract int numberOfFields();
+	int numberOfFields();
 
 	/**
 	 * The field value.
@@ -43,7 +43,7 @@ public interface Record {
 	 *         field number.
 	 * @throws InvalidDataException
 	 */
-	public abstract Object getField(int fieldNumber)
+	Object getField(int fieldNumber)
 			throws InvalidDataException;
 
 	/**
@@ -52,7 +52,7 @@ public interface Record {
 	 * @param value
 	 * @param fieldNumber
 	 */
-	public abstract Record setField(String value, int fieldNumber);
+	Record setField(String value, int fieldNumber);
 
 	/**
 	 * Set the contents of the field to the specified long value.
@@ -60,7 +60,7 @@ public interface Record {
 	 * @param value
 	 * @param fieldNumber
 	 */
-	public abstract Record setField(long value, int fieldNumber);
+	Record setField(long value, int fieldNumber);
 
 	/**
 	 * Set the contents of the field to the specified int value.
@@ -68,7 +68,7 @@ public interface Record {
 	 * @param value
 	 * @param fieldNumber
 	 */
-	public abstract Record setField(int value, int fieldNumber);
+	Record setField(int value, int fieldNumber);
 
 	/**
 	 * This is the length of the current record. Normally this is the size of
@@ -79,12 +79,12 @@ public interface Record {
 	 * 
 	 * @return the length of the record.
 	 */
-	public abstract int length();
+	int length();
 
 	/**
 	 * @return the record
 	 */
-	public abstract ByteArray record();
+	ByteArray record();
 
 	/**
 	 * The name of the field.
@@ -93,7 +93,7 @@ public interface Record {
 	 * @return A String containing the name of the field for the specified field
 	 *         number.
 	 */
-	public abstract String fieldName(int fieldNumber);
+	String fieldName(int fieldNumber);
 
 	/**
 	 * The position of this record in an input stream. If the record is not from
@@ -102,7 +102,7 @@ public interface Record {
 	 * 
 	 * @return an int indicating position of the record in an input stream.
 	 */
-	public abstract int recordPosition();
+	int recordPosition();
 
 	/**
 	 * This is used to set the current record position of this record in the
@@ -110,7 +110,7 @@ public interface Record {
 	 * 
 	 * @param position
 	 */
-	public abstract Record recordPosition(int position);
+	Record recordPosition(int position);
 
 	/**
 	 * The offset of this record in an input stream. If the record is not from a
@@ -120,7 +120,7 @@ public interface Record {
 	 * 
 	 * @return a long indicating the offset of the record in an input stream.
 	 */
-	public abstract long offsetPosition();
+	long offsetPosition();
 
 	/**
 	 * This is used to set the current record offset of this record in the input
@@ -128,7 +128,7 @@ public interface Record {
 	 * 
 	 * @param offset
 	 */
-	public abstract Record offsetPosition(long offset);
+	Record offsetPosition(long offset);
 
 	/**
 	 * Creates an XML representation of the record based on it's fields. Default
@@ -136,7 +136,7 @@ public interface Record {
 	 * 
 	 * @return a string of XML data
 	 */
-	public abstract String toXml();
+	String toXml();
 
 	/**
 	 * Creates an XML representation of the record based on it's fields.
@@ -146,6 +146,6 @@ public interface Record {
 	 *            tagged and subordinate to the record tags.
 	 * @return a string of XML data
 	 */
-	public abstract String toXml(boolean useAttributes);
+	String toXml(boolean useAttributes);
 
 }

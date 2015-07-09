@@ -28,7 +28,7 @@ public interface X9RecordFactoryStrategy {
      * Return a factory suitable for processing files based on the given
      * standard identifier.
      * 
-     * @param standardLevel
+     * @param standardIdentifier
      *            is an identifier of the standard to detemine what kind of
      *            factory need
      * @return an X9RecordFactory based on the given standard.

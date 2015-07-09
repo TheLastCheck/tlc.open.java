@@ -1,36 +1,36 @@
-/*******************************************************************************
+/**
+ * ****************************************************************************
  * Copyright (c) 2009-2015 The Last Check, LLC, All Rights Reserved
- *
+ * <p/>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p/>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p/>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- ******************************************************************************/
+ * ****************************************************************************
+ */
 
 package com.thelastcheck.io.x937.records.stddstu;
 
-import java.util.Date;
-
 import com.thelastcheck.commons.base.exception.InvalidDataException;
-import com.thelastcheck.commons.base.fields.OnUsField;
-import com.thelastcheck.commons.base.fields.RoutingNumber;
 import com.thelastcheck.commons.buffer.ByteArray;
 import com.thelastcheck.io.base.Field;
 import com.thelastcheck.io.base.FieldType;
 import com.thelastcheck.io.x937.records.X937ReturnAddendumBRecord;
 import com.thelastcheck.io.x937.records.base.X937ReturnAddendumBRecordBase;
 
+import java.util.Date;
+
 public class X937ReturnAddendumBRecordImpl extends X937ReturnAddendumBRecordBase {
 
     private static int maxFieldNumber = 6;
-    private static Field fields[] = new Field[maxFieldNumber+1];
+    private static Field fields[] = new Field[maxFieldNumber + 1];
 
     static {
         fields[0] = null;
@@ -109,12 +109,13 @@ public class X937ReturnAddendumBRecordImpl extends X937ReturnAddendumBRecordBase
     }
 
     public Date payorBankBusinessDate()
-        throws InvalidDataException {
+            throws InvalidDataException {
         return getFieldAsDate(field(5), x9TimeZone);
     }
 
     public X937ReturnAddendumBRecord payorBankBusinessDate(Date value) {
-        setFieldDate(value, field(5), x9TimeZone);        return this;
+        setFieldDate(value, field(5), x9TimeZone);
+        return this;
     }
 
     public String payorBankBusinessDateAsString() {

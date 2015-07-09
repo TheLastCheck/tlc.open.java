@@ -24,60 +24,60 @@ import com.thelastcheck.io.base.Record;
 
 public interface X9Record extends Record {
 
-	public static final String ENCODING_US_ASCII = ByteArray.ASCII_CHARSET_NAME;
-	public static final String ENCODING_EBCDIC = ByteArray.EBCDIC_CHARSET_NAME;
+	String ENCODING_US_ASCII = ByteArray.ASCII_CHARSET_NAME;
+	String ENCODING_EBCDIC = ByteArray.EBCDIC_CHARSET_NAME;
 
-	public static final String FIELD_RECORD_TYPE_NAME = "RecordType";
-	public static final int FIELD_RECORD_TYPE_NUMBER = 1;
-	public static final int STANDARD_LEVEL_1994 = 1;
-	public static final int STANDARD_LEVEL_2001 = 2;
-	public static final int STANDARD_LEVEL_DSTU = 3;
-	public static final int STANDARD_LEVEL_SVPCO = 13;
-	public static final int TYPE_FILE_HEADER = 01;
-	public static final int TYPE_CASH_LETTER_HEADER = 10;
-	public static final int TYPE_BUNDLE_HEADER = 20;
-	public static final int TYPE_CHECK_DETAIL = 25;
-	public static final int TYPE_CHECK_DETAIL_ADDENDUM_A = 26;
-	public static final int TYPE_CHECK_DETAIL_ADDENDUM_B = 27;
-	public static final int TYPE_CHECK_DETAIL_ADDENDUM_C = 28;
-	public static final int TYPE_RETURN = 31;
-	public static final int TYPE_RETURN_ADDENDUM_A = 32;
-	public static final int TYPE_RETURN_ADDENDUM_B = 33;
-	public static final int TYPE_RETURN_ADDENDUM_C = 34;
-	public static final int TYPE_RETURN_ADDENDUM_D = 35;
-	public static final int TYPE_ACCOUNT_TOTALS_DETAIL = 40;
-	public static final int TYPE_NON_HIT_TOTALS_DETAIL = 41;
-	public static final int TYPE_IMAGE_VIEW_DETAIL = 50;
-	public static final int TYPE_IMAGE_VIEW_DATA = 52;
-	public static final int TYPE_IMAGE_VIEW_ANALYSIS = 54;
-	public static final int TYPE_BUNDLE_CONTROL = 70;
-	public static final int TYPE_BOX_SUMMARY = 75;
-	public static final int TYPE_ROUTING_NUMBER_SUMMARY = 85;
-	public static final int TYPE_CASH_LETTER_CONTROL = 90;
-	public static final int TYPE_FILE_CONTROL = 99;
+	String FIELD_RECORD_TYPE_NAME = "RecordType";
+	int FIELD_RECORD_TYPE_NUMBER = 1;
+	int STANDARD_LEVEL_1994 = 1;
+	int STANDARD_LEVEL_2001 = 2;
+	int STANDARD_LEVEL_DSTU = 3;
+	int STANDARD_LEVEL_SVPCO = 13;
+	int TYPE_FILE_HEADER = 01;
+	int TYPE_CASH_LETTER_HEADER = 10;
+	int TYPE_BUNDLE_HEADER = 20;
+	int TYPE_CHECK_DETAIL = 25;
+	int TYPE_CHECK_DETAIL_ADDENDUM_A = 26;
+	int TYPE_CHECK_DETAIL_ADDENDUM_B = 27;
+	int TYPE_CHECK_DETAIL_ADDENDUM_C = 28;
+	int TYPE_RETURN = 31;
+	int TYPE_RETURN_ADDENDUM_A = 32;
+	int TYPE_RETURN_ADDENDUM_B = 33;
+	int TYPE_RETURN_ADDENDUM_C = 34;
+	int TYPE_RETURN_ADDENDUM_D = 35;
+	int TYPE_ACCOUNT_TOTALS_DETAIL = 40;
+	int TYPE_NON_HIT_TOTALS_DETAIL = 41;
+	int TYPE_IMAGE_VIEW_DETAIL = 50;
+	int TYPE_IMAGE_VIEW_DATA = 52;
+	int TYPE_IMAGE_VIEW_ANALYSIS = 54;
+	int TYPE_BUNDLE_CONTROL = 70;
+	int TYPE_BOX_SUMMARY = 75;
+	int TYPE_ROUTING_NUMBER_SUMMARY = 85;
+	int TYPE_CASH_LETTER_CONTROL = 90;
+	int TYPE_FILE_CONTROL = 99;
 	
-	public static TimeZone x9TimeZone = TimeZone.getTimeZone("US/Eastern");
+	TimeZone x9TimeZone = TimeZone.getTimeZone("US/Eastern");
 
 	/**
 	 * @return the record type of this record.
 	 */
-	public abstract int recordType();
+	int recordType();
 
 	/**
 	 * @param recordType
 	 *            the record type for this record.
 	 */
-	public abstract X9Record recordType(int recordType);
+	X9Record recordType(int recordType);
 
 	/**
 	 * @return the standard level for this record.
 	 */
-	public abstract int recordStandardLevel();
+	int recordStandardLevel();
 
 	/**
 	 * @param stdLevel
 	 *            the standard level for this record.
 	 */
-	public abstract X9Record recordStandardLevel(int standardLevel);
+	X9Record recordStandardLevel(int standardLevel);
 
 }

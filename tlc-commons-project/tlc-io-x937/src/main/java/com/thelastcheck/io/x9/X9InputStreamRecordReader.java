@@ -36,8 +36,6 @@ import com.thelastcheck.io.x937.records.X937FileHeaderRecord;
 import com.thelastcheck.io.x937.records.stddstu.X937FileHeaderRecordImpl;
 
 public class X9InputStreamRecordReader extends InputStreamRecordReader {
-	public static Logger log = LoggerFactory
-			.getLogger(X9InputStreamRecordReader.class);
 
 	private static final String FIRST_BYTE_MUST_BE_AN_ASCII_OR_EBCDIC_0 = "First byte must be an ASCII or EBCDIC '0'";
 	private static final String FILE_HEADER_MUST_HAVE_A_RECORD_TYPE_01 = "File Header must have a record type '01'";

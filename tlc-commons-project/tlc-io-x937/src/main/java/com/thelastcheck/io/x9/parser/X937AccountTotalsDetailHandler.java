@@ -20,6 +20,6 @@ import com.thelastcheck.io.x937.records.X937AccountTotalsDetailRecord;
 
 public interface X937AccountTotalsDetailHandler {
 
-    public void handle(X937CashLetterGraph graph, X937AccountTotalsDetailRecord record);
+    void handle(X937CashLetterGraph graph, X937AccountTotalsDetailRecord record);
 
 }
