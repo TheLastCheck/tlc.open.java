@@ -12,6 +12,40 @@
   <version>2.1.0</version>
   <packaging>pom</packaging>
   <name>tlc-commons-project</name>
+  <description>
+    The main pom for building Last Check projects. This contains
+    the dependency management for all dependencies used in all projects.
+  </description>
+  <url>https://bitbucket.org/thelastcheck/tlc.open.java/wiki/Home</url>
+  <organization>
+    <name>The Last Check, LLC</name>
+    <url>https://bitbucket.org/thelastcheck/tlc.open.java/wiki/Home</url>
+  </organization>
+  <inceptionYear>2009</inceptionYear>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Jerry Bowman</name>
+      <email>jerry.bowman@gmail.com</email>
+      <organization>The Last Check, LLC</organization>
+      <organizationUrl>https://bitbucket.org/thelastcheck/tlc.open.java/wiki/Home</organizationUrl>
+    </developer>
+  </developers>
+  <issueManagement>
+    <system>BitBucket</system>
+    <url>https://bitbucket.org/thelastcheck/tlc.open.java/issues</url>
+  </issueManagement>
+  <scm>
+    <connection>scm:git:https://bitbucket.org/thelastcheck/tlc.open.java.git</connection>
+    <developerConnection>scm:git:https://bitbucket.org/thelastcheck/tlc.open.java.git</developerConnection>
+    <url>https://bitbucket.org/thelastcheck/tlc.open.java.git</url>
+  </scm>
   <modules>
     <module>tlc-commons-buffer</module>
     <module>tlc-commons-base</module>

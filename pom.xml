@@ -12,10 +12,10 @@
     contains a number of profiles used to set various options
     used when building and deploying the system.
   </description>
-  <url>https://bitbucket.org/jerrybowman/tlc.open.java/wiki/Home</url>
+  <url>https://bitbucket.org/thelastcheck/tlc.open.java/wiki/Home</url>
   <organization>
     <name>The Last Check, LLC</name>
-    <url>http://www.thelastcheck.com</url>
+    <url>https://bitbucket.org/thelastcheck/tlc.open.java/wiki/Home</url>
   </organization>
   <inceptionYear>2009</inceptionYear>
   <licenses>
@@ -30,17 +30,17 @@
       <name>Jerry Bowman</name>
       <email>jerry.bowman@gmail.com</email>
       <organization>The Last Check, LLC</organization>
-      <organizationUrl>http://www.thelastcheck.com</organizationUrl>
+      <organizationUrl>https://bitbucket.org/thelastcheck/tlc.open.java/wiki/Home</organizationUrl>
     </developer>
   </developers>
   <issueManagement>
-    <system>Jira</system>
-    <url>http://thelastcheck.atlassian.net/</url>
+    <system>BitBucket</system>
+    <url>https://bitbucket.org/thelastcheck/tlc.open.java/issues</url>
   </issueManagement>
   <scm>
-    <connection>scm:git:https://bitbucket.org/jerry.bowman/tlc.open.java.git</connection>
-    <developerConnection>scm:git:https://bitbucket.org/jerry.bowman/tlc.open.java.git</developerConnection>
-    <url>https://bitbucket.org/jerry.bowman/tlc.open.java.git</url>
+    <connection>scm:git:https://bitbucket.org/thelastcheck/tlc.open.java.git</connection>
+    <developerConnection>scm:git:https://bitbucket.org/thelastcheck/tlc.open.java.git</developerConnection>
+    <url>https://bitbucket.org/thelastcheck/tlc.open.java.git</url>
   </scm>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -65,14 +65,14 @@
     <maven-deploy-version>2.8.1</maven-deploy-version>
     <maven-enforcer-version>1.3</maven-enforcer-version>
     <maven-failsafe-version>2.17</maven-failsafe-version>
-    <maven-gpg-version>1.5</maven-gpg-version>
+    <maven-gpg-version>1.6</maven-gpg-version>
     <maven-install-version>2.5.1</maven-install-version>
     <maven-jar-version>2.4</maven-jar-version>
     <maven-javadoc-version>2.9.1</maven-javadoc-version>
     <maven-jxr-version>2.4</maven-jxr-version>
     <maven-pmd-version>3.1</maven-pmd-version>
     <maven-project-info-reports-version>2.7</maven-project-info-reports-version>
-    <maven-release-plugin>2.5.1</maven-release-plugin>
+    <maven-release-version>2.5.2</maven-release-version>
     <maven-resources-version>2.6</maven-resources-version>
     <maven-site-version>3.3</maven-site-version>
     <maven-source-version>2.2.1</maven-source-version>
@@ -80,7 +80,7 @@
     <maven-war-version>2.4</maven-war-version>
     <versions-maven-version>2.1</versions-maven-version>
     <sonar-maven-version>2.5</sonar-maven-version>
-    <nexus-staging-version>1.6.3</nexus-staging-version>
+    <nexus-staging-version>1.6.5</nexus-staging-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <git.commit.id.abbrev>TBD</git.commit.id.abbrev>
     <git.build.time>TBD</git.build.time>
@@ -243,7 +243,7 @@
                 <phase>package</phase>
                 <goals>
                   <goal>jar</goal>
-                  <goal>test-jar</goal>
+                  <!-- <goal>test-jar</goal> -->
                 </goals>
               </execution>
             </executions>
@@ -258,7 +258,13 @@
           </plugin>
           <plugin>
             <artifactId>maven-release-plugin</artifactId>
-            <version>${maven-release-plugin}</version>
+            <version>${maven-release-version}</version>
+            <configuration>
+              <autoVersionSubmodules>true</autoVersionSubmodules>
+              <useReleaseProfile>false</useReleaseProfile>
+              <releaseProfiles>release</releaseProfiles>
+              <goals>deploy nexus-staging:release</goals>
+            </configuration>
           </plugin>
           <plugin>
             <artifactId>maven-resources-plugin</artifactId>
@@ -288,7 +294,7 @@
             <artifactId>maven-site-plugin</artifactId>
             <version>${maven-site-version}</version>
           </plugin>
-          <plugin>
+<!--           <plugin>
             <artifactId>maven-source-plugin</artifactId>
             <version>${maven-source-version}</version>
             <executions>
@@ -297,11 +303,11 @@
                 <phase>verify</phase>
                 <goals>
                   <goal>jar-no-fork</goal>
-                  <goal>test-jar-no-fork</goal>
+                  <goal>test-jar-no-fork</goal> 
                 </goals>
               </execution>
             </executions>
-          </plugin>
+          </plugin> -->
           <plugin>
             <artifactId>maven-surefire-report-plugin</artifactId>
             <version>${maven-surefire-version}</version>
@@ -357,20 +363,12 @@
             <artifactId>sonar-maven-plugin</artifactId>
             <version>${sonar-maven-version}</version>
           </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>latex-maven-plugin</artifactId>
-          <version>${latex-maven-version}</version>
-          <configuration>
-            <binariesPath>${latex.path}</binariesPath>
-          </configuration>
-        </plugin>
       </plugins>
     </pluginManagement>
   </build>
   <profiles>
     <profile>
-      <id>ossrh</id>
+      <id>release</id>
       <build>
         <plugins>
           <plugin>
@@ -381,7 +379,7 @@
             <configuration>
               <serverId>ossrh</serverId>
               <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-              <autoReleaseAfterClose>true</autoReleaseAfterClose>
+              <autoReleaseAfterClose>false</autoReleaseAfterClose>
             </configuration>
           </plugin>
           <plugin>
@@ -395,6 +393,9 @@
                 <goals>
                   <goal>sign</goal>
                 </goals>
+                <configuration>
+                  <keyname>${gpg.keyname}</keyname>
+                </configuration>
               </execution>
             </executions>
           </plugin>
@@ -404,10 +405,10 @@
             <executions>
               <execution>
                 <id>attach-sources</id>
-                <phase>verify</phase>
+                <!-- <phase>verify</phase> -->
                 <goals>
                   <goal>jar-no-fork</goal>
-                  <goal>test-jar-no-fork</goal>
+                  <!-- <goal>test-jar-no-fork</goal> -->
                 </goals>
               </execution>
             </executions>
@@ -419,10 +420,10 @@
             <executions>
               <execution>
                 <id>attach-sources</id>
-                <phase>verify</phase>
+                <!-- <phase>verify</phase> -->
                 <goals>
                   <goal>jar</goal>
-                  <goal>test-jar</goal>
+                  <!-- <goal>test-jar</goal> -->
                 </goals>
               </execution>
             </executions>
@@ -494,160 +495,6 @@
           </plugin>
         </plugins>
       </build>
-    </profile>
-    <!-- profile to build -config.zip file for a project -->
-    <profile>
-      <id>config-assembly</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-        <file>
-          <exists>src/main/config</exists>
-        </file>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <artifactId>maven-assembly-plugin</artifactId>
-            <dependencies>
-              <dependency>
-                <groupId>com.thelastcheck</groupId>
-                <artifactId>tlc-assemblies</artifactId>
-                <version>1.0.0</version>
-              </dependency>
-            </dependencies>
-            <executions>
-              <execution>
-                <id>make-assembly</id>
-                <!-- this is used for inheritance merges -->
-                <phase>package</phase>
-                <!-- bind to the packaging phase -->
-                <goals>
-                  <goal>single</goal>
-                </goals>
-                <configuration>
-                  <descriptorRefs>
-                    <descriptorRef>config</descriptorRef>
-                  </descriptorRefs>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <profile>
-      <id>tlc.repositories</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <!-- ******************************************************* -->
-      <!-- repositories for jar artifacts -->
-      <!-- ******************************************************* -->
-      <repositories>
-        <repository>
-          <id>maven default</id>
-          <name>Maven Repository Site</name>
-          <url>http://repo1.maven.org/</url>
-          <releases/>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-<!--         
-        <repository>
-          <id>codehaus-snapshot</id>
-          <name>CodeHaus Snapshot Site</name>
-          <url>http://snapshots.repository.codehaus.org/</url>
-          <releases/>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-        </repository>
-        <repository>
-          <id>codehaus-dist</id>
-          <name>CodeHaus Distribution Site</name>
-          <url>http://dist.codehaus.org/mule/dependencies/maven2/</url>
-          <releases/>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
--->
-        <repository>
-          <id>google-code</id>
-          <name>Google's open source releases</name>
-          <url>http://google-maven-repository.googlecode.com/svn/repository</url>
-          <releases/>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-<!--
-        <repository>
-          <id>codehaus</id>
-          <name>Codehaus Maven2 releases</name>
-          <url>http://repository.codehaus.org</url>
-          <releases/>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
- --> 
-      </repositories>
-      <!-- ******************************************************* -->
-      <!-- repositories for maven plugins -->
-      <!-- ******************************************************* -->
-      <pluginRepositories>
-        <pluginRepository>
-          <id>maven default</id>
-          <name>Maven Repository Site</name>
-          <url>http://repo1.maven.org/</url>
-          <releases/>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </pluginRepository>
-<!-- 
-        <pluginRepository>
-          <id>codehau-snapshot</id>
-          <name>CodeHaus Snapshot Site</name>
-          <url>http://snapshots.repository.codehaus.org/</url>
-          <releases/>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-          <id>codehaus-dist</id>
-          <name>CodeHaus Distribution Site</name>
-          <url>http://dist.codehaus.org/mule/dependencies/maven2/</url>
-          <releases/>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </pluginRepository>
--->
-        <pluginRepository>
-          <id>google-code</id>
-          <name>Google's open source releases</name>
-          <url>http://google-maven-repository.googlecode.com/svn/repository</url>
-          <releases/>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </pluginRepository>
-<!--
-        <pluginRepository>
-          <id>codehaus</id>
-          <name>Codehaus Maven2 releases</name>
-          <url>http://repository.codehaus.org</url>
-          <releases/>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </pluginRepository> 
--->
-      </pluginRepositories>
     </profile>
     <profile>
       <id>no-tests</id>
