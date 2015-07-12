@@ -1,5 +1,5 @@
-This is a project providing a Java implementation of the TLC API
-for managing byte arrays. More specifically for handling ByteBuffers.
+This is a project providing a Java implementation of various TLC API
+for managing byte arrays and X937 files.
 
  Copyright [2011-2015] [The Last Check, LLC]
 
