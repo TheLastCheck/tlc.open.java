@@ -21,11 +21,11 @@ import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ResourceBundle;
 
 public class CredentialsEncrypter {
 
     private static final String BLOWFISH = "Blowfish";
-    private byte[] key = {(byte) 0x54, (byte) 0x89, (byte) 0xab, (byte) 0xef, (byte) 0x91};
 
     public byte[] encrypt(Credentials credentials) throws CredentialsEncryptionException {
         Preconditions.checkNotNull(credentials);
@@ -52,7 +52,7 @@ public class CredentialsEncrypter {
     }
 
     private Cipher getCipher(int encryptMode) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
-        SecretKeySpec certificate = new SecretKeySpec(key, BLOWFISH);
+        SecretKeySpec certificate = new SecretKeySpec(loadKey(), BLOWFISH);
         Cipher cipher = Cipher.getInstance(BLOWFISH);
         cipher.init(encryptMode, certificate);
         return cipher;
@@ -70,6 +70,14 @@ public class CredentialsEncrypter {
         ByteArrayInputStream bin = new ByteArrayInputStream(bytes);
         ObjectInputStream oin = new ObjectInputStream(bin);
         return (Credentials) oin.readObject();
+    }
+
+    private byte[] loadKey() {
+        ResourceBundle bundle = ResourceBundle.getBundle("com.thelastcheck.commons.base.security.EncryptBytes");
+        Object key = bundle.getObject("key");
+        if (key != null && key instanceof byte[])
+            return (byte[]) key;
+        throw new IllegalArgumentException("Missing key or byte[] in com.thelastcheck.commons.base.security.EncryptBytes to define the encryption bytes");
     }
 
 }
