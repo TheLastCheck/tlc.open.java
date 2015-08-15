@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="tlc.open.java : TLC APIs for reading and writing general purpose buffers and for processing X9.37 files">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>tlc-commons-buffer</title>
+  </head>
+
+  <body>
+
+  	    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/TheLastCheck/tlc.open.java">View on GitHub</a>
+
+          <h1 id="project_title"><a href="index.html">tlc.open.java</a></h1>
+          <h2 id="project_tagline">TLC APIs for reading and writing general purpose buffers and for processing X9.37 files</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/TheLastCheck/tlc.open.java/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/TheLastCheck/tlc.open.java/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+  	<div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+      	<h1>tlc-commons-buffer</h1>
+<h2>Overview</h2>
+<p>The commons buffer classes provide a set of utilities for easily getting and setting
+data inside of a buffer, usually of a fixed length. These are typically records received 
+in files from mainframe type systems that are not XML, JSON, or comma-delimited. Each
+record contains data in fixed positions (columns) in the record. </p>
+
+<h2>ByteBuffer</h2>
+<p>The central class provided here is the ByteBuffer. This class provides read and 
+	write methods for a number of different kinds of data type to be placed at
+	fixed displacements and lengths in the buffer.</p>
+	<p> Because data received from
+	IBM systems is often EBCDIC instead of ASCII, each buffer is associated with
+	an encoding scheme so that read and writes will get and store the data in the
+	proper scheme. Strings that are written to the buffer that are in UNICODE are
+	converted to the appropriate single-byte ASCII or EBCDIC code. Strings that are
+	read from the buffer will be converted into UNICODE appropriately based on the 
+	buffer encoding.</p>
+	<p>Integer and longs that are stored in binary can be different endian formats.
+		Each buffer is with an endian type for storing this binary data in a particular endian
+		format. When these numbers are written to the buffer, the proper endian 
+		structure is maintained. Similarly for reading numbers from the buffer.</p>
+	<p>See the Javadoc for all the different read and write methods 
+	available.</p>
+
+	<p>These include:</p>
+	<ul>
+		<li>String (character) data</li>
+		<li>Integer, Long, Short, and Byte</li>
+		<li>Packed decimal -- signed and unsigned</li>
+	</ul>
+</section></div>
+  </body>
+  </html>
