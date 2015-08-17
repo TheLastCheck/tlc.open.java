@@ -12,10 +12,10 @@
     contains a number of profiles used to set various options
     used when building and deploying the system.
   </description>
-  <url>https://bitbucket.org/thelastcheck/tlc.open.java/wiki/Home</url>
+  <url>http://thelastcheck.github.io/tlc.open.java</url>
   <organization>
     <name>The Last Check, LLC</name>
-    <url>https://bitbucket.org/thelastcheck/tlc.open.java/wiki/Home</url>
+    <url>http://thelastcheck.github.io/tlc.open.java</url>
   </organization>
   <inceptionYear>2009</inceptionYear>
   <licenses>
@@ -28,19 +28,19 @@
   <developers>
     <developer>
       <name>Jerry Bowman</name>
-      <email>jerry.bowman@gmail.com</email>
+      <email>jerry@thelastcheck.com</email>
       <organization>The Last Check, LLC</organization>
-      <organizationUrl>https://bitbucket.org/thelastcheck/tlc.open.java/wiki/Home</organizationUrl>
+      <organizationUrl>http://thelastcheck.github.io/tlc.open.java</organizationUrl>
     </developer>
   </developers>
   <issueManagement>
-    <system>BitBucket</system>
-    <url>https://bitbucket.org/thelastcheck/tlc.open.java/issues</url>
+    <system>GitHub</system>
+    <url>https://github.com/TheLastCheck/tlc.open.java/issues</url>
   </issueManagement>
   <scm>
-    <connection>scm:git:https://bitbucket.org/thelastcheck/tlc.open.java.git</connection>
-    <developerConnection>scm:git:https://bitbucket.org/thelastcheck/tlc.open.java.git</developerConnection>
-    <url>https://bitbucket.org/thelastcheck/tlc.open.java.git</url>
+    <connection>scm:git:https://github.com/TheLastCheck/tlc.open.java.git</connection>
+    <developerConnection>scm:git:https://github.com/TheLastCheck/tlc.open.java.git</developerConnection>
+    <url>https://github.com/TheLastCheck/tlc.open.java.git</url>
   </scm>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
