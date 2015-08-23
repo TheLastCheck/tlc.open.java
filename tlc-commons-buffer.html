@@ -1,66 +1,262 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="tlc.open.java : TLC APIs for reading and writing general purpose buffers and for processing X9.37 files">
+    <meta name="description"
+          content="tlc.open.java : TLC APIs for reading and writing general purpose buffers and for processing X9.37 files">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
     <title>tlc-commons-buffer</title>
-  </head>
+</head>
 
-  <body>
+<body>
 
-  	    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/TheLastCheck/tlc.open.java">View on GitHub</a>
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="forkme_banner" href="https://github.com/TheLastCheck/tlc.open.java">View on GitHub</a>
 
-          <h1 id="project_title"><a href="index.html">tlc.open.java</a></h1>
-          <h2 id="project_tagline">TLC APIs for reading and writing general purpose buffers and for processing X9.37 files</h2>
+        <h1 id="project_title"><a href="index.html">tlc.open.java</a></h1>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/TheLastCheck/tlc.open.java/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/TheLastCheck/tlc.open.java/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+        <h2 id="project_tagline">TLC APIs for reading and writing general purpose buffers and for processing X9.37
+            files</h2>
 
-  	<div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-      	<h1>tlc-commons-buffer</h1>
-<h2>Overview</h2>
-<p>The commons buffer classes provide a set of utilities for easily getting and setting
-data inside of a buffer, usually of a fixed length. These are typically records received 
-in files from mainframe type systems that are not XML, JSON, or comma-delimited. Each
-record contains data in fixed positions (columns) in the record. </p>
+        <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/TheLastCheck/tlc.open.java/zipball/master">Download
+                this project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/TheLastCheck/tlc.open.java/tarball/master">Download
+                this project as a tar.gz file</a>
+        </section>
+    </header>
+</div>
 
-<h2>ByteBuffer</h2>
-<p>The central class provided here is the ByteBuffer. This class provides read and 
-	write methods for a number of different kinds of data type to be placed at
-	fixed displacements and lengths in the buffer.</p>
-	<p> Because data received from
-	IBM systems is often EBCDIC instead of ASCII, each buffer is associated with
-	an encoding scheme so that read and writes will get and store the data in the
-	proper scheme. Strings that are written to the buffer that are in UNICODE are
-	converted to the appropriate single-byte ASCII or EBCDIC code. Strings that are
-	read from the buffer will be converted into UNICODE appropriately based on the 
-	buffer encoding.</p>
-	<p>Integer and longs that are stored in binary can be different endian formats.
-		Each buffer is with an endian type for storing this binary data in a particular endian
-		format. When these numbers are written to the buffer, the proper endian 
-		structure is maintained. Similarly for reading numbers from the buffer.</p>
-	<p>See the Javadoc for all the different read and write methods 
-	available.</p>
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
+        <h1>tlc-commons-buffer</h1>
 
-	<p>These include:</p>
-	<ul>
-		<li>String (character) data</li>
-		<li>Integer, Long, Short, and Byte</li>
-		<li>Packed decimal -- signed and unsigned</li>
-	</ul>
-</section></div>
-  </body>
-  </html>
+        <h2>Overview</h2>
+
+        <p>The commons buffer classes provide a set of utilities for easily getting and setting
+            data inside of a buffer, usually of a fixed length. These are typically records received
+            in files from mainframe type systems that are not XML, JSON, or comma-delimited. Each
+            record contains data in fixed positions (columns) in the record. </p>
+
+        <h2>ByteBuffer</h2>
+
+        <p>The central class provided here is the ByteBuffer. This class provides read and
+            write methods for a number of different kinds of data type to be placed at
+            fixed displacements and lengths in the buffer.</p>
+
+        <p> Because data received from
+            IBM systems is often EBCDIC instead of ASCII, each buffer is associated with
+            an encoding scheme so that read and writes will get and store the data in the
+            proper encoding. Strings that are written to the buffer that are in UNICODE are
+            converted to the appropriate single-byte ASCII or EBCDIC code. Strings that are
+            read from the buffer will be converted into UNICODE appropriately based on the
+            buffer encoding.</p>
+
+        <p>Integer and longs that are stored in binary can be different endian formats.
+            Each buffer is associated with an endian type for storing this binary data
+            in either big or little endian format. When these numbers are written to the buffer,
+            the proper endian
+            structure is maintained. Similarly for reading numbers from the buffer.</p>
+
+        <p>ByteArray instances are actually backed by Java NIO ByteBuffers. As such the memory
+            model supported by Java ByteBuffer instances is available, so the actual buffer can be
+            direct or non-direct.
+            Direct buffers are typically off-heap and so give the user access to non-Java allocated
+            memory allowing for larger buffers and processing buffers that are from memory
+            mapped I/O buffers.
+        </p>
+
+        <p>See the <a href="javadoc/tlc-commons-buffer/index.html">Javadoc</a> for all the different read
+            and write methods available.</p>
+
+        <p>These include:</p>
+        <ul>
+            <li>String (character) data -- which can be read from the buffer as numbers or strings. Also
+                numbers (int, long, etc.) can be written to the buffer as character numerics.
+            </li>
+            <li>Integer, Long, Short, and Byte</li>
+            <li>Packed decimal -- signed and unsigned</li>
+        </ul>
+        <h3>Examples:</h3>
+        <div class="outer">
+            <div class="inner">
+                <h4>Create new array and initialize to spaces</h4>
+                <pre>
+    byteArray = new ByteArray(200, ByteArray.EBCDIC_CHARSET_NAME);
+    assertTrue(byteArray.getLength() == 200);
+    byteArray.write(" ", 0);
+    assertTrue((byteArray.getArray().value[0] & 0x00ff) == 0x40);
+
+    byteArray = new ByteArray(200, ByteArray.ASCII_CHARSET_NAME);
+    assertTrue(byteArray.getLength() == 200);
+    byteArray.write(" ", 0);
+    assertTrue((byteArray.getArray().value[0] & 0x00ff) == 0x20);
+                </pre>
+            </div>
+            <div class="inner">
+                <h4>Write binary data to array</h4>
+                <pre>
+    byteArray = new ByteArray(200, ByteArray.EBCDIC_CHARSET_NAME);
+    byte[] value = {0, 1, 2, 3, 4};
+    byteArray.write(value, 0);
+    byteArray.write(value, 20);
+    ByteArray bytes1 = byteArray.readAsByteArray(0, 5);
+    ByteArray bytes2 = byteArray.readAsByteArray(20, 5);
+    assertTrue(bytes1.equals(bytes2));
+                </pre>
+            </div>
+            <div class="inner">
+                <h4>Write and read characters from an array into another buffer</h4>
+                <pre>
+    byteArray = new ByteArray(20, ByteArray.EBCDIC_CHARSET_NAME);
+    // write "TEST" starting at displacement 10, length 4 (size of string)
+    byteArray.write("TEST", 10);
+    char[] chars = new char[5];
+    // read "EST" into middle three positions of chars
+    byteArray.read(11, chars, 1, 3);
+    // convert char values to bytes
+    byte[] bytes = new byte[5];
+    for (int i = 0; i < 5; i++) {
+       bytes[i] = (byte) chars[i];
+    }
+    // create new array
+    ByteArray testBA = new ByteArray(bytes);
+    // get array into unpacked hex values
+    String value = testBA.readPns(0, 5, false);
+    // verify ASCII "EST" in middle of five positions
+    assertTrue(value.equals("0045535400"));
+                </pre>
+            </div>
+            <div class="inner">
+                <h4>Similar to sample above, but with EBCDIC</h4>
+                <pre>
+    byteArray = new ByteArray(20, ByteArray.EBCDIC_CHARSET_NAME);
+    byteArray.write("TEST", 10);
+    byte[] bytes = new byte[5];
+    byteArray.read(11, bytes, 1, 3);
+    ByteArray testBA = new ByteArray(bytes);
+    String value = testBA.readPns(0, 5, false);
+    assertTrue(value.equals("00C5E2E300"));
+                </pre>
+            </div>
+            <div class="inner">
+                <h4>Read full buffer as String</h4>
+                <pre>
+    byteArray = new ByteArray(200, ByteArray.ASCII_CHARSET_NAME);
+    byteArray.write("TEST", 0);
+    value = byteArray.readAsString();
+    assertTrue(value.length() == 200);
+    assertFalse("TEST".equals(value));
+    assertTrue("TEST".equals(value.substring(0, 4)));
+                </pre>
+            </div>
+            <div class="inner">
+                <h4>Read value from buffer as String</h4>
+                <pre>
+    byteArray = new ByteArray(200, ByteArray.ASCII_CHARSET_NAME);
+    byteArray.write("TEST", 0);
+    value = byteArray.readAsString(0, 4);
+    assertTrue(value.length() == 4);
+    assertTrue("TEST".equals(value));
+                </pre>
+            </div>
+            <div class="inner">
+                <h4>Read and write double</h4>
+                <pre>
+    byteArray = new ByteArray(10);
+    byteArray.write(1.5, 0);
+    double d = byteArray.readAsDouble(0);
+    assertTrue(d == 1.5);
+
+    byteArray = new ByteArray(10, ByteOrder.LITTLE_ENDIAN);
+    byteArray.write(1.5, 0);
+    double d = byteArray.readAsDouble(0);
+    assertTrue(d == 1.5);
+                </pre>
+            </div>
+            <div class="inner">
+                <h4>Read and write int</h4>
+                <pre>
+    byteArray = new ByteArray(10);
+    byteArray.write(15, 0);
+    int i = byteArray.readAsInt(0);
+    assertTrue(i == 15);
+
+    byteArray = new ByteArray(10, ByteOrder.LITTLE_ENDIAN);
+    byteArray.write(15, 2);
+    int i = byteArray.readAsInt(2);
+    assertTrue(i == 15);
+                </pre>
+            </div>
+            <div class="inner">
+                <h4>Read and write long</h4>
+                <pre>
+    byteArray = new ByteArray(10);
+    byteArray.write((long) 15, 2);
+    long i = byteArray.readAsLong(2);
+    assertTrue(i == 15);
+
+    byteArray = new ByteArray(10, ByteOrder.LITTLE_ENDIAN);
+    byteArray.write((long) 15, 2);
+    long i = byteArray.readAsLong(2);
+    assertTrue(i == 15);
+                </pre>
+            </div>
+            <div class="inner">
+                <h4>Setting, testing, and clearing bits</h4>
+                <pre>
+    byte[] ba = new byte[2];
+    byteArray = new ByteArray(ba);
+    byteArray.setBit(0, (byte) 0x41);
+    byteArray.setBit(1, (byte) 0x01);
+    assertTrue(byteArray.testBit(0, (byte) 0x01));
+    assertTrue(byteArray.testBit(0, (byte) 0x40));
+    assertTrue(byteArray.testBit(0, (byte) 0x41));
+    assertFalse(byteArray.testBit(0, (byte) 0x02));
+    assertFalse(byteArray.testBit(1, (byte) 0x80));
+    assertFalse(byteArray.testBit(1, (byte) 0x81));
+    assertTrue(byteArray.testBit(1, (byte) 0x01));
+    byteArray.clearBit(0, (byte) 0x40);
+    assertFalse(byteArray.testBit(0, (byte) 0x40));
+                </pre>
+            </div>
+            <div class="inner">
+                <h4>Write string with trailing null (for C type strings)</h4>
+                <pre>
+    byteArray = new ByteArray(12);
+    byteArray.fill((byte) 0xBB);
+    // use write with "true" to get null terminated string
+    // all extra bytes after string value will be set to null for length of write
+    byteArray.write("TEST", 5, 6, true);
+    String value = byteArray.readPns(0, 12, false);
+    assertTrue(value.equals("BBBBBBBBBB544553540000BB"));
+
+    byteArray.fill((byte) 0xBB);
+    // use write with "false" to get space filled string (if string shorter than length)
+    // all extra bytes after string value will be set to space for length of write
+    byteArray.write("TEST", 5, 6, false);
+    value = byteArray.readPns(0, 12, false);
+    assertTrue(value.equals("BBBBBBBBBB544553542020BB"));
+    // default without "true" or "false" is false
+    byteArray.write("TEST", 5, 6);
+    value = byteArray.readPns(0, 12, false);
+    assertTrue(value.equals("BBBBBBBBBB544553542020BB"));
+
+    // In EBCDIC, so spaces will be X'40'
+    byteArray = new ByteArray(12, ByteArray.EBCDIC_CHARSET_NAME);
+    byteArray.write("TEST", 5, 6);
+    value = byteArray.readPns(0, 12, false);
+    assertTrue(value.equals("BBBBBBBBBBE3C5E2E34040BB"));
+                </pre>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>
