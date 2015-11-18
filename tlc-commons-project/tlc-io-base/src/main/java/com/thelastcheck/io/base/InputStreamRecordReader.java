@@ -184,7 +184,6 @@ public abstract class InputStreamRecordReader implements
             return record;
         }
 
-        bytesReadForRecord = 0;
         Record record = null;
         do {
             if (!isStreamAvailable()) {
@@ -192,6 +191,7 @@ public abstract class InputStreamRecordReader implements
             }
 
             try {
+                bytesReadForRecord = 0;
                 record = readNextRecord();
                 record.recordPosition(++recordCount);
                 record.offsetPosition(offset);
