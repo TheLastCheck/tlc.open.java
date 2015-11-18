@@ -3,6 +3,8 @@ package com.thelastcheck.io.x9;
 import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -10,7 +12,9 @@ import org.slf4j.LoggerFactory;
 
 import com.thelastcheck.commons.buffer.ByteArray;
 import com.thelastcheck.io.base.Record;
+import com.thelastcheck.io.base.RecordFilter;
 import com.thelastcheck.io.base.exception.RecordReaderException;
+import com.thelastcheck.io.x937.records.X937CheckDetailRecord;
 
 /**
  * @author Jerry Bowman
@@ -20,9 +24,7 @@ public class X9InputStreamRecordReaderTest {
 
     @Test(expected = RecordReaderException.class)
     public void shouldFailBadRecord() throws Exception {
-        byte[] buffer = buildX9Input();
-        ByteArrayInputStream is = new ByteArrayInputStream(buffer);
-        X9InputStreamRecordReader reader = new X9InputStreamRecordReader(is);
+        X9InputStreamRecordReader reader = buildReader(false);
         int recordsFound = 0;
         try {
             for (Record record : reader) {
@@ -40,10 +42,25 @@ public class X9InputStreamRecordReaderTest {
 
 
     @Test
+    public void shouldUseNullFilter() throws Exception {
+        final X9InputStreamRecordReader reader = buildReaderFromFile();
+        reader.addFilter(new RecordFilter() {
+            @Override
+            public Record filter(Record record) {
+                if (record instanceof X937CheckDetailRecord) return record;
+                return null;
+            }
+        });
+        for (Record record : reader) {
+            log.info(record.toString());
+        }
+        reader.close();
+    }
+
+
+    @Test
     public void shouldSkipBadRecord() throws Exception {
-        byte[] buffer = buildX9Input();
-        ByteArrayInputStream is = new ByteArrayInputStream(buffer);
-        X9InputStreamRecordReader reader = new X9InputStreamRecordReader(is, true);
+        X9InputStreamRecordReader reader = buildReader(true);
         int recordsFound = 0;
         try {
             for (Record record : reader) {
@@ -63,6 +80,21 @@ public class X9InputStreamRecordReaderTest {
         assertEquals(5, recordsFound);
     }
 
+
+    private X9InputStreamRecordReader buildReaderFromFile() throws FileNotFoundException {
+
+        FileInputStream is = new FileInputStream("target/test-classes/sample-with-cim.x937");
+
+        X9InputStreamRecordReader reader = new X9InputStreamRecordReader(is, true);
+        return reader;
+    }
+
+    private X9InputStreamRecordReader buildReader(boolean skipRecords) {
+        byte[] buffer = buildX9Input();
+        ByteArrayInputStream is = new ByteArrayInputStream(buffer);
+        X9InputStreamRecordReader reader = new X9InputStreamRecordReader(is, skipRecords);
+        return reader;
+    }
 
     private byte[] buildX9Input() {
         ByteArray ba = new ByteArray(80 * 6);
