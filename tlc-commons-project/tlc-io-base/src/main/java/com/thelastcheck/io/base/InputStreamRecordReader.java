@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2009-2015 The Last Check, LLC, All Rights Reserved
- *
+ * <p/>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p/>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p/>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,27 +34,36 @@ import java.util.NoSuchElementException;
 public abstract class InputStreamRecordReader implements
         Iterable<Record>, Closeable {
 
-    protected static final String US_ASCII            = ByteArray.ASCII_CHARSET_NAME;
-    protected static final String EBCDIC              = ByteArray.EBCDIC_CHARSET_NAME;
+    protected static final String US_ASCII = ByteArray.ASCII_CHARSET_NAME;
+    protected static final String EBCDIC = ByteArray.EBCDIC_CHARSET_NAME;
 
-    protected static final String END_OF_STREAM_ERROR = "End of stream reached before finished processing expected data.";
+    protected static final String END_OF_STREAM_ERROR =
+            "End of stream reached before finished processing expected data.";
 
-    private InputStream           is;
-    private List<RecordFilter>    filterList          = new ArrayList<RecordFilter>();
-    private Record                cachedRecord;
-    private int                   recordCount;
-    private long                  offset;
-    private long                  bytesReadForRecord;
+    private InputStream is;
+    private List<RecordFilter> filterList = new ArrayList<RecordFilter>();
+    private Record cachedRecord;
+    private int recordCount;
+    private long offset;
+    private long bytesReadForRecord;
+
+    private boolean skipInvalidRecords;
+
     /**
      * Used as an internal buffer when reading into ByteArray that does not have
      * an underlying array. This buffer is allocated when needed and is always
      * the largest buffer ever needed during the read process.
      */
-    private byte[]                maxBuffer;
+    private byte[] maxBuffer;
 
     public InputStreamRecordReader(InputStream is) {
+        this(is, false);
+    }
+
+    public InputStreamRecordReader(InputStream is, boolean skipInvalidRecords) {
         super();
         this.is = is;
+        this.skipInvalidRecords = skipInvalidRecords;
     }
 
     public void close() throws IOException {
@@ -62,6 +71,14 @@ public abstract class InputStreamRecordReader implements
             is.close();
             is = null;
         }
+    }
+
+    public boolean isSkipInvalidRecords() {
+        return skipInvalidRecords;
+    }
+
+    public void setSkipInvalidRecords(boolean skipInvalidRecords) {
+        this.skipInvalidRecords = skipInvalidRecords;
     }
 
     /**
@@ -125,7 +142,7 @@ public abstract class InputStreamRecordReader implements
      * The new object will be the one passed to subsequent filters. If any
      * filter returns null, then no more filters are called and the record is
      * skipped and NOT returned to the caller.
-     * 
+     *
      * @param record
      * @return
      */
@@ -141,7 +158,7 @@ public abstract class InputStreamRecordReader implements
 
     /**
      * Adds a filter to the list.
-     * 
+     *
      * @param recordFilter
      */
     public void addFilter(RecordFilter recordFilter) {
@@ -151,7 +168,7 @@ public abstract class InputStreamRecordReader implements
     /**
      * This method returns the next record in the stream. If there are no more
      * records, return null.
-     * 
+     *
      * @return the next record in the stream or null.
      * @throws IOException
      * @throws EOFException
@@ -174,13 +191,20 @@ public abstract class InputStreamRecordReader implements
                 return null;
             }
 
-            record = readNextRecord();
+            try {
+                record = readNextRecord();
+                record.recordPosition(++recordCount);
+                record.offsetPosition(offset);
+                offset += bytesReadForRecord;
 
-            record.recordPosition(++recordCount);
-            record.offsetPosition(offset);
-            offset += bytesReadForRecord;
+                record = processFilters(record);
+            } catch (InvalidFormatException e) {
+                if (!skipInvalidRecords) throw e;
+                // go ahead and update the offset counter and total record count
+                ++recordCount;
+                offset += bytesReadForRecord;
+            }
 
-            record = (Record) processFilters(record);
         } while (record == null);
 
         return record;

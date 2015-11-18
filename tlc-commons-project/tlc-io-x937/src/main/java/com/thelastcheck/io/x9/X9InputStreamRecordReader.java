@@ -49,7 +49,6 @@ public class X9InputStreamRecordReader extends InputStreamRecordReader {
 	private boolean firstTime = true;
 	private ByteArray lengthPrefixBuffer = new ByteArray(4);
 
-	public long offset;
 	private int recordSize;
 
 	/**
@@ -58,6 +57,10 @@ public class X9InputStreamRecordReader extends InputStreamRecordReader {
 	 */
 	public X9InputStreamRecordReader(InputStream inputStream) {
 		this(inputStream, null);
+	}
+
+	public X9InputStreamRecordReader(InputStream inputStream, boolean skipInvolidRecords) {
+		this(inputStream, null, skipInvolidRecords);
 	}
 
 	/**
@@ -77,7 +80,11 @@ public class X9InputStreamRecordReader extends InputStreamRecordReader {
 	 */
 	public X9InputStreamRecordReader(InputStream inputStream,
 			X9RecordFactoryStrategy factoryStrategy) {
-		super(inputStream);
+		this(inputStream, factoryStrategy, false);
+	}
+
+	public X9InputStreamRecordReader(InputStream inputStream, X9RecordFactoryStrategy factoryStrategy, boolean skipInvalidRecords) {
+		super(inputStream, skipInvalidRecords);
 		if (factoryStrategy == null) {
 			this.factoryStrategy = new DefaultX9RecordFactoryStrategy();
 		} else {
@@ -180,14 +187,7 @@ public class X9InputStreamRecordReader extends InputStreamRecordReader {
 
 	/**
 	 * Return the name of the character encoding being used by this stream.
-	 * 
-	 * <p>
-	 * If this instance was created with the
-	 * {@link #X9InputStreamParser(InputStream, String)} constructor then the
-	 * returned name, being unique for the encoding, may differ from the name
-	 * passed to the constructor.
-	 * </p>
-	 * 
+	 *
 	 * @return The historical name of this encoding.
 	 * 
 	 */
