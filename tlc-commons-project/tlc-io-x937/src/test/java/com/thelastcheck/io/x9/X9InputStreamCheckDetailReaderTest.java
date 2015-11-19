@@ -1,5 +1,7 @@
 package com.thelastcheck.io.x9;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -17,7 +19,6 @@ public class X9InputStreamCheckDetailReaderTest {
     @Test
     public void shouldReadCheckDetail() throws Exception {
         X9InputStreamCheckDetailReader reader = buildReaderFromFile();
-        int recordsFound = 0;
         X937CheckDetailGraph graph = reader.readNextCheckDetail();
         while (graph != null) {
             X937CheckDetailRecord detailRecord = graph.checkDetailRecord();
@@ -30,12 +31,27 @@ public class X9InputStreamCheckDetailReaderTest {
     @Test
     public void shouldIterateCheckDetail() throws Exception {
         X9InputStreamCheckDetailReader reader = buildReaderFromFile();
-        int recordsFound = 0;
         for (X937CheckDetailGraph graph : reader) {
             X937CheckDetailRecord detailRecord = graph.checkDetailRecord();
             log.info(detailRecord.toString());
         }
         reader.close();
+    }
+
+    @Test
+    public void shouldIterateCheckDetailWithReader() throws Exception {
+        X9InputStreamRecordReader reader1 = X9InputStreamRecordReaderTest.buildReaderFromFile();
+        RecordCountRecordFilter filter = new RecordCountRecordFilter();
+        reader1.addFilter(filter);
+        X9InputStreamCheckDetailReader reader = new X9InputStreamCheckDetailReader(reader1);
+        int recordsFound = 0;
+        for (X937CheckDetailGraph graph : reader) {
+            X937CheckDetailRecord detailRecord = graph.checkDetailRecord();
+            log.info(detailRecord.toString());
+            recordsFound++;
+        }
+        reader.close();
+        assertEquals(recordsFound, filter.getRecordCounters()[25]);
     }
 
     private X9InputStreamCheckDetailReader buildReaderFromFile() throws FileNotFoundException {

@@ -81,7 +81,7 @@ public class X9InputStreamRecordReaderTest {
     }
 
 
-    private X9InputStreamRecordReader buildReaderFromFile() throws FileNotFoundException {
+    public static X9InputStreamRecordReader buildReaderFromFile() throws FileNotFoundException {
 
         FileInputStream is = new FileInputStream("target/test-classes/sample-with-cim.x937");
 
@@ -89,14 +89,14 @@ public class X9InputStreamRecordReaderTest {
         return reader;
     }
 
-    private X9InputStreamRecordReader buildReader(boolean skipRecords) {
+    public static X9InputStreamRecordReader buildReader(boolean skipRecords) {
         byte[] buffer = buildX9Input();
         ByteArrayInputStream is = new ByteArrayInputStream(buffer);
         X9InputStreamRecordReader reader = new X9InputStreamRecordReader(is, skipRecords);
         return reader;
     }
 
-    private byte[] buildX9Input() {
+    public static byte[] buildX9Input() {
         ByteArray ba = new ByteArray(80 * 6);
         int offset = 0;
         ba.fill();

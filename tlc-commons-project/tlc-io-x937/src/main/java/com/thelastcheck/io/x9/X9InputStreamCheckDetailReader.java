@@ -42,6 +42,11 @@ public class X9InputStreamCheckDetailReader implements Iterable<X937CheckDetailG
         this(inputStream, false);
     }
 
+    public X9InputStreamCheckDetailReader(X9InputStreamRecordReader reader) {
+        this.reader = reader;
+        this.graphFilter = new X937RecordGraphRecordFilter();
+    }
+
     public X9InputStreamCheckDetailReader(InputStream inputStream, boolean skipInvalidRecords) {
         this.reader = createInputStreamReader(inputStream, skipInvalidRecords);
         this.graphFilter = new X937RecordGraphRecordFilter();
