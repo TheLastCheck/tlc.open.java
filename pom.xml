@@ -507,5 +507,42 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>release-argo</id>
+      <distributionManagement>
+        <repository>
+          <id>argo</id>
+          <name>sw-artifactory.argo.local-releases</name>
+          <url>http://sw-artifactory/artifactory/libs-release-local</url>
+        </repository>
+        <snapshotRepository>
+          <id>argo</id>
+          <name>sw-artifactory.argo.local-snapshots</name>
+          <url>http://sw-artifactory/artifactory/libs-snapshot-local</url>
+          <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+        <!--<downloadUrl>http://serv107.argo.local/archiva/repository/com.argodata</downloadUrl>-->
+      </distributionManagement>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-release-plugin</artifactId>
+              <version>2.5.1</version>
+              <!--$NO-MVN-MAN-VER$ -->
+              <configuration>
+                <autoVersionSubmodules>true</autoVersionSubmodules>
+                <scmCommentPrefix>[Release ${project.version}]</scmCommentPrefix>
+                <preparationGoals/>
+                <checkModificationExcludes>
+                  <checkModificationExclude>build-number.txt</checkModificationExclude>
+                </checkModificationExcludes>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
   </profiles>
 </project>

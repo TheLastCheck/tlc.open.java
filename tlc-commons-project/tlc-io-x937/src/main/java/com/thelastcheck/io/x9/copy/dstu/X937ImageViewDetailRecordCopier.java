@@ -1,5 +1,7 @@
 package com.thelastcheck.io.x9.copy.dstu;
 
+import java.util.Date;
+
 import com.thelastcheck.commons.base.exception.InvalidDataException;
 import com.thelastcheck.io.base.Record;
 import com.thelastcheck.io.x9.X9Record;
@@ -25,7 +27,8 @@ public class X937ImageViewDetailRecordCopier implements X937RecordCopier {
 
         out.imageIndicator(in.imageIndicator());
         out.imageCreatorRoutingNumber(in.imageCreatorRoutingNumber());
-        out.imageCreatorDate(in.imageCreatorDate());
+        Date date = in.imageCreatorDate();
+        if (date != null) out.imageCreatorDate(date);
         out.imageViewFormatIndicator(in.imageViewFormatIndicator());
         out.imageViewCompressionAlgorithmIdentifier(in.imageViewCompressionAlgorithmIdentifier());
         out.imageViewDataSize(in.imageViewDataSize());

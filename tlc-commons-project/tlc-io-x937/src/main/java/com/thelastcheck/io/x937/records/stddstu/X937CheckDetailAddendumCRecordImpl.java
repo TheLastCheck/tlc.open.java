@@ -129,7 +129,8 @@ public class X937CheckDetailAddendumCRecordImpl extends X937CheckDetailAddendumC
     }
 
     public X937CheckDetailAddendumCRecord endorsingBankEndorsementDate(Date value) {
-        setFieldDate(value, field(4), x9TimeZone);        return this;
+        setFieldDate(value, field(4), x9TimeZone);
+        return this;
     }
 
     public String endorsingBankEndorsementDateAsString() {
