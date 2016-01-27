@@ -116,7 +116,11 @@ public class MonitorFileDirectory extends java.util.Observable implements Runnab
                     log.info(fileName + " : Arrival Location . . " + directory.getAbsolutePath())
                     File newFile = FileUtilities.renameFile(fileReady, ".processing", true)
                     setChanged()
-                    notifyObservers(newFile)
+                    try {
+                        notifyObservers(newFile)
+                    } catch (Exception e) {
+                        log.error(fileName + " : Exception Occurred . " + e.localizedMessage, e)
+                    }
                 }
             }
         }
