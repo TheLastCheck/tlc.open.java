@@ -1,7 +1,5 @@
 package com.thelastcheck.io.x9.copy.dstu;
 
-import java.util.Date;
-
 import com.thelastcheck.commons.base.exception.InvalidDataException;
 import com.thelastcheck.io.base.Record;
 import com.thelastcheck.io.x9.X9Record;
@@ -29,10 +27,8 @@ public class X937FileHeaderRecordCopier implements X937RecordCopier {
         out.testFileIndicator(in.testFileIndicator());
         out.immediateDestinationRoutingNumber(in.immediateDestinationRoutingNumber());
         out.immediateOriginRoutingNumber(in.immediateOriginRoutingNumber());
-        Date date = in.fileCreationDate();
-        if (date != null) out.fileCreationDate(date);
-        date = in.fileCreationTime();
-        if (date != null) out.fileCreationTime(date);
+        out.fileCreationDate(in.fileCreationDateAsString());
+        out.fileCreationTime(in.fileCreationTimeAsString());
         out.resendIndicator(in.resendIndicator());
         out.immediateDestinationName(in.immediateDestinationName());
         out.immediateOriginName(in.immediateOriginName());

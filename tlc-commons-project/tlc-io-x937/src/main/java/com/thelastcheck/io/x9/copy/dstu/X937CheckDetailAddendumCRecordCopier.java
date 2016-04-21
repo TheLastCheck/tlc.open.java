@@ -1,7 +1,5 @@
 package com.thelastcheck.io.x9.copy.dstu;
 
-import java.util.Date;
-
 import com.thelastcheck.commons.base.exception.InvalidDataException;
 import com.thelastcheck.io.base.Record;
 import com.thelastcheck.io.x9.X9Record;
@@ -27,8 +25,7 @@ public class X937CheckDetailAddendumCRecordCopier implements X937RecordCopier {
 
         out.checkDetailAddendumCRecordNumber(in.checkDetailAddendumCRecordNumber());
         out.endorsingBankRoutingNumber(in.endorsingBankRoutingNumber());
-        Date date = in.endorsingBankEndorsementDate();
-        if (date != null) out.endorsingBankEndorsementDate(date);
+        out.endorsingBankEndorsementDate(in.endorsingBankEndorsementDateAsString());
         out.endorsingBankItemSequenceNumber(in.endorsingBankItemSequenceNumber());
         out.truncationIndicator(in.truncationIndicator());
         out.endorsingBankConversionIndicator(in.endorsingBankConversionIndicator());

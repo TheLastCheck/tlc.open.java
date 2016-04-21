@@ -1,7 +1,5 @@
 package com.thelastcheck.io.x9.copy.dstu;
 
-import java.util.Date;
-
 import com.thelastcheck.commons.base.exception.InvalidDataException;
 import com.thelastcheck.io.base.Record;
 import com.thelastcheck.io.x9.X9Record;
@@ -28,10 +26,8 @@ public class X937BundleHeaderRecordCopier implements X937RecordCopier {
         out.collectionTypeIndicator(in.collectionTypeIndicator());
         out.destinationRoutingNumber(in.destinationRoutingNumber());
         out.ECEInstitutionRoutingNumber(in.ECEInstitutionRoutingNumber());
-        Date date = in.bundleBusinessDate();
-        if (date != null) out.bundleBusinessDate(date);
-        date = in.bundleCreationDate();
-        if (date != null) out.bundleCreationDate(date);
+        out.bundleBusinessDate(in.bundleBusinessDateAsString());
+        out.bundleCreationDate(in.bundleCreationDateAsString());
         out.bundleID(in.bundleID());
         out.bundleSequenceNumber(in.bundleSequenceNumber());
         out.cycleNumber(in.cycleNumber());

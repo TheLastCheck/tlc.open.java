@@ -1,7 +1,5 @@
 package com.thelastcheck.io.x9.copy.dstu;
 
-import java.util.Date;
-
 import com.thelastcheck.commons.base.exception.InvalidDataException;
 import com.thelastcheck.io.base.Record;
 import com.thelastcheck.io.x9.X9Record;
@@ -28,12 +26,9 @@ public class X937CashLetterHeaderRecordCopier implements X937RecordCopier {
         out.collectionTypeIndicator(in.collectionTypeIndicator());
         out.destinationRoutingNumber(in.destinationRoutingNumber());
         out.ECEInstitutionRoutingNumber(in.ECEInstitutionRoutingNumber());
-        Date date = in.cashLetterBusinessDate();
-        if (date != null) out.cashLetterBusinessDate(date);
-        date = in.cashLetterCreationDate();
-        if (date != null) out.cashLetterCreationDate(date);
-        date = in.cashLetterCreationTime();
-        if (date != null) out.cashLetterCreationTime(date);
+        out.cashLetterBusinessDate(in.cashLetterBusinessDateAsString());
+        out.cashLetterCreationDate(in.cashLetterCreationDateAsString());
+        out.cashLetterCreationTime(in.cashLetterCreationTimeAsString());
         out.cashLetterRecordTypeIndicator(in.cashLetterRecordTypeIndicator());
         out.cashLetterDocumentationTypeIndicator(in.cashLetterDocumentationTypeIndicator());
         out.cashLetterID(in.cashLetterID());
