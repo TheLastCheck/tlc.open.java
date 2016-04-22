@@ -24,7 +24,7 @@ public class X937ImageViewDataRecordCopier implements X937RecordCopier {
         X937ImageViewDataRecord out = (X937ImageViewDataRecord) output;
 
         out.ECEInstitutionRoutingNumber(in.ECEInstitutionRoutingNumber());
-        out.bundleBusinessDate(in.bundleBusinessDate());
+        out.bundleBusinessDate(in.bundleBusinessDateAsString());
         out.cycleNumber(in.cycleNumber());
         out.ECEInstitutionItemSequenceNumber(in.ECEInstitutionItemSequenceNumber());
         out.securityOriginatorName(in.securityOriginatorName());

@@ -1,5 +1,6 @@
 package com.thelastcheck.io.x9.copy.dstu;
 
+
 import com.thelastcheck.commons.base.exception.InvalidDataException;
 import com.thelastcheck.io.base.Record;
 import com.thelastcheck.io.x9.X9Record;
@@ -28,7 +29,7 @@ public class X937CashLetterControlRecordCopier implements X937RecordCopier {
         out.cashLetterTotalAmount(in.cashLetterTotalAmount());
         out.imagesWithinCashLetterCount(in.imagesWithinCashLetterCount());
         out.ECEInstitutionName(in.ECEInstitutionName());
-        out.settlementDate(in.settlementDate());
+        out.settlementDate(in.settlementDateAsString());
         out.reserved(in.reserved());
 
         return out;

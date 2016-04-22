@@ -41,9 +41,9 @@ public class OnUsField {
     public OnUsField(String optionalField4,
                      String accountNumber,
                      String tranCode) {
-        this.optionalField4 = optionalField4;
-        this.accountNumber = accountNumber;
-        this.tranCode = tranCode;
+        this.optionalField4 = optionalField4.trim();
+        this.accountNumber = accountNumber.trim();
+        this.tranCode = tranCode.trim();
     }
 
     private void parse(String value) {
@@ -55,7 +55,7 @@ public class OnUsField {
             tranCode = value.trim();
             return;
         }
-        tranCode = value.substring(token + 1);
+        tranCode = value.substring(token + 1).trim();
         value = value.substring(0, token);
         token = value.lastIndexOf('/');
         if (token == -1) {

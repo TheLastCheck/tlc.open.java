@@ -25,7 +25,7 @@ public class X937ReturnAddendumARecordCopier implements X937RecordCopier {
 
         out.returnAddendumARecordNumber(in.returnAddendumARecordNumber());
         out.BOFDRoutingNumber(in.BOFDRoutingNumber());
-        out.BOFDBusinessDate(in.BOFDBusinessDate());
+        out.BOFDBusinessDate(in.BOFDBusinessDateAsString());
         out.BOFDItemSequenceNumber(in.BOFDItemSequenceNumber());
         out.depositAccountNumberAtBOFD(in.depositAccountNumberAtBOFD());
         out.BOFDDepositBranch(in.BOFDDepositBranch());

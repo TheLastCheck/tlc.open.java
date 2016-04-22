@@ -25,7 +25,7 @@ public class X937ImageViewDetailRecordCopier implements X937RecordCopier {
 
         out.imageIndicator(in.imageIndicator());
         out.imageCreatorRoutingNumber(in.imageCreatorRoutingNumber());
-        out.imageCreatorDate(in.imageCreatorDate());
+        out.imageCreatorDate(in.imageCreatorDateAsString());
         out.imageViewFormatIndicator(in.imageViewFormatIndicator());
         out.imageViewCompressionAlgorithmIdentifier(in.imageViewCompressionAlgorithmIdentifier());
         out.imageViewDataSize(in.imageViewDataSize());

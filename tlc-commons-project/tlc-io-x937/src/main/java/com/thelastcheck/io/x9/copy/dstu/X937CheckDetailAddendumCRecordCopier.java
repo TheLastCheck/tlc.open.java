@@ -25,7 +25,7 @@ public class X937CheckDetailAddendumCRecordCopier implements X937RecordCopier {
 
         out.checkDetailAddendumCRecordNumber(in.checkDetailAddendumCRecordNumber());
         out.endorsingBankRoutingNumber(in.endorsingBankRoutingNumber());
-        out.endorsingBankEndorsementDate(in.endorsingBankEndorsementDate());
+        out.endorsingBankEndorsementDate(in.endorsingBankEndorsementDateAsString());
         out.endorsingBankItemSequenceNumber(in.endorsingBankItemSequenceNumber());
         out.truncationIndicator(in.truncationIndicator());
         out.endorsingBankConversionIndicator(in.endorsingBankConversionIndicator());

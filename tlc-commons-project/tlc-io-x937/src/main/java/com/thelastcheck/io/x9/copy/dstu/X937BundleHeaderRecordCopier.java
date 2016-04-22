@@ -26,8 +26,8 @@ public class X937BundleHeaderRecordCopier implements X937RecordCopier {
         out.collectionTypeIndicator(in.collectionTypeIndicator());
         out.destinationRoutingNumber(in.destinationRoutingNumber());
         out.ECEInstitutionRoutingNumber(in.ECEInstitutionRoutingNumber());
-        out.bundleBusinessDate(in.bundleBusinessDate());
-        out.bundleCreationDate(in.bundleCreationDate());
+        out.bundleBusinessDate(in.bundleBusinessDateAsString());
+        out.bundleCreationDate(in.bundleCreationDateAsString());
         out.bundleID(in.bundleID());
         out.bundleSequenceNumber(in.bundleSequenceNumber());
         out.cycleNumber(in.cycleNumber());

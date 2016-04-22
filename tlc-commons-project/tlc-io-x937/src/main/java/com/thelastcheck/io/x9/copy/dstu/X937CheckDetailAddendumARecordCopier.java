@@ -25,7 +25,7 @@ public class X937CheckDetailAddendumARecordCopier implements X937RecordCopier {
 
         out.checkDetailAddendumARecordNumber(in.checkDetailAddendumARecordNumber());
         out.BOFDRoutingNumber(in.BOFDRoutingNumber());
-        out.BOFDBusinessDate(in.BOFDBusinessDate());
+        out.BOFDBusinessDate(in.BOFDBusinessDateAsString());
         out.BOFDItemSequenceNumber(in.BOFDItemSequenceNumber());
         out.depositAccountNumberAtBOFD(in.depositAccountNumberAtBOFD());
         out.BOFDDepositBranch(in.BOFDDepositBranch());

@@ -26,9 +26,9 @@ public class X937CashLetterHeaderRecordCopier implements X937RecordCopier {
         out.collectionTypeIndicator(in.collectionTypeIndicator());
         out.destinationRoutingNumber(in.destinationRoutingNumber());
         out.ECEInstitutionRoutingNumber(in.ECEInstitutionRoutingNumber());
-        out.cashLetterBusinessDate(in.cashLetterBusinessDate());
-        out.cashLetterCreationDate(in.cashLetterCreationDate());
-        out.cashLetterCreationTime(in.cashLetterCreationTime());
+        out.cashLetterBusinessDate(in.cashLetterBusinessDateAsString());
+        out.cashLetterCreationDate(in.cashLetterCreationDateAsString());
+        out.cashLetterCreationTime(in.cashLetterCreationTimeAsString());
         out.cashLetterRecordTypeIndicator(in.cashLetterRecordTypeIndicator());
         out.cashLetterDocumentationTypeIndicator(in.cashLetterDocumentationTypeIndicator());
         out.cashLetterID(in.cashLetterID());

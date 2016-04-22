@@ -27,8 +27,8 @@ public class X937FileHeaderRecordCopier implements X937RecordCopier {
         out.testFileIndicator(in.testFileIndicator());
         out.immediateDestinationRoutingNumber(in.immediateDestinationRoutingNumber());
         out.immediateOriginRoutingNumber(in.immediateOriginRoutingNumber());
-        out.fileCreationDate(in.fileCreationDate());
-        out.fileCreationTime(in.fileCreationTime());
+        out.fileCreationDate(in.fileCreationDateAsString());
+        out.fileCreationTime(in.fileCreationTimeAsString());
         out.resendIndicator(in.resendIndicator());
         out.immediateDestinationName(in.immediateDestinationName());
         out.immediateOriginName(in.immediateOriginName());

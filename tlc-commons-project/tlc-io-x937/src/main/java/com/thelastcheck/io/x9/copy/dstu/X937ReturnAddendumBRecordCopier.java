@@ -26,7 +26,7 @@ public class X937ReturnAddendumBRecordCopier implements X937RecordCopier {
         out.payorBankName(in.payorBankName());
         out.auxiliaryOnUs(in.auxiliaryOnUs());
         out.payorBankItemSequenceNumber(in.payorBankItemSequenceNumber());
-        out.payorBankBusinessDate(in.payorBankBusinessDate());
+        out.payorBankBusinessDate(in.payorBankBusinessDateAsString());
         out.payorAccountName(in.payorAccountName());
 
         return out;
