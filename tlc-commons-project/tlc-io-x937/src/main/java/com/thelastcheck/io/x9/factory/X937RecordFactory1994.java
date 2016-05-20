@@ -68,27 +68,22 @@ public class X937RecordFactory1994 implements X9RecordFactory {
             x9Record = new X937CheckDetailRecordImpl(encoding, standardLevel);
             break;
         case X9Record.TYPE_CHECK_DETAIL_ADDENDUM_A:
-            x9Record = new X937CheckDetailAddendumARecordImpl(encoding,
-                    standardLevel);
+            x9Record = new X937CheckDetailAddendumARecordImpl(encoding, standardLevel);
             break;
         case X9Record.TYPE_CHECK_DETAIL_ADDENDUM_B:
-            x9Record = new X937CheckDetailAddendumBRecordImpl(encoding,
-                    standardLevel);
+            x9Record = new X937CheckDetailAddendumBRecordImpl(encoding, standardLevel);
             break;
         case X9Record.TYPE_RETURN:
             x9Record = new X937ReturnRecordImpl(encoding, standardLevel);
             break;
         case X9Record.TYPE_RETURN_ADDENDUM_A:
-            x9Record = new X937ReturnAddendumARecordImpl(encoding,
-                    standardLevel);
+            x9Record = new X937ReturnAddendumARecordImpl(encoding, standardLevel);
             break;
         case X9Record.TYPE_RETURN_ADDENDUM_B:
-            x9Record = new X937ReturnAddendumBRecordImpl(encoding,
-                    standardLevel);
+            x9Record = new X937ReturnAddendumBRecordImpl(encoding, standardLevel);
             break;
         case X9Record.TYPE_RETURN_ADDENDUM_C:
-            x9Record = new X937ReturnAddendumCRecordImpl(encoding,
-                    standardLevel);
+            x9Record = new X937ReturnAddendumCRecordImpl(encoding, standardLevel);
             break;
         case X9Record.TYPE_BUNDLE_CONTROL:
             x9Record = new X937BundleControlRecordImpl(encoding, standardLevel);
@@ -97,12 +92,10 @@ public class X937RecordFactory1994 implements X9RecordFactory {
             x9Record = new X937BundleHeaderRecordImpl(encoding, standardLevel);
             break;
         case X9Record.TYPE_CASH_LETTER_CONTROL:
-            x9Record = new X937CashLetterControlRecordImpl(encoding,
-                    standardLevel);
+            x9Record = new X937CashLetterControlRecordImpl(encoding, standardLevel);
             break;
         case X9Record.TYPE_CASH_LETTER_HEADER:
-            x9Record = new X937CashLetterHeaderRecordImpl(encoding,
-                    standardLevel);
+            x9Record = new X937CashLetterHeaderRecordImpl(encoding, standardLevel);
             break;
         case X9Record.TYPE_FILE_CONTROL:
             x9Record = new X937FileControlRecordImpl(encoding, standardLevel);
@@ -116,8 +109,7 @@ public class X937RecordFactory1994 implements X9RecordFactory {
             x9Record = new X937BoxSummaryRecordImpl(encoding, standardLevel);
             break;
         case X9Record.TYPE_ROUTING_NUMBER_SUMMARY:
-            x9Record = new X937RoutingNumberSummaryRecordImpl(encoding,
-                    standardLevel);
+            x9Record = new X937RoutingNumberSummaryRecordImpl(encoding, standardLevel);
             break;
         default:
             throw new InvalidFormatException(RECORD_TYPE + recordType
@@ -153,12 +145,10 @@ public class X937RecordFactory1994 implements X9RecordFactory {
             x9Record = new X937CheckDetailRecordImpl(record, standardLevel);
             break;
         case X9Record.TYPE_CHECK_DETAIL_ADDENDUM_A:
-            x9Record = new X937CheckDetailAddendumARecordImpl(record,
-                    standardLevel);
+            x9Record = new X937CheckDetailAddendumARecordImpl(record, standardLevel);
             break;
         case X9Record.TYPE_CHECK_DETAIL_ADDENDUM_B:
-            x9Record = new X937CheckDetailAddendumBRecordImpl(record,
-                    standardLevel);
+            x9Record = new X937CheckDetailAddendumBRecordImpl(record, standardLevel);
             break;
         case X9Record.TYPE_RETURN:
             x9Record = new X937ReturnRecordImpl(record, standardLevel);
@@ -179,8 +169,7 @@ public class X937RecordFactory1994 implements X9RecordFactory {
             x9Record = new X937BundleHeaderRecordImpl(record, standardLevel);
             break;
         case X9Record.TYPE_CASH_LETTER_CONTROL:
-            x9Record = new X937CashLetterControlRecordImpl(record,
-                    standardLevel);
+            x9Record = new X937CashLetterControlRecordImpl(record, standardLevel);
             break;
         case X9Record.TYPE_CASH_LETTER_HEADER:
             x9Record = new X937CashLetterHeaderRecordImpl(record, standardLevel);
@@ -195,8 +184,7 @@ public class X937RecordFactory1994 implements X9RecordFactory {
             x9Record = new X937BoxSummaryRecordImpl(record, standardLevel);
             break;
         case X9Record.TYPE_ROUTING_NUMBER_SUMMARY:
-            x9Record = new X937RoutingNumberSummaryRecordImpl(record,
-                    standardLevel);
+            x9Record = new X937RoutingNumberSummaryRecordImpl(record, standardLevel);
             break;
         default:
             throw new InvalidFormatException(RECORD_TYPE + recordType

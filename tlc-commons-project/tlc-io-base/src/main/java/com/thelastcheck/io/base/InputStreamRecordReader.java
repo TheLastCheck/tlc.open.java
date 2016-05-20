@@ -119,12 +119,11 @@ public abstract class InputStreamRecordReader implements
 
     private int read(byte[] data, int displacement, int length)
             throws IOException {
-        int bytesRead = 0;
         int totalBytesRead = 0;
         int bytesRemaining = length;
         int currentDisplacement = displacement;
         while (bytesRemaining > 0) {
-            bytesRead = is.read(data, currentDisplacement, bytesRemaining);
+            int bytesRead = is.read(data, currentDisplacement, bytesRemaining);
             if (bytesRead == -1) {
                 break;
             }
@@ -176,7 +175,7 @@ public abstract class InputStreamRecordReader implements
      * @throws InvalidStandardLevelException
      * @throws InvalidFormatException
      */
-    public Record nextRecord() throws IOException, EOFException {
+    public Record nextRecord() throws IOException {
 
         if (cachedRecord != null) {
             Record record = cachedRecord;
@@ -210,7 +209,7 @@ public abstract class InputStreamRecordReader implements
         return record;
     }
 
-    protected abstract Record readNextRecord() throws IOException, EOFException;
+    protected abstract Record readNextRecord() throws IOException;
 
     public Iterator<Record> iterator() {
         return new Iterator<Record>() {
@@ -239,7 +238,7 @@ public abstract class InputStreamRecordReader implements
             }
 
             public Record next() {
-                Record record = null;
+                Record record;
                 try {
                     record = nextRecord();
                 } catch (Exception e) {

@@ -66,17 +66,11 @@ public class RecordCountRecordFilter implements RecordFilter {
     public void logRecordCounters() {
         for (int i = 1; i < recordCounters.length; i++) {
             if (recordCounters[i] > 0) {
-                if (i < 10) {
-                    log.info("Record type [0" + i + "] count: "
-                            + recordCounters[i]);
-                } else {
-                    log.info("Record type [" + i + "] count: "
-                            + recordCounters[i]);
-                }
+                log.info(String.format("Record type [%02d]) count: %7d", i, recordCounters[i]));
             }
         }
-        log.info("--------------------");
-        log.info("Record total count: " + recordCounters[0]);
+        log.info("------------------------");
+        log.info(String.format("     Record total count: %7d", recordCounters[0]));
     }
 
 }

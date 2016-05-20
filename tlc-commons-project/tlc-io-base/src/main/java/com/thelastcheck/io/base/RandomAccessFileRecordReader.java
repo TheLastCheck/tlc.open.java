@@ -87,12 +87,11 @@ public class RandomAccessFileRecordReader {
 
 	private int read(byte[] data, int displacement, int length)
 			throws IOException {
-		int bytesRead = 0;
 		int totalBytesRead = 0;
 		int bytesRemaining = length;
 		int currentDisplacement = displacement;
 		while (bytesRemaining > 0) {
-			bytesRead = raf.read(data, currentDisplacement, bytesRemaining);
+			int bytesRead = raf.read(data, currentDisplacement, bytesRemaining);
 			if (bytesRead == -1) {
 				break;
 			}

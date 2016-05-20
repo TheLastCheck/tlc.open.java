@@ -16,7 +16,9 @@
 
 package com.thelastcheck.commons.base.utils;
 
-public class ToXmlBuilder {
+import org.apache.commons.lang3.builder.Builder;
+
+public class ToXmlBuilder implements Builder<String> {
 
 	private String elementName;
 	private boolean useAttributes;
@@ -68,5 +70,10 @@ public class ToXmlBuilder {
 			sb.append(">");
 		}
 		return sb.toString();
+	}
+
+	@Override
+	public String build() {
+		return this.toString();
 	}
 }
