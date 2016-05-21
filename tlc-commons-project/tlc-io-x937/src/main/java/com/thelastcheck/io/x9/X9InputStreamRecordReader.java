@@ -190,4 +190,14 @@ public class X9InputStreamRecordReader extends InputStreamRecordReader {
         return encoding;
     }
 
+    /**
+     * Exposes the factory used for users of this reader to make copies
+     * of the records using the same format, encoding, etc.
+     *
+     * @return The factory used to create records for this reader.
+     */
+    public X9RecordFactory getFactory() {
+        return factory;
+    }
+
 }
