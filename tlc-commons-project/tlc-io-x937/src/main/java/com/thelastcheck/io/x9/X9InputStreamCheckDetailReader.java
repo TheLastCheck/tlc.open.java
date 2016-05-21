@@ -27,6 +27,7 @@ import java.util.NoSuchElementException;
 import com.google.common.collect.Lists;
 import com.thelastcheck.io.base.Record;
 import com.thelastcheck.io.base.exception.RecordReaderException;
+import com.thelastcheck.io.x9.factory.X9RecordFactory;
 import com.thelastcheck.io.x9.parser.X937CheckDetailGraph;
 import com.thelastcheck.io.x9.parser.X937ImageViewRecords;
 import com.thelastcheck.io.x9.parser.X937RecordGraphRecordFilter;
@@ -103,12 +104,26 @@ public class X9InputStreamCheckDetailReader implements Iterable<X937CheckDetailG
     }
 
     private X937CheckDetailGraph makeGraphCopy(X937CheckDetailGraph x937CheckDetailGraph) {
-        final X937FileHeaderRecord fileHeaderRecord = x937CheckDetailGraph.fileHeaderRecord();
-        final X937FileControlRecord fileControlRecord = x937CheckDetailGraph.fileControlRecord();
-        final X937CashLetterHeaderRecord cashLetterHeaderRecord = x937CheckDetailGraph.cashLetterHeaderRecord();
-        final X937CashLetterControlRecord cashLetterControlRecord = x937CheckDetailGraph.cashLetterControlRecord();
-        final X937BundleHeaderRecord bundleHeaderRecord = x937CheckDetailGraph.bundleHeaderRecord();
-        final X937BundleControlRecord bundleControlRecord = x937CheckDetailGraph.bundleControlRecord();
+        X9RecordFactory factory = reader.getFactory();
+
+        final X937FileHeaderRecord fileHeaderRecord = (X937FileHeaderRecord) factory.newX9Record(
+                x937CheckDetailGraph.fileHeaderRecord().record().duplicate());
+
+        final X937FileControlRecord fileControlRecord = x937CheckDetailGraph.fileControlRecord() == null ? null
+                : (X937FileControlRecord) factory.newX9Record(x937CheckDetailGraph.fileControlRecord().record().duplicate());
+
+        final X937CashLetterHeaderRecord cashLetterHeaderRecord = x937CheckDetailGraph.cashLetterHeaderRecord() == null ? null
+                : (X937CashLetterHeaderRecord) factory.newX9Record(x937CheckDetailGraph.cashLetterHeaderRecord().record().duplicate());
+
+        final X937CashLetterControlRecord cashLetterControlRecord = x937CheckDetailGraph.cashLetterControlRecord() == null ? null
+                : (X937CashLetterControlRecord) factory.newX9Record(x937CheckDetailGraph.cashLetterControlRecord().record().duplicate());
+
+        final X937BundleHeaderRecord bundleHeaderRecord = x937CheckDetailGraph.bundleHeaderRecord() == null ? null
+                : (X937BundleHeaderRecord) factory.newX9Record(x937CheckDetailGraph.bundleHeaderRecord().record().duplicate());
+
+        final X937BundleControlRecord bundleControlRecord = x937CheckDetailGraph.bundleControlRecord() == null ? null
+                : (X937BundleControlRecord) factory.newX9Record(x937CheckDetailGraph.bundleControlRecord().record().duplicate());
+
         final X937CheckDetailRecord checkDetailRecord = x937CheckDetailGraph.checkDetailRecord();
         final X937CheckDetailAddendumBRecord x937CheckDetailAddendumBRecord = x937CheckDetailGraph.checkDetailAddendumBRecord();
         final List<X937CheckDetailAddendumARecord> checkDetailAddendumARecords = Lists.newArrayList(x937CheckDetailGraph.checkDetailAddendumARecords());
