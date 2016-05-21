@@ -249,7 +249,9 @@ public class ByteArray implements Serializable, Cloneable {
     /**
      * Creates a new ByteArray backed by the same buffer, but with a different
      * slice or view of the data based on the specified displacement and length
-     * into this ByteArray.
+     * into this ByteArray. Changes to this ByteArray's content will be visible
+     * in the new array, and vice versa; the two arrays' position, limit, and mark
+     * values will be independent.
      * 
      * @param displacement
      * @param length
@@ -266,6 +268,17 @@ public class ByteArray implements Serializable, Cloneable {
         // reset limit to capacity.
         value.clear();
         return newByteArray;
+    }
+
+    /**
+     * Creates a new ByteArray backed by the same buffer. Changes to this ByteArray's
+     * content will be visible in the new array, and vice versa; the two arrays'
+     * position, limit, and mark values will be independent.
+     *
+     * @return A new ByteArray backed by the same data.
+     */
+    public ByteArray duplicate() {
+        return new ByteArray(value, encoding);
     }
 
     /**
