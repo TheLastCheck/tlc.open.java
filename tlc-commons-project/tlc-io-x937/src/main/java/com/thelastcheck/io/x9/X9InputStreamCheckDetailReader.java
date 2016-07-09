@@ -27,7 +27,6 @@ import java.util.NoSuchElementException;
 import com.google.common.collect.Lists;
 import com.thelastcheck.io.base.Record;
 import com.thelastcheck.io.base.exception.RecordReaderException;
-import com.thelastcheck.io.x9.factory.X9RecordFactory;
 import com.thelastcheck.io.x9.parser.X937CheckDetailGraph;
 import com.thelastcheck.io.x9.parser.X937ImageViewRecords;
 import com.thelastcheck.io.x9.parser.X937RecordGraphRecordFilter;
@@ -86,10 +85,10 @@ public class X9InputStreamCheckDetailReader implements Iterable<X937CheckDetailG
             X9Record x9Record = (X9Record) record;
             switch (x9Record.recordType()) {
                 case X9Record.TYPE_CHECK_DETAIL:
-                    checkGraphReady = checkGraphReady(x9Record);
+                    checkGraphReady = checkGraphReady();
                     break;
                 case X9Record.TYPE_BUNDLE_CONTROL:
-                    checkGraphReady = checkGraphReady(x9Record);
+                    checkGraphReady = checkGraphReady();
                     break;
             }
             if (checkGraphReady) {
@@ -104,25 +103,24 @@ public class X9InputStreamCheckDetailReader implements Iterable<X937CheckDetailG
     }
 
     private X937CheckDetailGraph makeGraphCopy(X937CheckDetailGraph x937CheckDetailGraph) {
-        X9RecordFactory factory = reader.getFactory();
 
-        final X937FileHeaderRecord fileHeaderRecord = (X937FileHeaderRecord) factory.newX9Record(
-                x937CheckDetailGraph.fileHeaderRecord().record().duplicate());
+        final X937FileHeaderRecord fileHeaderRecord =
+                (X937FileHeaderRecord) x937CheckDetailGraph.fileHeaderRecord().duplicate();
 
         final X937FileControlRecord fileControlRecord = x937CheckDetailGraph.fileControlRecord() == null ? null
-                : (X937FileControlRecord) factory.newX9Record(x937CheckDetailGraph.fileControlRecord().record().duplicate());
+                : (X937FileControlRecord) x937CheckDetailGraph.fileControlRecord().duplicate();
 
         final X937CashLetterHeaderRecord cashLetterHeaderRecord = x937CheckDetailGraph.cashLetterHeaderRecord() == null ? null
-                : (X937CashLetterHeaderRecord) factory.newX9Record(x937CheckDetailGraph.cashLetterHeaderRecord().record().duplicate());
+                : (X937CashLetterHeaderRecord) x937CheckDetailGraph.cashLetterHeaderRecord().duplicate();
 
         final X937CashLetterControlRecord cashLetterControlRecord = x937CheckDetailGraph.cashLetterControlRecord() == null ? null
-                : (X937CashLetterControlRecord) factory.newX9Record(x937CheckDetailGraph.cashLetterControlRecord().record().duplicate());
+                : (X937CashLetterControlRecord) x937CheckDetailGraph.cashLetterControlRecord().duplicate();
 
         final X937BundleHeaderRecord bundleHeaderRecord = x937CheckDetailGraph.bundleHeaderRecord() == null ? null
-                : (X937BundleHeaderRecord) factory.newX9Record(x937CheckDetailGraph.bundleHeaderRecord().record().duplicate());
+                : (X937BundleHeaderRecord) x937CheckDetailGraph.bundleHeaderRecord().duplicate();
 
         final X937BundleControlRecord bundleControlRecord = x937CheckDetailGraph.bundleControlRecord() == null ? null
-                : (X937BundleControlRecord) factory.newX9Record(x937CheckDetailGraph.bundleControlRecord().record().duplicate());
+                : (X937BundleControlRecord) x937CheckDetailGraph.bundleControlRecord().duplicate();
 
         final X937CheckDetailRecord checkDetailRecord = x937CheckDetailGraph.checkDetailRecord();
         final X937CheckDetailAddendumBRecord x937CheckDetailAddendumBRecord = x937CheckDetailGraph.checkDetailAddendumBRecord();
@@ -190,7 +188,7 @@ public class X9InputStreamCheckDetailReader implements Iterable<X937CheckDetailG
 
     }
 
-    private boolean checkGraphReady(X9Record x9Record) {
+    private boolean checkGraphReady() {
         X937CheckDetailGraph detailGraph = graphFilter.checkDetailGraph();
         X937CheckDetailRecord cdr = detailGraph.checkDetailRecord();
         return cdr != null;

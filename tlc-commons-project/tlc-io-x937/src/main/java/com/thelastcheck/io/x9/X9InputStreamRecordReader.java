@@ -174,7 +174,7 @@ public class X9InputStreamRecordReader extends InputStreamRecordReader {
         }
         // IO-2: Allow users of the X9InputStreamParser to pass in the X9.37
         // factory strategy to use in creating the X9.37 records. Use the
-        // strategy to get the factory. If no factory was provided, the the
+        // strategy to get the factory. If no factory was provided, then the
         // default strategy will be used (see constructor)..
         factory = factoryStrategy.factory(header);
         return factory.newX9Record(record);
@@ -188,16 +188,6 @@ public class X9InputStreamRecordReader extends InputStreamRecordReader {
      */
     public String getEncoding() {
         return encoding;
-    }
-
-    /**
-     * Exposes the factory used for users of this reader to make copies
-     * of the records using the same format, encoding, etc.
-     *
-     * @return The factory used to create records for this reader.
-     */
-    public X9RecordFactory getFactory() {
-        return factory;
     }
 
 }
