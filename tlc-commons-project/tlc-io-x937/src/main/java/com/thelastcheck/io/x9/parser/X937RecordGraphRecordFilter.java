@@ -96,8 +96,8 @@ public class X937RecordGraphRecordFilter implements RecordFilter {
     }
 
     private X937ReturnGraph makeReturnGraph() {
-        returnAddendumARecords = new ArrayList<X937ReturnAddendumARecord>();
-        returnAddendumDRecords = new ArrayList<X937ReturnAddendumDRecord>();
+        returnAddendumARecords = new ArrayList<>();
+        returnAddendumDRecords = new ArrayList<>();
         return new X937ReturnGraph() {
 
             public X937FileHeaderRecord fileHeaderRecord() {
@@ -151,9 +151,9 @@ public class X937RecordGraphRecordFilter implements RecordFilter {
     }
 
     private X937CheckDetailGraph makeCheckDetailGraph() {
-        checkDetailAddendumARecords = new ArrayList<X937CheckDetailAddendumARecord>();
-        checkDetailAddendumCRecords = new ArrayList<X937CheckDetailAddendumCRecord>();
-        imageViewRecords = new ArrayList<X937ImageViewRecords>();
+        checkDetailAddendumARecords = new ArrayList<>();
+        checkDetailAddendumCRecords = new ArrayList<>();
+        imageViewRecords = new ArrayList<>();
         return new X937CheckDetailGraph() {
 
             public X937FileHeaderRecord fileHeaderRecord() {

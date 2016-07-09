@@ -45,7 +45,7 @@ public abstract class X9RecordImpl extends RecordImpl implements X9Record {
 	 * 
 	 * @param recordType
 	 *            is the X9.37 record type.
-	 * @param recordStandardLevel
+	 * @param stdLevel
 	 *            is the standard level of the file. This affects certain field
 	 *            locations.
 	 */
@@ -61,7 +61,7 @@ public abstract class X9RecordImpl extends RecordImpl implements X9Record {
 	 *            is the X9.37 record type.
 	 * @param encoding
 	 *            is one of 2 acceptable encodings - US_ASCII or EBCDIC.
-	 * @param recordStandardLevel
+	 * @param stdLevel
 	 *            is the standard level of the file. This affects certain field
 	 *            locations.
 	 */
@@ -77,7 +77,7 @@ public abstract class X9RecordImpl extends RecordImpl implements X9Record {
 	 * 
 	 * @param record
 	 *            is a byte array containing an X9.37 record.
-	 * @param recordStandardLevel
+	 * @param standardLevel
 	 *            is the standard level of the file. This affects certain field
 	 *            locations.
 	 */

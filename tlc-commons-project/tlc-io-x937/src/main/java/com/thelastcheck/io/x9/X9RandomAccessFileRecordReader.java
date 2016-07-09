@@ -110,7 +110,7 @@ public class X9RandomAccessFileRecordReader extends
 			return null;
 		}
 
-		X9Record x9Record = null;
+		X9Record x9Record;
 		if (firstTime) {
 			firstTime = false;
 			processFirstRecord();
@@ -143,7 +143,7 @@ public class X9RandomAccessFileRecordReader extends
 	private void processFirstRecord() throws IOException,
 			InvalidFormatException, InvalidDataException,
 			InvalidStandardLevelException {
-		ByteArray record = null;
+		ByteArray record;
 		int bytesRead = read(lengthPrefixBuffer);
 		if (bytesRead < lengthPrefixBuffer.getLength()) {
 			throw new IOException(END_OF_STREAM_ERROR);
@@ -189,13 +189,6 @@ public class X9RandomAccessFileRecordReader extends
 
 	/**
 	 * Return the name of the character encoding being used by this stream.
-	 * 
-	 * <p>
-	 * If this instance was created with the
-	 * {@link #X9InputStreamParser(InputStream, String)} constructor then the
-	 * returned name, being unique for the encoding, may differ from the name
-	 * passed to the constructor.
-	 * </p>
 	 * 
 	 * @return The historical name of this encoding.
 	 * 

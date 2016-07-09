@@ -21,13 +21,25 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 
+import com.google.common.collect.Lists;
 import com.thelastcheck.io.base.Record;
 import com.thelastcheck.io.base.exception.RecordReaderException;
 import com.thelastcheck.io.x9.parser.X937CheckDetailGraph;
+import com.thelastcheck.io.x9.parser.X937ImageViewRecords;
 import com.thelastcheck.io.x9.parser.X937RecordGraphRecordFilter;
+import com.thelastcheck.io.x937.records.X937BundleControlRecord;
+import com.thelastcheck.io.x937.records.X937BundleHeaderRecord;
+import com.thelastcheck.io.x937.records.X937CashLetterControlRecord;
+import com.thelastcheck.io.x937.records.X937CashLetterHeaderRecord;
+import com.thelastcheck.io.x937.records.X937CheckDetailAddendumARecord;
+import com.thelastcheck.io.x937.records.X937CheckDetailAddendumBRecord;
+import com.thelastcheck.io.x937.records.X937CheckDetailAddendumCRecord;
 import com.thelastcheck.io.x937.records.X937CheckDetailRecord;
+import com.thelastcheck.io.x937.records.X937FileControlRecord;
+import com.thelastcheck.io.x937.records.X937FileHeaderRecord;
 
 public class X9InputStreamCheckDetailReader implements Iterable<X937CheckDetailGraph>, Closeable {
 
@@ -73,10 +85,10 @@ public class X9InputStreamCheckDetailReader implements Iterable<X937CheckDetailG
             X9Record x9Record = (X9Record) record;
             switch (x9Record.recordType()) {
                 case X9Record.TYPE_CHECK_DETAIL:
-                    checkGraphReady = checkGraphReady(x9Record);
+                    checkGraphReady = checkGraphReady();
                     break;
                 case X9Record.TYPE_BUNDLE_CONTROL:
-                    checkGraphReady = checkGraphReady(x9Record);
+                    checkGraphReady = checkGraphReady();
                     break;
             }
             if (checkGraphReady) {
@@ -86,11 +98,97 @@ public class X9InputStreamCheckDetailReader implements Iterable<X937CheckDetailG
             }
         } while (!checkGraphReady);
 
-        return graphFilter.checkDetailGraph();
+        return makeGraphCopy(graphFilter.checkDetailGraph());
 
     }
 
-    private boolean checkGraphReady(X9Record x9Record) {
+    private X937CheckDetailGraph makeGraphCopy(X937CheckDetailGraph x937CheckDetailGraph) {
+
+        final X937FileHeaderRecord fileHeaderRecord =
+                (X937FileHeaderRecord) x937CheckDetailGraph.fileHeaderRecord().duplicate();
+
+        final X937FileControlRecord fileControlRecord = x937CheckDetailGraph.fileControlRecord() == null ? null
+                : (X937FileControlRecord) x937CheckDetailGraph.fileControlRecord().duplicate();
+
+        final X937CashLetterHeaderRecord cashLetterHeaderRecord = x937CheckDetailGraph.cashLetterHeaderRecord() == null ? null
+                : (X937CashLetterHeaderRecord) x937CheckDetailGraph.cashLetterHeaderRecord().duplicate();
+
+        final X937CashLetterControlRecord cashLetterControlRecord = x937CheckDetailGraph.cashLetterControlRecord() == null ? null
+                : (X937CashLetterControlRecord) x937CheckDetailGraph.cashLetterControlRecord().duplicate();
+
+        final X937BundleHeaderRecord bundleHeaderRecord = x937CheckDetailGraph.bundleHeaderRecord() == null ? null
+                : (X937BundleHeaderRecord) x937CheckDetailGraph.bundleHeaderRecord().duplicate();
+
+        final X937BundleControlRecord bundleControlRecord = x937CheckDetailGraph.bundleControlRecord() == null ? null
+                : (X937BundleControlRecord) x937CheckDetailGraph.bundleControlRecord().duplicate();
+
+        final X937CheckDetailRecord checkDetailRecord = x937CheckDetailGraph.checkDetailRecord();
+        final X937CheckDetailAddendumBRecord x937CheckDetailAddendumBRecord = x937CheckDetailGraph.checkDetailAddendumBRecord();
+        final List<X937CheckDetailAddendumARecord> checkDetailAddendumARecords = Lists.newArrayList(x937CheckDetailGraph.checkDetailAddendumARecords());
+        final List<X937CheckDetailAddendumCRecord> checkDetailAddendumCRecords = Lists.newArrayList(x937CheckDetailGraph.checkDetailAddendumCRecords());
+        final List<X937ImageViewRecords> imageViewRecords = Lists.newArrayList(x937CheckDetailGraph.imageViewRecords());
+
+        return new X937CheckDetailGraph() {
+
+            @Override
+            public X937CheckDetailRecord checkDetailRecord() {
+                return checkDetailRecord;
+            }
+
+            @Override
+            public List<X937CheckDetailAddendumARecord> checkDetailAddendumARecords() {
+                return checkDetailAddendumARecords;
+            }
+
+            @Override
+            public X937CheckDetailAddendumBRecord checkDetailAddendumBRecord() {
+                return x937CheckDetailAddendumBRecord;
+            }
+
+            @Override
+            public List<X937CheckDetailAddendumCRecord> checkDetailAddendumCRecords() {
+                return checkDetailAddendumCRecords;
+            }
+
+            @Override
+            public List<X937ImageViewRecords> imageViewRecords() {
+                return imageViewRecords;
+            }
+
+            @Override
+            public X937BundleHeaderRecord bundleHeaderRecord() {
+                return bundleHeaderRecord;
+            }
+
+            @Override
+            public X937BundleControlRecord bundleControlRecord() {
+                return bundleControlRecord;
+            }
+
+            @Override
+            public X937CashLetterHeaderRecord cashLetterHeaderRecord() {
+                return cashLetterHeaderRecord;
+            }
+
+            @Override
+            public X937CashLetterControlRecord cashLetterControlRecord() {
+                return cashLetterControlRecord;
+            }
+
+            @Override
+            public X937FileHeaderRecord fileHeaderRecord() {
+                return fileHeaderRecord;
+            }
+
+            @Override
+            public X937FileControlRecord fileControlRecord() {
+                return fileControlRecord;
+            }
+        };
+
+    }
+
+    private boolean checkGraphReady() {
         X937CheckDetailGraph detailGraph = graphFilter.checkDetailGraph();
         X937CheckDetailRecord cdr = detailGraph.checkDetailRecord();
         return cdr != null;

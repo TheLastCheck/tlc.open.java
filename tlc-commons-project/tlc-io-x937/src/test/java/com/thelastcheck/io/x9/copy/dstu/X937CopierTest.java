@@ -2,6 +2,7 @@ package com.thelastcheck.io.x9.copy.dstu;
 
 import com.thelastcheck.commons.base.exception.InvalidDataException;
 import com.thelastcheck.io.base.Record;
+import com.thelastcheck.io.x9.RecordCountRecordFilter;
 import com.thelastcheck.io.x9.X9InputStreamRecordReader;
 import com.thelastcheck.io.x9.X9OutputStreamRecordWriter;
 import com.thelastcheck.io.x9.X9Record;
@@ -34,6 +35,8 @@ public class X937CopierTest {
                 X9OutputStreamRecordWriter writer = new X9OutputStreamRecordWriter(
                         new FileOutputStream(outFile))
         ) {
+            RecordCountRecordFilter recordCountRecordFilter = new RecordCountRecordFilter();
+            reader.addFilter(recordCountRecordFilter);
             X9RecordFactory factory = new DefaultX9RecordFactoryStrategy()
                     .factory(X9RecordFactoryStrategy.X937_STANDARD_DSTU, X9Record.ENCODING_EBCDIC);
             X937Copier copier = new X937Copier(factory);
@@ -41,6 +44,7 @@ public class X937CopierTest {
             for (Record record : reader) {
                 writer.write(copier.copy((X9Record) record));
             }
+            recordCountRecordFilter.logRecordCounters();
         }
         assertEquals(inFile.length(), outFile.length());
     }

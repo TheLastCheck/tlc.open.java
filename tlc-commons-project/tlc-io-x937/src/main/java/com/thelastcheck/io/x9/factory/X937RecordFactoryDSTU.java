@@ -83,47 +83,39 @@ public class X937RecordFactoryDSTU implements X9RecordFactory {
 			x9Record = new X937CheckDetailRecordImpl(encoding, standardLevel);
 			break;
 		case X9Record.TYPE_CHECK_DETAIL_ADDENDUM_A:
-			x9Record = new X937CheckDetailAddendumARecordImpl(encoding,
-					standardLevel);
+			x9Record = new X937CheckDetailAddendumARecordImpl(encoding,	standardLevel);
 			break;
 		case X9Record.TYPE_CHECK_DETAIL_ADDENDUM_B:
-			x9Record = new X937CheckDetailAddendumBRecordImpl(encoding,
-					standardLevel);
+			x9Record = new X937CheckDetailAddendumBRecordImpl(encoding,	standardLevel);
 			// since we have a default size record of 80 bytes, need to set
 			// fixed length indicator.
 			X937CheckDetailAddendumBRecord xcdabr = (X937CheckDetailAddendumBRecord) x9Record;
 			xcdabr.variableSizeRecordIndicator("0");
 			break;
 		case X9Record.TYPE_CHECK_DETAIL_ADDENDUM_C:
-			x9Record = new X937CheckDetailAddendumCRecordImpl(encoding,
-					standardLevel);
+			x9Record = new X937CheckDetailAddendumCRecordImpl(encoding,	standardLevel);
 			break;
 		case X9Record.TYPE_RETURN:
 			x9Record = new X937ReturnRecordImpl(encoding, standardLevel);
 			break;
 		case X9Record.TYPE_RETURN_ADDENDUM_A:
-			x9Record = new X937ReturnAddendumARecordImpl(encoding,
-					standardLevel);
+			x9Record = new X937ReturnAddendumARecordImpl(encoding, standardLevel);
 			break;
 		case X9Record.TYPE_RETURN_ADDENDUM_B:
-			x9Record = new X937ReturnAddendumBRecordImpl(encoding,
-					standardLevel);
+			x9Record = new X937ReturnAddendumBRecordImpl(encoding, standardLevel);
 			break;
 		case X9Record.TYPE_RETURN_ADDENDUM_C:
-			x9Record = new X937ReturnAddendumCRecordImpl(encoding,
-					standardLevel);
+			x9Record = new X937ReturnAddendumCRecordImpl(encoding, standardLevel);
 			// since we have a default size record of 80 bytes, need to set
 			// fixed length indicator.
 			X937ReturnAddendumCRecord xracr = (X937ReturnAddendumCRecord) x9Record;
 			xracr.variableSizeRecordIndicator("0");
 			break;
 		case X9Record.TYPE_RETURN_ADDENDUM_D:
-			x9Record = new X937ReturnAddendumDRecordImpl(encoding,
-					standardLevel);
+			x9Record = new X937ReturnAddendumDRecordImpl(encoding, standardLevel);
 			break;
 		case X9Record.TYPE_IMAGE_VIEW_DETAIL:
-			x9Record = new X937ImageViewDetailRecordImpl(encoding,
-					standardLevel);
+			x9Record = new X937ImageViewDetailRecordImpl(encoding, standardLevel);
 			break;
 		case X9Record.TYPE_IMAGE_VIEW_DATA:
 			// record size of 117 must be used instead of default of 80
@@ -138,8 +130,7 @@ public class X937RecordFactoryDSTU implements X9RecordFactory {
 			ivdr.imageData(emptyByteArray);
 			break;
 		case X9Record.TYPE_IMAGE_VIEW_ANALYSIS:
-			x9Record = new X937ImageViewAnalysisRecordImpl(encoding,
-					standardLevel);
+			x9Record = new X937ImageViewAnalysisRecordImpl(encoding, standardLevel);
 			break;
 		case X9Record.TYPE_BUNDLE_CONTROL:
 			x9Record = new X937BundleControlRecordImpl(encoding, standardLevel);
@@ -148,12 +139,10 @@ public class X937RecordFactoryDSTU implements X9RecordFactory {
 			x9Record = new X937BundleHeaderRecordImpl(encoding, standardLevel);
 			break;
 		case X9Record.TYPE_CASH_LETTER_CONTROL:
-			x9Record = new X937CashLetterControlRecordImpl(encoding,
-					standardLevel);
+			x9Record = new X937CashLetterControlRecordImpl(encoding, standardLevel);
 			break;
 		case X9Record.TYPE_CASH_LETTER_HEADER:
-			x9Record = new X937CashLetterHeaderRecordImpl(encoding,
-					standardLevel);
+			x9Record = new X937CashLetterHeaderRecordImpl(encoding, standardLevel);
 			break;
 		case X9Record.TYPE_FILE_CONTROL:
 			x9Record = new X937FileControlRecordImpl(encoding, standardLevel);
@@ -164,19 +153,16 @@ public class X937RecordFactoryDSTU implements X9RecordFactory {
 			fhr.standardLevel(standardLevel);
 			break;
 		case X9Record.TYPE_ACCOUNT_TOTALS_DETAIL:
-			x9Record = new X937AccountTotalsDetailRecordImpl(encoding,
-					standardLevel);
+			x9Record = new X937AccountTotalsDetailRecordImpl(encoding, standardLevel);
 			break;
 		case X9Record.TYPE_BOX_SUMMARY:
 			x9Record = new X937BoxSummaryRecordImpl(encoding, standardLevel);
 			break;
 		case X9Record.TYPE_NON_HIT_TOTALS_DETAIL:
-			x9Record = new X937NonHitTotalsDetailRecordImpl(encoding,
-					standardLevel);
+			x9Record = new X937NonHitTotalsDetailRecordImpl(encoding, standardLevel);
 			break;
 		case X9Record.TYPE_ROUTING_NUMBER_SUMMARY:
-			x9Record = new X937RoutingNumberSummaryRecordImpl(encoding,
-					standardLevel);
+			x9Record = new X937RoutingNumberSummaryRecordImpl(encoding, standardLevel);
 			break;
 		default:
 			throw new InvalidFormatException(RECORD_TYPE + recordType
@@ -210,16 +196,13 @@ public class X937RecordFactoryDSTU implements X9RecordFactory {
 			x9Record = new X937CheckDetailRecordImpl(record, standardLevel);
 			break;
 		case X9Record.TYPE_CHECK_DETAIL_ADDENDUM_A:
-			x9Record = new X937CheckDetailAddendumARecordImpl(record,
-					standardLevel);
+			x9Record = new X937CheckDetailAddendumARecordImpl(record, standardLevel);
 			break;
 		case X9Record.TYPE_CHECK_DETAIL_ADDENDUM_B:
-			x9Record = new X937CheckDetailAddendumBRecordImpl(record,
-					standardLevel);
+			x9Record = new X937CheckDetailAddendumBRecordImpl(record, standardLevel);
 			break;
 		case X9Record.TYPE_CHECK_DETAIL_ADDENDUM_C:
-			x9Record = new X937CheckDetailAddendumCRecordImpl(record,
-					standardLevel);
+			x9Record = new X937CheckDetailAddendumCRecordImpl(record, standardLevel);
 			break;
 		case X9Record.TYPE_RETURN:
 			x9Record = new X937ReturnRecordImpl(record, standardLevel);
@@ -243,8 +226,7 @@ public class X937RecordFactoryDSTU implements X9RecordFactory {
 			x9Record = new X937ImageViewDataRecordImpl(record, standardLevel);
 			break;
 		case X9Record.TYPE_IMAGE_VIEW_ANALYSIS:
-			x9Record = new X937ImageViewAnalysisRecordImpl(record,
-					standardLevel);
+			x9Record = new X937ImageViewAnalysisRecordImpl(record, standardLevel);
 			break;
 		case X9Record.TYPE_BUNDLE_CONTROL:
 			x9Record = new X937BundleControlRecordImpl(record, standardLevel);
@@ -253,8 +235,7 @@ public class X937RecordFactoryDSTU implements X9RecordFactory {
 			x9Record = new X937BundleHeaderRecordImpl(record, standardLevel);
 			break;
 		case X9Record.TYPE_CASH_LETTER_CONTROL:
-			x9Record = new X937CashLetterControlRecordImpl(record,
-					standardLevel);
+			x9Record = new X937CashLetterControlRecordImpl(record, standardLevel);
 			break;
 		case X9Record.TYPE_CASH_LETTER_HEADER:
 			x9Record = new X937CashLetterHeaderRecordImpl(record, standardLevel);
@@ -266,19 +247,16 @@ public class X937RecordFactoryDSTU implements X9RecordFactory {
 			x9Record = new X937FileHeaderRecordImpl(record, standardLevel);
 			break;
 		case X9Record.TYPE_ACCOUNT_TOTALS_DETAIL:
-			x9Record = new X937AccountTotalsDetailRecordImpl(record,
-					standardLevel);
+			x9Record = new X937AccountTotalsDetailRecordImpl(record, standardLevel);
 			break;
 		case X9Record.TYPE_BOX_SUMMARY:
 			x9Record = new X937BoxSummaryRecordImpl(record, standardLevel);
 			break;
 		case X9Record.TYPE_NON_HIT_TOTALS_DETAIL:
-			x9Record = new X937NonHitTotalsDetailRecordImpl(record,
-					standardLevel);
+			x9Record = new X937NonHitTotalsDetailRecordImpl(record, standardLevel);
 			break;
 		case X9Record.TYPE_ROUTING_NUMBER_SUMMARY:
-			x9Record = new X937RoutingNumberSummaryRecordImpl(record,
-					standardLevel);
+			x9Record = new X937RoutingNumberSummaryRecordImpl(record, standardLevel);
 			break;
 		default:
 			throw new InvalidFormatException(RECORD_TYPE + recordType

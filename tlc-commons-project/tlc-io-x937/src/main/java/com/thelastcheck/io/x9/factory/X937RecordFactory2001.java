@@ -145,12 +145,10 @@ public class X937RecordFactory2001 implements X9RecordFactory {
             x9Record = new X937CheckDetailRecordImpl(record, standardLevel);
             break;
         case X9Record.TYPE_CHECK_DETAIL_ADDENDUM_A:
-            x9Record = new X937CheckDetailAddendumARecordImpl(record,
-                    standardLevel);
+            x9Record = new X937CheckDetailAddendumARecordImpl(record, standardLevel);
             break;
         case X9Record.TYPE_CHECK_DETAIL_ADDENDUM_B:
-            x9Record = new X937CheckDetailAddendumBRecordImpl(record,
-                    standardLevel);
+            x9Record = new X937CheckDetailAddendumBRecordImpl(record, standardLevel);
             break;
         case X9Record.TYPE_RETURN:
             x9Record = new X937ReturnRecordImpl(record, standardLevel);
@@ -171,8 +169,7 @@ public class X937RecordFactory2001 implements X9RecordFactory {
             x9Record = new X937BundleHeaderRecordImpl(record, standardLevel);
             break;
         case X9Record.TYPE_CASH_LETTER_CONTROL:
-            x9Record = new X937CashLetterControlRecordImpl(record,
-                    standardLevel);
+            x9Record = new X937CashLetterControlRecordImpl(record, standardLevel);
             break;
         case X9Record.TYPE_CASH_LETTER_HEADER:
             x9Record = new X937CashLetterHeaderRecordImpl(record, standardLevel);
@@ -187,8 +184,7 @@ public class X937RecordFactory2001 implements X9RecordFactory {
             x9Record = new X937BoxSummaryRecordImpl(record, standardLevel);
             break;
         case X9Record.TYPE_ROUTING_NUMBER_SUMMARY:
-            x9Record = new X937RoutingNumberSummaryRecordImpl(record,
-                    standardLevel);
+            x9Record = new X937RoutingNumberSummaryRecordImpl(record, standardLevel);
             break;
         default:
             throw new InvalidFormatException(RECORD_TYPE + recordType
