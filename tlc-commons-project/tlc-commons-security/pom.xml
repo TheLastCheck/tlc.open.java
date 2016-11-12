@@ -14,7 +14,6 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
@@ -22,10 +21,10 @@
     <artifactId>tlc-commons-project</artifactId>
     <version>2.4.0</version>
   </parent>
-  <artifactId>tlc-io-base</artifactId>
-  <name>tlc-io-base</name>
-  <description>TLC Base IO classes</description>
-  <url>https://bitbucket.org/thelastcheck/tlc.open.java/wiki/Home</url>
+  <artifactId>tlc-commons-security</artifactId>
+  <packaging>jar</packaging>
+  <name>tlc-commons-security</name>
+  <description>TLC Common Security Utilities and Classes</description>
   <organization>
     <name>The Last Check, LLC</name>
     <url>http://thelastcheck.github.io/tlc.open.java/</url>
@@ -47,19 +46,58 @@
     <developerConnection>scm:git:https://github.com/TheLastCheck/tlc.open.java.git</developerConnection>
     <url>https://github.com/TheLastCheck/tlc.open.java.git</url>
   </scm>
-
   <dependencies>
+    <!--<dependency>-->
+      <!--<groupId>org.apache.commons</groupId>-->
+      <!--<artifactId>commons-lang3</artifactId>-->
+    <!--</dependency>-->
     <dependency>
-      <groupId>com.thelastcheck.commons</groupId>
-      <artifactId>tlc-commons-buffer</artifactId>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>commons-configuration</groupId>-->
+      <!--<artifactId>commons-configuration</artifactId>-->
+    <!--</dependency>-->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.thelastcheck.commons</groupId>
-      <artifactId>tlc-commons-base</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
     </dependency>
   </dependencies>
+  <profiles>
+    <profile>
+      <id>jfxrt-1.7</id>
+      <activation>
+        <jdk>1.7</jdk>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>javafx</groupId>
+          <artifactId>jfxrt</artifactId>
+          <version>${java.version}</version>
+          <scope>system</scope>
+          <systemPath>${java.home}/lib/jfxrt.jar</systemPath>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>jfxrt-1.8</id>
+      <activation>
+        <jdk>1.8</jdk>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>javafx</groupId>
+          <artifactId>jfxrt</artifactId>
+          <version>${java.version}</version>
+          <scope>system</scope>
+          <systemPath>${java.home}/lib/ext/jfxrt.jar</systemPath>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
 </project>

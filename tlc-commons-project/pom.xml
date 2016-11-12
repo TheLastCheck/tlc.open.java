@@ -1,210 +1,214 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.thelastcheck</groupId>
-    <artifactId>tlc-open-parent</artifactId>
-    <version>3</version>
-  </parent>
-  <groupId>com.thelastcheck.commons</groupId>
-  <artifactId>tlc-commons-project</artifactId>
-  <version>2.3.1</version>
-  <packaging>pom</packaging>
-  <name>tlc-commons-project</name>
-  <description>
-    The main pom for building Last Check projects. This contains
-    the dependency management for all dependencies used in all projects.
-  </description>
-  <url>http://thelastcheck.github.io/tlc.open.java/</url>
-  <organization>
-    <name>The Last Check, LLC</name>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.thelastcheck</groupId>
+        <artifactId>tlc-open-parent</artifactId>
+        <version>4</version>
+    </parent>
+    <groupId>com.thelastcheck.commons</groupId>
+    <artifactId>tlc-commons-project</artifactId>
+    <version>2.4.0</version>
+    <packaging>pom</packaging>
+    <name>tlc-commons-project</name>
+    <description>
+        The main pom for building Last Check projects. This contains
+        the dependency management for all dependencies used in all projects.
+    </description>
     <url>http://thelastcheck.github.io/tlc.open.java/</url>
-  </organization>
-  <inceptionYear>2009</inceptionYear>
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-  <issueManagement>
-    <system>GitHub</system>
-    <url>https://github.com/TheLastCheck/tlc.open.java/issues</url>
-  </issueManagement>
-  <scm>
-    <connection>scm:git:https://github.com/TheLastCheck/tlc.open.java.git</connection>
-    <developerConnection>scm:git:https://github.com/TheLastCheck/tlc.open.java.git</developerConnection>
-    <url>https://github.com/TheLastCheck/tlc.open.java.git</url>
-  </scm>
-  <modules>
-    <module>tlc-commons-buffer</module>
-    <module>tlc-commons-base</module>
-    <module>tlc-io-base</module>
-    <module>tlc-io-x937-utils</module>
-    <module>tlc-io-x937</module>
-  </modules>
-  <repositories>
-    <repository>
-      <id>com.springsource.repository.bundles.external</id>
-      <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
-      <url>http://repository.springsource.com/maven/bundles/external</url>
-    </repository>
-  </repositories>
-  <properties>
-    <castor-xml-version>1.3.2</castor-xml-version>
-    <commons-io-version>2.3</commons-io-version>
-    <commons-lang3-version>3.1</commons-lang3-version>
-    <commons-chain-version>1.2</commons-chain-version>
-    <commons-cli-version>1.2</commons-cli-version>
-    <commons-configuration-version>1.8</commons-configuration-version>
-    <commons-digester-version>2.1</commons-digester-version>
-    <tlc-version>${project.version}</tlc-version>
-    <guava-version>16.0.1</guava-version>
-    <jai-version>1.1.3</jai-version>
-    <junit-version>4.12</junit-version>
-    <slf4j-version>1.6.1</slf4j-version>
-  </properties>
-  <dependencyManagement>
+    <organization>
+        <name>The Last Check, LLC</name>
+        <url>http://thelastcheck.github.io/tlc.open.java/</url>
+    </organization>
+    <inceptionYear>2009</inceptionYear>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/TheLastCheck/tlc.open.java/issues</url>
+    </issueManagement>
+    <scm>
+        <connection>scm:git:https://github.com/TheLastCheck/tlc.open.java.git</connection>
+        <developerConnection>scm:git:https://github.com/TheLastCheck/tlc.open.java.git</developerConnection>
+        <url>https://github.com/TheLastCheck/tlc.open.java.git</url>
+    </scm>
+    <modules>
+        <module>tlc-commons-buffer</module>
+        <module>tlc-commons-base</module>
+        <module>tlc-commons-security</module>
+        <module>tlc-io-base</module>
+        <module>tlc-io-x937-utils</module>
+        <module>tlc-io-x937</module>
+    </modules>
+    <repositories>
+        <repository>
+            <id>com.springsource.repository.bundles.external</id>
+            <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+            <url>http://repository.springsource.com/maven/bundles/external</url>
+        </repository>
+    </repositories>
+    <properties>
+        <castor-xml-version>1.3.2</castor-xml-version>
+        <commons-io-version>2.5</commons-io-version>
+        <commons-lang3-version>3.5</commons-lang3-version>
+        <commons-chain-version>1.2</commons-chain-version>
+        <commons-cli-version>1.3.1</commons-cli-version>
+        <commons-configuration-version>1.10</commons-configuration-version>
+        <commons-digester-version>2.1</commons-digester-version>
+        <tlc-version>${project.version}</tlc-version>
+        <guava-version>19.0</guava-version>
+        <jai-version>1.1.3</jai-version>
+        <junit-version>4.12</junit-version>
+        <slf4j-version>1.6.1</slf4j-version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.thelastcheck.commons</groupId>
+                <artifactId>tlc-commons-base</artifactId>
+                <version>${tlc-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thelastcheck.commons</groupId>
+                <artifactId>tlc-commons-buffer</artifactId>
+                <version>${tlc-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thelastcheck.commons</groupId>
+                <artifactId>tlc-io-base</artifactId>
+                <version>${tlc-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thelastcheck.commons</groupId>
+                <artifactId>tlc-io-x937-utils</artifactId>
+                <version>${tlc-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thelastcheck.commons</groupId>
+                <artifactId>tlc-io-x937</artifactId>
+                <version>${tlc-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-chain</groupId>
+                <artifactId>commons-chain</artifactId>
+                <version>${commons-chain-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-cli</groupId>
+                <artifactId>commons-cli</artifactId>
+                <version>${commons-cli-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-digester</groupId>
+                <artifactId>commons-digester</artifactId>
+                <version>${commons-digester-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-configuration</groupId>
+                <artifactId>commons-configuration</artifactId>
+                <version>${commons-configuration-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.castor</groupId>
+                <artifactId>castor-xml</artifactId>
+                <version>${castor-xml-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.media.jai</groupId>
+                <artifactId>com.springsource.javax.media.jai.core</artifactId>
+                <version>${jai-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit-version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>com.thelastcheck.commons</groupId>
-        <artifactId>tlc-commons-base</artifactId>
-        <version>${tlc-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.thelastcheck.commons</groupId>
-        <artifactId>tlc-commons-buffer</artifactId>
-        <version>${tlc-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.thelastcheck.commons</groupId>
-        <artifactId>tlc-io-base</artifactId>
-        <version>${tlc-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.thelastcheck.commons</groupId>
-        <artifactId>tlc-io-x937-utils</artifactId>
-        <version>${tlc-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.thelastcheck.commons</groupId>
-        <artifactId>tlc-io-x937</artifactId>
-        <version>${tlc-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>${commons-lang3-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-chain</groupId>
-        <artifactId>commons-chain</artifactId>
-        <version>${commons-chain-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-cli</groupId>
-        <artifactId>commons-cli</artifactId>
-        <version>${commons-cli-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-digester</groupId>
-        <artifactId>commons-digester</artifactId>
-        <version>${commons-digester-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-io</groupId>
-        <artifactId>commons-io</artifactId>
-        <version>${commons-io-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-configuration</groupId>
-        <artifactId>commons-configuration</artifactId>
-        <version>${commons-configuration-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.codehaus.castor</groupId>
-        <artifactId>castor-xml</artifactId>
-        <version>${castor-xml-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-log4j12</artifactId>
-        <version>${slf4j-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
-        <version>${guava-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>javax.media.jai</groupId>
-        <artifactId>com.springsource.javax.media.jai.core</artifactId>
-        <version>${jai-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>${junit-version}</version>
-        <scope>test</scope>
-      </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
     </dependencies>
-  </dependencyManagement>
-  <dependencies>
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-      </dependency>
-  </dependencies>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>license-maven-plugin</artifactId>
-        <version>1.9</version>
-        <configuration>
-          <licenseMerges>
-            <licenseMerge>Apache Software License, Version 2.0|The Apache Software License, Version 2.0|Apache License, Version 2.0|
-              ASF 2.0|AL 2.0|Apache Public License 2.0|Apache 2|Apache 2.0|Apache License|
-              Apache License 2.0|Apache License, version 2.0|
-              Similar to Apache License but with the acknowledgment clause removed|
-              Apache License, Version 2.0 and Common Development And Di
-              stribution License (CDDL) Version 1.0
-            </licenseMerge>
-            <licenseMerge>BSD License|BSD|New BSD License|BSD style|BSD-like|The BSD License</licenseMerge>
-            <licenseMerge>Common Development And Distribution License, Version 1.0|CDDL 1.1|
-              Common Development and Distribution License|
-              Common Development And Distribution License (CDDL) Version 1.0|
-              Common Development and Distribution License (CDDL) v1.0
-            </licenseMerge>
-            <licenseMerge>Common Public License, Version 1.0|CPL|Common Public License 1.0</licenseMerge>
-            <licenseMerge>Eclipse Public License, Version 1.0|Eclipse Public License (EPL), Version 1.0|
-              Eclipse Public License - v 1.0|Eclipse Distribution License (EDL), Version 1.0</licenseMerge>
-            <licenseMerge>GNU Lesser General Public License, Version 2.1|
-              GNU Lesser General Public License Version 2.1, February 1999|GNU Lesser General Public License|
-              GNU Lesser Public License|LGPL 2.1
-            </licenseMerge>
-            <licenseMerge>Public Domain|Public Domain, per Creative Commons CC0</licenseMerge>
-            <licenseMerge>Mozilla Public License, Version 1.1|MPL 1.1</licenseMerge>
-          </licenseMerges>
-          <includeTransitiveDependencies>true</includeTransitiveDependencies>
-          <useMissingFile>true</useMissingFile>
-          <excludedScopes>test,system,provided,optional</excludedScopes>
-          <excludedGroups>(org\.jboss\.spec\.javax.*)</excludedGroups>
-          <!--<excludedLicenses>GPL2 w/ CPE</excludedLicenses>-->
-          <excludedArtifacts>hamcrest-all</excludedArtifacts>
-          <sortArtifactByName>true</sortArtifactByName>
-          <!--suppress MavenModelInspection -->
-          <!--<fileTemplate>${session.executionRootDirectory}/src/main/license/license-output.ftl</fileTemplate>-->
-          <fileTemplate>org/codehaus/mojo/license/third-party-file-groupByLicense.ftl</fileTemplate>
-        </configuration>
-        <executions>
-          <execution>
-            <id>add-third-party</id>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>1.9</version>
+                <configuration>
+                    <licenseMerges>
+                        <licenseMerge>Apache Software License, Version 2.0|The Apache Software License, Version
+                            2.0|Apache License, Version 2.0|
+                            ASF 2.0|AL 2.0|Apache Public License 2.0|Apache 2|Apache 2.0|Apache License|
+                            Apache License 2.0|Apache License, version 2.0|
+                            Similar to Apache License but with the acknowledgment clause removed|
+                            Apache License, Version 2.0 and Common Development And Di
+                            stribution License (CDDL) Version 1.0
+                        </licenseMerge>
+                        <licenseMerge>BSD License|BSD|New BSD License|BSD style|BSD-like|The BSD License</licenseMerge>
+                        <licenseMerge>Common Development And Distribution License, Version 1.0|CDDL 1.1|
+                            Common Development and Distribution License|
+                            Common Development And Distribution License (CDDL) Version 1.0|
+                            Common Development and Distribution License (CDDL) v1.0
+                        </licenseMerge>
+                        <licenseMerge>Common Public License, Version 1.0|CPL|Common Public License 1.0</licenseMerge>
+                        <licenseMerge>Eclipse Public License, Version 1.0|Eclipse Public License (EPL), Version 1.0|
+                            Eclipse Public License - v 1.0|Eclipse Distribution License (EDL), Version 1.0
+                        </licenseMerge>
+                        <licenseMerge>GNU Lesser General Public License, Version 2.1|
+                            GNU Lesser General Public License Version 2.1, February 1999|GNU Lesser General Public
+                            License|
+                            GNU Lesser Public License|LGPL 2.1
+                        </licenseMerge>
+                        <licenseMerge>Public Domain|Public Domain, per Creative Commons CC0</licenseMerge>
+                        <licenseMerge>Mozilla Public License, Version 1.1|MPL 1.1</licenseMerge>
+                    </licenseMerges>
+                    <includeTransitiveDependencies>true</includeTransitiveDependencies>
+                    <useMissingFile>true</useMissingFile>
+                    <excludedScopes>test,system,provided,optional</excludedScopes>
+                    <excludedGroups>(org\.jboss\.spec\.javax.*)</excludedGroups>
+                    <!--<excludedLicenses>GPL2 w/ CPE</excludedLicenses>-->
+                    <excludedArtifacts>hamcrest-all</excludedArtifacts>
+                    <sortArtifactByName>true</sortArtifactByName>
+                    <!--suppress MavenModelInspection -->
+                    <!--<fileTemplate>${session.executionRootDirectory}/src/main/license/license-output.ftl</fileTemplate>-->
+                    <fileTemplate>org/codehaus/mojo/license/third-party-file-groupByLicense.ftl</fileTemplate>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>add-third-party</id>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

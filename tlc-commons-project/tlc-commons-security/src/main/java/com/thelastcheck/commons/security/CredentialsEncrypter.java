@@ -11,7 +11,7 @@
  * ****************************************************************************
  */
 
-package com.thelastcheck.commons.base.security;
+package com.thelastcheck.commons.security;
 
 import com.google.common.base.Preconditions;
 
@@ -73,11 +73,11 @@ public class CredentialsEncrypter {
     }
 
     private byte[] loadKey() {
-        ResourceBundle bundle = ResourceBundle.getBundle("com.thelastcheck.commons.base.security.EncryptBytes");
+        ResourceBundle bundle = ResourceBundle.getBundle("com.thelastcheck.commons.security.EncryptBytes");
         Object key = bundle.getObject("key");
         if (key != null && key instanceof byte[])
             return (byte[]) key;
-        throw new IllegalArgumentException("Missing key or byte[] in com.thelastcheck.commons.base.security.EncryptBytes to define the encryption bytes");
+        throw new IllegalArgumentException("Missing key or byte[] in com.thelastcheck.commons.security.EncryptBytes to define the encryption bytes");
     }
 
 }

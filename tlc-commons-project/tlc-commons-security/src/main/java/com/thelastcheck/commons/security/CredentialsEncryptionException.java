@@ -9,7 +9,7 @@
  * Copyright (c) 2015, The Last Check, LLC, All rights reserved.
  ******************************************************************************/
 
-package com.thelastcheck.commons.base.security;
+package com.thelastcheck.commons.security;
 
 
 public class CredentialsEncryptionException extends Exception {

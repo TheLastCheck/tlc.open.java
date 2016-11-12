@@ -11,7 +11,7 @@
  * ****************************************************************************
  */
 
-package com.thelastcheck.commons.base.security;
+package com.thelastcheck.commons.security;
 
 import org.junit.Test;
 
