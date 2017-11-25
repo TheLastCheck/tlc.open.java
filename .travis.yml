@@ -3,6 +3,5 @@ jdk:
   - oraclejdk8
 script:
   - mvn test install -B
-  - cd tlc-common-project
-  - mvn test -B
+
 
