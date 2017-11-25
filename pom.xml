@@ -54,7 +54,7 @@
         <buildnumber-maven-version>1.2</buildnumber-maven-version>
         <exec-maven-version>1.2.1</exec-maven-version>
         <findbugs-maven-version>2.5.3</findbugs-maven-version>
-        <jdk-version>1.7</jdk-version>
+        <jdk-version>1.8</jdk-version>
         <latex-maven-version>1.1</latex-maven-version>
         <maven-antrun-version>1.7</maven-antrun-version>
         <maven-assembly-version>2.5.2</maven-assembly-version>
@@ -69,6 +69,7 @@
         <maven-install-version>2.5.1</maven-install-version>
         <maven-jar-version>2.4</maven-jar-version>
         <maven-javadoc-version>2.9.1</maven-javadoc-version>
+        <!--<maven-javadoc-version>2.10.4</maven-javadoc-version>-->
         <maven-jxr-version>2.4</maven-jxr-version>
         <maven-pmd-version>3.1</maven-pmd-version>
         <maven-project-info-reports-version>2.7</maven-project-info-reports-version>
@@ -368,6 +369,7 @@
                                     <goal>sign</goal>
                                 </goals>
                                 <configuration>
+                                    <executable>/usr/local/bin/gpg</executable>
                                     <keyname>${gpg.keyname}</keyname>
                                 </configuration>
                             </execution>
@@ -394,12 +396,28 @@
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
-                                <!-- <phase>verify</phase> -->
+                                 <!--<phase>verify</phase>-->
                                 <goals>
                                     <goal>jar</goal>
-                                    <!-- <goal>test-jar</goal> -->
+                                    <!--<goal>test-jar</goal>-->
                                 </goals>
                             </execution>
+                            <!--<execution>-->
+                                <!--<id>javadoc-jar</id>-->
+                                <!--<phase>package</phase>-->
+                                <!--<goals>-->
+                                    <!--<goal>jar</goal>-->
+                                <!--</goals>-->
+                                <!--<configuration>-->
+                                     <!--switch on dependency-driven aggregation-->
+                                    <!--<includeDependencySources>true</includeDependencySources>-->
+<!---->
+                                    <!--<dependencySourceExcludes>-->
+                                        <!-- exclude ONLY commons-cli artifacts -->
+                                        <!--<dependencySourceExclude>commons-cli:*</dependencySourceExclude>-->
+                                    <!--</dependencySourceExcludes>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
                         </executions>
                     </plugin>
                 </plugins>
