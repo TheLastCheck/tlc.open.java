@@ -62,7 +62,9 @@ public class MonitorFileDirectory extends java.util.Observable implements Runnab
     }
 
     public void stop() {
-        thread.interrupt()
+        if (thread != null) {
+            thread.interrupt()
+        }
     }
 
     public void run() {
