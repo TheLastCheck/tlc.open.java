@@ -94,7 +94,7 @@ public class ImageObject {
         int offset0 = cimsObjectHeader.getSegmentOffset(0);
         int length0 = cimsObjectHeader.getSegmentLength(0);
         byte[] cimsCodedDataHeaderArray = new byte[CimsCodedDataHeader.RECORD_LENGTH];
-        buffer.read(offset0, cimsObjectHeaderArray, 0, length0);
+        buffer.read(offset0, cimsCodedDataHeaderArray, 0, length0);
         cimsCodedDataHeader = new CimsCodedDataHeader(cimsCodedDataHeaderArray);
 
         //initialize segment array, i.e. load all images
