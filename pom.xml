@@ -50,10 +50,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <git-commit-id-plugin-version>2.1.7</git-commit-id-plugin-version>
         <properties-plugin>1.0-alpha-2</properties-plugin>
-        <groovy-all-version>2.3.8</groovy-all-version>
+        <groovy-all-version>2.4.3</groovy-all-version>
         <!--groovy-eclipse-batch needs to match groovy-all-->
-        <groovy-eclipse-batch-version>2.3.7-01</groovy-eclipse-batch-version>
-        <groovy-eclipse-compiler-version>2.9.1-01</groovy-eclipse-compiler-version>
+        <groovy-eclipse-batch-version>2.4.3-01</groovy-eclipse-batch-version>
+        <groovy-eclipse-compiler-version>2.9.2-01</groovy-eclipse-compiler-version>
         <buildnumber-maven-version>1.2</buildnumber-maven-version>
         <exec-maven-version>1.2.1</exec-maven-version>
         <findbugs-maven-version>2.5.3</findbugs-maven-version>
