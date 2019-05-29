@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 
 public class X937CopierTest {
 
-    private static final String x9InputFilename = "target/test-classes/ST001.test_send.x937";
+    private static final String x9InputFilename = "../../../test-files/ST001.test_send.x937";
     private static final String x9OutputFilename = "target/ST001.test_send.x937.out";
 
     @Test

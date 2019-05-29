@@ -23,6 +23,8 @@ import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import com.google.common.collect.Lists;
 import com.thelastcheck.io.base.Record;
@@ -203,6 +205,10 @@ public class X9InputStreamCheckDetailReader implements Iterable<X937CheckDetailG
     @Override
     public void close() throws IOException {
         reader.close();
+    }
+
+    public Stream<X937CheckDetailGraph> stream() {
+        return StreamSupport.stream(this.spliterator(), false);
     }
 
     @Override

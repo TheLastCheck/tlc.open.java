@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 public class X937ImageViewDataRecordImageOffsetTest {
     private static Logger log = LoggerFactory.getLogger(X937ImageViewDataRecordImageOffsetTest.class);
 
-    private static final String x9InputFilename = "target/test-classes/ST001.test_send.x937";
+    private static final String x9InputFilename = "../../../test-files/ST001.test_send.x937";
     private static final byte[] tiffMarker = new byte[]{0x49, 0x49, 0x2a};
 
     @Test

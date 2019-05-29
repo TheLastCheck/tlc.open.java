@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 public abstract class InputStreamRecordReader implements
         Iterable<Record>, Closeable {
@@ -210,6 +212,10 @@ public abstract class InputStreamRecordReader implements
     }
 
     protected abstract Record readNextRecord() throws IOException;
+
+    public Stream<Record> stream() {
+        return StreamSupport.stream(this.spliterator(), false);
+    }
 
     public Iterator<Record> iterator() {
         return new Iterator<Record>() {
