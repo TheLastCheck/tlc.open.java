@@ -8,11 +8,11 @@
  *
  * Copyright (c) 2015, The Last Check, LLC, All rights reserved.
  ******************************************************************************/
-package com.thelastcheck.commons.base.security.main;
+package com.thelastcheck.commons.security.main;
 
-import com.thelastcheck.commons.base.security.Credentials;
-import com.thelastcheck.commons.base.security.CredentialsEncryptionException;
-import com.thelastcheck.commons.base.security.CredentialsWriter;
+import com.thelastcheck.commons.security.Credentials;
+import com.thelastcheck.commons.security.CredentialsEncryptionException;
+import com.thelastcheck.commons.security.CredentialsWriter;
 
 import java.io.File;
 import java.io.IOException;

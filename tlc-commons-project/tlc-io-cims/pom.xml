@@ -19,48 +19,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.thelastcheck.commons</groupId>
         <artifactId>tlc-commons-project</artifactId>
+        <groupId>com.thelastcheck.commons</groupId>
         <version>2.4.0</version>
     </parent>
-    <artifactId>tlc-io-x937</artifactId>
-    <version>2.4.0</version>
-    <name>tlc-io-x937</name>
-    <description>TLC X9.37 IO classes</description>
-    <url>https://bitbucket.org/thelastcheck/tlc.open.java/wiki/Home</url>
-    <organization>
-        <name>The Last Check, LLC</name>
-        <url>http://thelastcheck.github.io/tlc.open.java/</url>
-    </organization>
-    <inceptionYear>2009</inceptionYear>
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-    <issueManagement>
-        <system>GitHub</system>
-        <url>https://github.com/TheLastCheck/tlc.open.java/issues</url>
-    </issueManagement>
-    <scm>
-        <connection>scm:git:https://github.com/TheLastCheck/tlc.open.java.git</connection>
-        <developerConnection>scm:git:https://github.com/TheLastCheck/tlc.open.java.git</developerConnection>
-        <url>https://github.com/TheLastCheck/tlc.open.java.git</url>
-    </scm>
+    <artifactId>tlc-io-cims</artifactId>
+    <name>tlc-io-cims</name>
+    <description>TLC CIMS IO Classes</description>
     <dependencies>
         <dependency>
             <groupId>com.thelastcheck.commons</groupId>
-            <artifactId>tlc-io-base</artifactId>
+            <artifactId>tlc-commons-buffer</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.castor</groupId>
-            <artifactId>castor-xml</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>

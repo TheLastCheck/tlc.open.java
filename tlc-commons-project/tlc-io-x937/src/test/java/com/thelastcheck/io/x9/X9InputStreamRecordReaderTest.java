@@ -1,6 +1,6 @@
 package com.thelastcheck.io.x9;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
@@ -22,13 +22,14 @@ import com.thelastcheck.io.x937.records.X937CheckDetailRecord;
 public class X9InputStreamRecordReaderTest {
     private static final Logger log = LoggerFactory.getLogger(X9InputStreamRecordReaderTest.class);
 
+    private static String TEST_FILE_DIR = "../../../test-files/";
+
     @Test(expected = RecordReaderException.class)
     public void shouldFailBadRecord() throws Exception {
         X9InputStreamRecordReader reader = buildReader(false);
         int recordsFound = 0;
         try {
             for (Record record : reader) {
-                log.info(record.toString());
                 recordsFound++;
             }
         } catch (Exception e) {
@@ -44,17 +45,21 @@ public class X9InputStreamRecordReaderTest {
     @Test
     public void shouldUseNullFilter() throws Exception {
         final X9InputStreamRecordReader reader = buildReaderFromFile();
-        reader.addFilter(new RecordFilter() {
-            @Override
-            public Record filter(Record record) {
-                if (record instanceof X937CheckDetailRecord) return record;
-                return null;
-            }
+        final int[] totalRecords = {0};
+        long checkRecords = 0;
+        reader.addFilter(record -> {
+            totalRecords[0]++;
+            if (record instanceof X937CheckDetailRecord) return record;
+            return null;
         });
-        for (Record record : reader) {
-            log.info(record.toString());
-        }
+        checkRecords = reader.stream()
+                .count();
+//        for (Record record : reader) {
+//            checkRecords++;
+//        }
         reader.close();
+        assertEquals(106, totalRecords[0]);
+        assertEquals(25, checkRecords);
     }
 
 
@@ -64,7 +69,6 @@ public class X9InputStreamRecordReaderTest {
         int recordsFound = 0;
         try {
             for (Record record : reader) {
-                log.info(record.toString());
                 recordsFound++;
                 if (recordsFound == 5) {
                     assertEquals(400, record.offsetPosition());
@@ -83,7 +87,7 @@ public class X9InputStreamRecordReaderTest {
 
     public static X9InputStreamRecordReader buildReaderFromFile() throws FileNotFoundException {
 
-        FileInputStream is = new FileInputStream("target/test-classes/sample-with-cim.x937");
+        FileInputStream is = new FileInputStream(TEST_FILE_DIR + "sample-with-cim.x937");
 
         X9InputStreamRecordReader reader = new X9InputStreamRecordReader(is, true);
         return reader;
@@ -100,9 +104,9 @@ public class X9InputStreamRecordReaderTest {
         ByteArray ba = new ByteArray(80 * 6);
         int offset = 0;
         ba.fill();
-        ba.write("0103P900102008122000496200409102307NCOMERICA BANK     UBOC - MPSC       BUS", offset, 80);
+        ba.write("0103P900102008122000496200409102307NNEW TEST BANK     TST1 - TST2       BUS", offset, 80);
         offset += 80;
-        ba.write("100112113752212200049620040910200409102259FG04122590ERNANI CRUZ   3102971484", offset, 80);
+        ba.write("100112113752212200049620040910200409102259FG04122590TESTER MANN   9015551212", offset, 80);
         offset += 80;
         ba.write("2001121137522122000496200409102004091066660666602514  122000496", offset, 80);
         offset += 80;

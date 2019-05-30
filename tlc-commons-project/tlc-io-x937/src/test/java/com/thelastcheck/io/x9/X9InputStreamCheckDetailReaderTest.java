@@ -19,6 +19,7 @@ import com.thelastcheck.io.x937.records.X937CheckDetailRecord;
 public class X9InputStreamCheckDetailReaderTest {
     private static final Logger log = LoggerFactory.getLogger(X9InputStreamCheckDetailReaderTest.class);
 
+    private static String TEST_FILES_DIR = "../../../test-files/";
 
     @Test
     public void shouldUseThreadSafeGraph() throws Exception {
@@ -26,7 +27,6 @@ public class X9InputStreamCheckDetailReaderTest {
         X937CheckDetailGraph graph = reader.readNextCheckDetail();
         while (graph != null) {
             X937CheckDetailRecord detailRecord = graph.checkDetailRecord();
-            log.info(detailRecord.toString());
             X937CheckDetailGraph newgraph = reader.readNextCheckDetail();
             if (newgraph != null) {
                 assertDifferentHeaders(graph, newgraph);
@@ -89,13 +89,36 @@ public class X9InputStreamCheckDetailReaderTest {
     @Test
     public void shouldReadCheckDetail() throws Exception {
         X9InputStreamCheckDetailReader reader = buildReaderFromFile();
+
+        long count = reader.stream().count();
+        reader.close();
+
+        final int[] streamTotalRecords = {0};
+        reader = buildReaderFromFile();
+        reader.stream().forEach(detailRecord -> {
+            streamTotalRecords[0]++;
+        });
+        reader.close();
+
+        int iteratorTotalRecords = 0;
+        reader = buildReaderFromFile();
+        for(X937CheckDetailGraph graph : reader) {
+            iteratorTotalRecords++;
+        };
+        reader.close();
+
+        int readNextTotalRecords = 0;
+        reader = buildReaderFromFile();
         X937CheckDetailGraph graph = reader.readNextCheckDetail();
         while (graph != null) {
             X937CheckDetailRecord detailRecord = graph.checkDetailRecord();
-            log.info(detailRecord.toString());
+            readNextTotalRecords++;
             graph = reader.readNextCheckDetail();
         }
         reader.close();
+        assertEquals(count, iteratorTotalRecords);
+        assertEquals(count, readNextTotalRecords);
+        assertEquals(count, streamTotalRecords[0]);
     }
 
     @Test
@@ -109,24 +132,34 @@ public class X9InputStreamCheckDetailReaderTest {
     }
 
     @Test
-    public void shouldIterateCheckDetailWithReader() throws Exception {
-        X9InputStreamRecordReader reader1 = X9InputStreamRecordReaderTest.buildReaderFromFile();
-        RecordCountRecordFilter filter = new RecordCountRecordFilter();
-        reader1.addFilter(filter);
-        X9InputStreamCheckDetailReader reader = new X9InputStreamCheckDetailReader(reader1);
-        int recordsFound = 0;
-        for (X937CheckDetailGraph graph : reader) {
+    public void shouldStreamCheckDetail() throws Exception {
+        X9InputStreamCheckDetailReader reader = buildReaderFromFile();
+        reader.stream().forEach(graph -> {
             X937CheckDetailRecord detailRecord = graph.checkDetailRecord();
             log.info(detailRecord.toString());
-            recordsFound++;
-        }
+        });
         reader.close();
-        assertEquals(recordsFound, filter.getRecordCounters()[25]);
+    }
+
+    @Test
+    public void shouldStreamCheckDetailWithReader() throws Exception {
+        try (X9InputStreamRecordReader reader1 = X9InputStreamRecordReaderTest.buildReaderFromFile()) {
+            RecordCountRecordFilter filter = new RecordCountRecordFilter();
+            reader1.addFilter(filter);
+            X9InputStreamCheckDetailReader reader = new X9InputStreamCheckDetailReader(reader1);
+            final int[] recordsFound = {0};
+            reader.stream().forEach(graph -> {
+                X937CheckDetailRecord detailRecord = graph.checkDetailRecord();
+//            log.info(detailRecord.toString());
+                recordsFound[0]++;
+            });
+            assertEquals(recordsFound[0], filter.getRecordCounters()[25]);
+        }
     }
 
     private X9InputStreamCheckDetailReader buildReaderFromFile() throws FileNotFoundException {
 
-        FileInputStream is = new FileInputStream("target/test-classes/sample-with-cim.x937");
+        FileInputStream is = new FileInputStream(TEST_FILES_DIR + "sample-with-cim.x937");
 
         X9InputStreamCheckDetailReader reader = new X9InputStreamCheckDetailReader(is, true);
         return reader;

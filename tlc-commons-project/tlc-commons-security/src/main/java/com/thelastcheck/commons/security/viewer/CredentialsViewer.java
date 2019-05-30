@@ -9,11 +9,11 @@
  * Copyright (c) 2015, The Last Check, LLC, All rights reserved.
  ******************************************************************************/
 
-package com.thelastcheck.commons.base.security.viewer;
+package com.thelastcheck.commons.security.viewer;
 
-import com.thelastcheck.commons.base.security.Credentials;
-import com.thelastcheck.commons.base.security.CredentialsReader;
-import com.thelastcheck.commons.base.security.CredentialsWriter;
+import com.thelastcheck.commons.security.Credentials;
+import com.thelastcheck.commons.security.CredentialsReader;
+import com.thelastcheck.commons.security.CredentialsWriter;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
