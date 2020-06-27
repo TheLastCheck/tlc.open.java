@@ -21,7 +21,7 @@
     <parent>
         <groupId>com.thelastcheck.commons</groupId>
         <artifactId>tlc-commons-project</artifactId>
-        <version>2.4.0</version>
+        <version>2.5.0</version>
     </parent>
     <artifactId>tlc-io-x937-utils</artifactId>
     <name>tlc-io-x937-utils</name>
