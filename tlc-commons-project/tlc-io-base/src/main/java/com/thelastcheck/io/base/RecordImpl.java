@@ -16,7 +16,6 @@
 
 package com.thelastcheck.io.base;
 
-import com.google.common.base.Throwables;
 import com.thelastcheck.commons.base.exception.InvalidDataException;
 import com.thelastcheck.commons.base.fields.OnUsField;
 import com.thelastcheck.commons.base.fields.RoutingNumber;
@@ -55,7 +54,7 @@ public abstract class RecordImpl implements Record, Cloneable {
 			object.record = (ByteArray) record.clone();
 			return object;
 		} catch (CloneNotSupportedException e) {
-			throw Throwables.propagate(e);
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -66,7 +65,7 @@ public abstract class RecordImpl implements Record, Cloneable {
 			object.record = new ByteArray(record);
 			return object;
 		} catch (CloneNotSupportedException e) {
-			throw Throwables.propagate(e);
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -244,7 +243,6 @@ public abstract class RecordImpl implements Record, Cloneable {
 				field.insert(currentValues[i], newRecord);
 			}
 		}
-		return;
 	}
 
 	public int length() {

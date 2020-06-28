@@ -17,16 +17,6 @@
 package com.thelastcheck.io.x9;
 
 
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-
-import com.google.common.collect.Lists;
 import com.thelastcheck.io.base.Record;
 import com.thelastcheck.io.base.exception.RecordReaderException;
 import com.thelastcheck.io.x9.parser.X937CheckDetailGraph;
@@ -43,10 +33,20 @@ import com.thelastcheck.io.x937.records.X937CheckDetailRecord;
 import com.thelastcheck.io.x937.records.X937FileControlRecord;
 import com.thelastcheck.io.x937.records.X937FileHeaderRecord;
 
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+
 public class X9InputStreamCheckDetailReader implements Iterable<X937CheckDetailGraph>, Closeable {
 
-    private X9InputStreamRecordReader reader;
-    private X937RecordGraphRecordFilter graphFilter;
+    private final X9InputStreamRecordReader reader;
+    private final X937RecordGraphRecordFilter graphFilter;
     private Record previousRecord;
 
     private X937CheckDetailGraph cachedRecord;
@@ -124,11 +124,17 @@ public class X9InputStreamCheckDetailReader implements Iterable<X937CheckDetailG
         final X937BundleControlRecord bundleControlRecord = x937CheckDetailGraph.bundleControlRecord() == null ? null
                 : (X937BundleControlRecord) x937CheckDetailGraph.bundleControlRecord().duplicate();
 
-        final X937CheckDetailRecord checkDetailRecord = x937CheckDetailGraph.checkDetailRecord();
-        final X937CheckDetailAddendumBRecord x937CheckDetailAddendumBRecord = x937CheckDetailGraph.checkDetailAddendumBRecord();
-        final List<X937CheckDetailAddendumARecord> checkDetailAddendumARecords = Lists.newArrayList(x937CheckDetailGraph.checkDetailAddendumARecords());
-        final List<X937CheckDetailAddendumCRecord> checkDetailAddendumCRecords = Lists.newArrayList(x937CheckDetailGraph.checkDetailAddendumCRecords());
-        final List<X937ImageViewRecords> imageViewRecords = Lists.newArrayList(x937CheckDetailGraph.imageViewRecords());
+        final X937CheckDetailRecord checkDetailRecord = x937CheckDetailGraph.checkDetailRecord() == null ? null
+                : (X937CheckDetailRecord) x937CheckDetailGraph.checkDetailRecord().duplicate();
+
+        final X937CheckDetailAddendumBRecord x937CheckDetailAddendumBRecord = x937CheckDetailGraph.checkDetailAddendumBRecord() == null ? null
+                : (X937CheckDetailAddendumBRecord) x937CheckDetailGraph.checkDetailAddendumBRecord().duplicate();
+
+        final List<X937CheckDetailAddendumARecord> checkDetailAddendumARecords = new ArrayList<>(x937CheckDetailGraph.checkDetailAddendumARecords());
+
+        final List<X937CheckDetailAddendumCRecord> checkDetailAddendumCRecords = new ArrayList<>(x937CheckDetailGraph.checkDetailAddendumCRecords());
+
+        final List<X937ImageViewRecords> imageViewRecords = new ArrayList<>(x937CheckDetailGraph.imageViewRecords());
 
         return new X937CheckDetailGraph() {
 

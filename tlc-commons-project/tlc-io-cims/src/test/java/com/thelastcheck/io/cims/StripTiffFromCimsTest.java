@@ -1,22 +1,18 @@
 package com.thelastcheck.io.cims;
 
+import com.thelastcheck.commons.buffer.ByteArray;
 import org.junit.Test;
 
-import com.google.common.io.ByteSink;
-import com.google.common.io.ByteSource;
-import com.google.common.io.Files;
-import com.google.common.io.Resources;
-import com.thelastcheck.commons.buffer.ByteArray;
-
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class StripTiffFromCimsTest {
-    private static String CIMS_FOLDER = "../../../test-files/";
+    private static final String CIMS_FOLDER = "../../../test-files/";
 
     @Test
-    public void stripOutCims() throws IOException {
+    public void stripOutCims() throws Exception {
 //        extractTiff("20190220007100101822");
 //        extractTiff("20190220007100101823");
 //        extractTiff("20190220007100103337");
@@ -31,21 +27,20 @@ public class StripTiffFromCimsTest {
 
     }
 
-    private void extractTiff(String filename) throws IOException {
+    private void extractTiff(String filename) throws Exception {
         byte[] bytes = readCimsFile(filename);
         ImageObject imageObject = new ImageObject(new ByteArray(bytes));
         byte[] segment = imageObject.getSegment(1);
         writeTiffFile(segment, filename);
     }
 
-    private void writeTiffFile(byte[] segment, String filename) throws IOException {
-        ByteSink sink = Files.asByteSink(new File("target/"+filename+".tiff"));
-        sink.write(segment);
+    private void writeTiffFile(byte[] segment, String filename) throws Exception {
+        Path path = Paths.get("target/" + filename + ".tiff");
+        Files.write(path, segment);
     }
 
-    private byte[] readCimsFile(String filename) throws IOException {
-        ByteSource byteSource = Resources.asByteSource(new URL("file:"+CIMS_FOLDER+filename+".cim"));
-        byte[] bytes = byteSource.read();
-        return bytes;
+    private byte[] readCimsFile(String filename) throws Exception {
+        Path path = Paths.get(CIMS_FOLDER+filename+".cim");
+        return Files.readAllBytes(path);
     }
 }

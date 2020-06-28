@@ -16,15 +16,14 @@
 
 package com.thelastcheck.io.cims;
 
-
-import com.google.common.base.Preconditions;
+import com.thelastcheck.commons.base.utils.Preconditions;
 import com.thelastcheck.commons.buffer.ByteArray;
 
 public class CimsCodedDataHeader {
 
     public static final int RECORD_LENGTH = 1500;
 
-    private ByteArray buffer;
+    private final ByteArray buffer;
 
     public CimsCodedDataHeader() {
         buffer = new ByteArray(RECORD_LENGTH);

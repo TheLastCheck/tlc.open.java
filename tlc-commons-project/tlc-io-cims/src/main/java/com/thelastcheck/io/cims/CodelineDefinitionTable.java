@@ -16,37 +16,34 @@
 
 package com.thelastcheck.io.cims;
 
-import com.google.common.base.Preconditions;
+import com.thelastcheck.commons.base.utils.Preconditions;
 
 public class CodelineDefinitionTable extends CodelineDefinition {
 
     private static final int MAX_FIELDS = 16;
     private static final int BUFFER_LENGTH = 149;
-    private static int SS_DATA_DIS = 0;
-    private static int SS_DATA_LEN = 1;
-    private static int BYTE_1_2_DATA_DIS = SS_DATA_DIS + SS_DATA_LEN;
-    private static int BYTE_1_2_DATA_LEN = 2;
-    private static int HIGH_ORDER_DIGIT_ERRORS_DIS =
+    private static final int SS_DATA_DIS = 0;
+    private static final int SS_DATA_LEN = 1;
+    private static final int BYTE_1_2_DATA_DIS = SS_DATA_DIS + SS_DATA_LEN;
+    private static final int BYTE_1_2_DATA_LEN = 2;
+    private static final int HIGH_ORDER_DIGIT_ERRORS_DIS =
             BYTE_1_2_DATA_DIS + BYTE_1_2_DATA_LEN;
-    private static int HIGH_ORDER_DIGIT_ERRORS_LEN = 1;
-    private static int BYTE_4_DIS =
+    private static final int HIGH_ORDER_DIGIT_ERRORS_LEN = 1;
+    private static final int BYTE_4_DIS =
             HIGH_ORDER_DIGIT_ERRORS_DIS + HIGH_ORDER_DIGIT_ERRORS_LEN;
-    private static int BYTE_4_LEN = 1;
-    private static int FIELD_DEFINITION_DIS = BYTE_4_DIS + BYTE_4_LEN;
+    private static final int BYTE_4_LEN = 1;
+    private static final int FIELD_DEFINITION_DIS = BYTE_4_DIS + BYTE_4_LEN;
     // count of MAX_FIELDS, length of each field
-    private static int FIELD_DEFINITION_LEN = FieldDefinition.BUFFER_LENGTH;
+    private static final int FIELD_DEFINITION_LEN = FieldDefinition.BUFFER_LENGTH;
 
-    private FieldDefinition[] fieldDefinitionArray = new FieldDefinition[MAX_FIELDS];
+    private final FieldDefinition[] fieldDefinitionArray = new FieldDefinition[MAX_FIELDS];
 
     public CodelineDefinitionTable() {
         super();
-//        buffer = new ByteArray(getBufferLength());
     }
 
     public CodelineDefinitionTable(byte[] newBuffer) {
         setBuffer(newBuffer);
-        //create FieldDefinition objects
-//        buildFieldDefinitionArray();
     }
 
     public void setBuffer(byte[] newBuffer) {

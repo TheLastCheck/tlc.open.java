@@ -16,13 +16,13 @@
 
 package com.thelastcheck.io.cims;
 
-import com.google.common.base.Preconditions;
+import com.thelastcheck.commons.base.utils.Preconditions;
 import com.thelastcheck.commons.buffer.ByteArray;
 
 public class CimsObjectHeader {
 
     public static final int RECORD_LENGTH = 208;
-    ByteArray buffer;
+    private final ByteArray buffer;
 
     /**
      * create default cims header, and set all predefined values

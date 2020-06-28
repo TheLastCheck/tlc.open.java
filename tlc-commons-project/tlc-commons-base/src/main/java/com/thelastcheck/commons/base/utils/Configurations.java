@@ -20,8 +20,6 @@ import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 
-import com.google.common.base.Throwables;
-
 public class Configurations {
 
     /**
@@ -37,7 +35,7 @@ public class Configurations {
             config.setThrowExceptionOnMissing(true);
             return config;
         } catch (ConfigurationException e) {
-            throw Throwables.propagate(e);
+            throw new RuntimeException(e);
         }
     }
 

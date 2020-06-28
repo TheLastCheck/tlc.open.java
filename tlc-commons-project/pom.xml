@@ -41,7 +41,7 @@
     <modules>
         <module>tlc-commons-buffer</module>
         <module>tlc-commons-base</module>
-        <module>tlc-commons-security</module>
+<!--        <module>tlc-commons-security</module>-->
         <module>tlc-io-base</module>
         <module>tlc-io-cims</module>
         <module>tlc-io-x937-utils</module>
@@ -134,11 +134,6 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
                 <version>${slf4j-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava-version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.media.jai</groupId>

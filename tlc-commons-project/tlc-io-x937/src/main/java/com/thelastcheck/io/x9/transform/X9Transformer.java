@@ -16,9 +16,10 @@
 
 package com.thelastcheck.io.x9.transform;
 
-
-import com.google.common.base.Function;
 import com.thelastcheck.io.x9.factory.X9RecordFactory;
+
+import java.util.function.Function;
+
 public abstract class X9Transformer<F, T> implements Function<F, T> {
 
 	protected final X9RecordFactory	factory;

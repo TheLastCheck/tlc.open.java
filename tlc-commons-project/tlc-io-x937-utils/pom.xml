@@ -61,10 +61,6 @@
             <groupId>org.codehaus.castor</groupId>
             <artifactId>castor-xml</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
     </dependencies>
     <profiles>
         <profile>
