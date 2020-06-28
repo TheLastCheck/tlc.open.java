@@ -25,8 +25,8 @@ public class Configurations {
     /**
      * static factory method for building properties files with no checked exception thrown
      *
-     * @param fileName
-     * @return
+     * @param fileName is the file name of the properties file
+     * @return a Configuration object
      */
     public static Configuration createConfigFromProperties(String fileName) {
         try {

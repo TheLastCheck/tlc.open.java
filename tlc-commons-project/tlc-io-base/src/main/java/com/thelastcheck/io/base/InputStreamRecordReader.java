@@ -84,8 +84,8 @@ public abstract class InputStreamRecordReader implements
     }
 
     /**
-     * @return
-     * @throws IOException
+     * @return a boolean indicating if the stream is available
+     * @throws IOException if an I/O error occurs.
      */
     protected final boolean isStreamAvailable() throws IOException {
         if (is == null || is.available() == 0) {

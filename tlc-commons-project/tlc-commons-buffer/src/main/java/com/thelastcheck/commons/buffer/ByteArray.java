@@ -1375,7 +1375,7 @@ public class ByteArray implements Serializable, Cloneable {
      *
      * @return the array of bytes
      * @deprecated as of version 1.7, replaced by {@link #getBytes()}, now
-     * replaced by {@link #getArray().value}.
+     * replaced by {@link #getArray()}.
      */
     @Deprecated
     public byte[] getByteArray() {

@@ -75,7 +75,7 @@ public interface X9Record extends Record {
 	int recordStandardLevel();
 
 	/**
-	 * @param stdLevel
+	 * @param standardLevel
 	 *            the standard level for this record.
 	 */
 	X9Record recordStandardLevel(int standardLevel);

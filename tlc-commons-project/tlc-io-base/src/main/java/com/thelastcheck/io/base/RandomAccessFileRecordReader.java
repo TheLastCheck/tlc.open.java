@@ -46,10 +46,9 @@ public class RandomAccessFileRecordReader {
 	}
 
 	/**
-	 * @return
-	 * @throws IOException
+	 * @return a boolean indicating if the stream is available
 	 */
-	protected boolean isStreamAvailable() throws IOException {
+	protected boolean isStreamAvailable() {
 		if (raf == null) {
 			return false;
 		}

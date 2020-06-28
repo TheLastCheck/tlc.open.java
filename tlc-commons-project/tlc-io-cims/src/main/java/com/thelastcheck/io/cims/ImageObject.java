@@ -312,31 +312,19 @@ public class ImageObject {
         return count;
     }
 
-    /**
-     * @return
-     */
     public CimsObjectHeader getCimsObjectHeader() {
         updateCimsObjectHeader();
         return cimsObjectHeader;
     }
 
-    /**
-     * @return
-     */
     public CimsCodedDataHeader getCimsCodedDataHeader() {
         return cimsCodedDataHeader;
     }
 
-    /**
-     * @param header
-     */
     public void setCimsObjectHeader(CimsObjectHeader header) {
         cimsObjectHeader = header;
     }
 
-    /**
-     * @param segment0
-     */
     public void setCimsCodedDataHeader(CimsCodedDataHeader segment0) {
         this.cimsCodedDataHeader = segment0;
     }

@@ -36,19 +36,12 @@ public class FieldDefinition extends CodelineDefinition {
         setBuffer(buffer);
     }
 
-    ;
-
-    /**
-     * @return int
-     */
     public int getBufferLength() {
         return BUFFER_LENGTH;
     }
 
     /**
      * Byte 0 Field-opening symbol (right aligned) (X'00', X'0A')
-     *
-     * @return
      */
     public byte getOpeningSymbol() {
         return buffer.readAsByte(0);
@@ -56,8 +49,6 @@ public class FieldDefinition extends CodelineDefinition {
 
     /**
      * Byte 0 Field-opening symbol (right aligned) (X'00', X'0A')
-     *
-     * @return
      */
     public void setOpeningSymbol(byte value) {
         buffer.write(value, 0);
@@ -65,8 +56,6 @@ public class FieldDefinition extends CodelineDefinition {
 
     /**
      * Byte 1 Field-closing symbol (right aligned)
-     *
-     * @return
      */
     public byte getClosingSymbol() {
         return buffer.readAsByte(1);
@@ -74,8 +63,6 @@ public class FieldDefinition extends CodelineDefinition {
 
     /**
      * Byte 1 Field-closing symbol (right aligned)
-     *
-     * @return
      */
     public void setClosingSymbol(byte value) {
         buffer.write(value, 1);
@@ -83,8 +70,6 @@ public class FieldDefinition extends CodelineDefinition {
 
     /**
      * Byte 2 Field alternate closing symbol (right aligned)
-     *
-     * @return
      */
     public byte getAlternateClosingSymbol() {
         return buffer.readAsByte(2);
@@ -92,8 +77,6 @@ public class FieldDefinition extends CodelineDefinition {
 
     /**
      * Byte 2 Field alternate closing symbol (right aligned)
-     *
-     * @return
      */
     public void setAlternateClosingSymbol(byte value) {
         buffer.write(value, 2);
@@ -102,8 +85,6 @@ public class FieldDefinition extends CodelineDefinition {
     /**
      * Byte 3 Eight-bit integer value that gives the offset of the low-order digit of the
      * field from the low-order end (right end) of the process buffer
-     *
-     * @return
      */
     public int getLowOrderDigitOffset() {
         return buffer.readAsByte(3);
@@ -112,8 +93,6 @@ public class FieldDefinition extends CodelineDefinition {
     /**
      * Byte 3 Eight-bit integer value that gives the offset of the low-order digit of the
      * field from the low-order end (right end) of the process buffer
-     *
-     * @return
      */
     public void setLowOrderDigitOffset(int value) {
         buffer.write((byte) value, 3);
@@ -122,8 +101,6 @@ public class FieldDefinition extends CodelineDefinition {
     /**
      * Byte 4 Eight-bit integer value that gives the maximum number of digits for this field
      * in the process buffer
-     *
-     * @return
      */
     public int getMaxNumberOfDigits() {
         return buffer.readAsByte(4);
@@ -132,8 +109,6 @@ public class FieldDefinition extends CodelineDefinition {
     /**
      * Byte 4 Eight-bit integer value that gives the maximum number of digits for this field
      * in the process buffer
-     *
-     * @return
      */
     public void setMaxNumberOfDigits(int value) {
         buffer.write((byte) value, 4);
@@ -142,8 +117,6 @@ public class FieldDefinition extends CodelineDefinition {
     /**
      * Byte 5 Eight-bit integer value that gives the number of bytes for this field in the
      * process buffer
-     *
-     * @return
      */
     public int getNumberOfBytes() {
         return buffer.readAsByte(5);
@@ -152,8 +125,6 @@ public class FieldDefinition extends CodelineDefinition {
     /**
      * Byte 5 Eight-bit integer value that gives the number of bytes for this field in the
      * process buffer
-     *
-     * @return
      */
     public void setNumberOfBytes(int value) {
         buffer.write((byte) value, 5);
@@ -161,8 +132,6 @@ public class FieldDefinition extends CodelineDefinition {
 
     /**
      * Byte 6 Eight-bit integer value that gives the code line data match threshold limit
-     *
-     * @return
      */
     public int getCodeLineDataMatchThresholdLimit() {
         return buffer.readAsByte(6);
@@ -170,8 +139,6 @@ public class FieldDefinition extends CodelineDefinition {
 
     /**
      * Byte 6 Eight-bit integer value that gives the code line data match threshold limit
-     *
-     * @return
      */
     public void setCodeLineDataMatchTresholdLimit(int value) {
         buffer.write((byte) value, 6);
@@ -180,8 +147,6 @@ public class FieldDefinition extends CodelineDefinition {
     /**
      * Byte 7 bit 0 Fixed-length field
      * matching allowed
-     *
-     * @return
      */
     public boolean getFixedLengthField() {
         return buffer.testBit(7, (byte) 0x80);
@@ -190,8 +155,6 @@ public class FieldDefinition extends CodelineDefinition {
     /**
      * Byte 7 bit 0 Fixed-length field
      * matching allowed
-     *
-     * @return
      */
     public void setFixedLengthField(boolean value) {
         buffer.setBit(7, (byte) 0x80, value);
@@ -199,8 +162,6 @@ public class FieldDefinition extends CodelineDefinition {
 
     /**
      * Byte 7, bit 1 Dash transmission allowed.
-     *
-     * @return
      */
     public boolean getDashTransmissionAllowed() {
         return buffer.testBit(7, (byte) 0x40);
@@ -208,8 +169,6 @@ public class FieldDefinition extends CodelineDefinition {
 
     /**
      * Byte 7, bit 1 Dash transmission allowed.
-     *
-     * @return
      */
     public void setDashTransmissionAllowed(boolean value) {
         buffer.setBit(7, (byte) 0x40, value);
@@ -217,8 +176,6 @@ public class FieldDefinition extends CodelineDefinition {
 
     /**
      * Byte 7, bit 2 Code line data matching allowed.
-     *
-     * @return
      */
     public boolean getCodeLineDataMatchingAllowed() {
         return buffer.testBit(7, (byte) 0x20);
@@ -226,8 +183,6 @@ public class FieldDefinition extends CodelineDefinition {
 
     /**
      * Byte 7, bit 2 Code line data matching allowed.
-     *
-     * @return
      */
     public void setCodeLineDataMatchingAllowed(boolean value) {
         buffer.setBit(7, (byte) 0x20, value);
@@ -235,8 +190,6 @@ public class FieldDefinition extends CodelineDefinition {
 
     /**
      * Byte 8 (reserved byte).
-     *
-     * @return
      */
     public byte getReserved() {
         return buffer.readAsByte(8);
@@ -244,8 +197,6 @@ public class FieldDefinition extends CodelineDefinition {
 
     /**
      * Byte 8 (reserved byte).
-     *
-     * @return
      */
     public void setReserved(byte value) {
         buffer.write(8, value);
