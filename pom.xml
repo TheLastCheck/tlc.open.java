@@ -384,7 +384,7 @@
                                     <goal>sign</goal>
                                 </goals>
                                 <configuration>
-                                    <executable>/usr/local/bin/gpg</executable>
+                                    <executable>/usr/bin/gpg</executable>
                                     <keyname>${gpg.keyname}</keyname>
                                 </configuration>
                             </execution>
