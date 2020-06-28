@@ -1,20 +1,18 @@
 package com.thelastcheck.io.x9;
 
-import static org.junit.Assert.*;
+import com.thelastcheck.commons.buffer.ByteArray;
+import com.thelastcheck.io.base.Record;
+import com.thelastcheck.io.base.exception.RecordReaderException;
+import com.thelastcheck.io.x937.records.X937CheckDetailRecord;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.thelastcheck.commons.buffer.ByteArray;
-import com.thelastcheck.io.base.Record;
-import com.thelastcheck.io.base.RecordFilter;
-import com.thelastcheck.io.base.exception.RecordReaderException;
-import com.thelastcheck.io.x937.records.X937CheckDetailRecord;
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Jerry Bowman
@@ -52,11 +50,7 @@ public class X9InputStreamRecordReaderTest {
             if (record instanceof X937CheckDetailRecord) return record;
             return null;
         });
-        checkRecords = reader.stream()
-                .count();
-//        for (Record record : reader) {
-//            checkRecords++;
-//        }
+        checkRecords = reader.stream().count();
         reader.close();
         assertEquals(106, totalRecords[0]);
         assertEquals(25, checkRecords);
