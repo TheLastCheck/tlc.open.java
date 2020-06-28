@@ -18,13 +18,13 @@
 package com.thelastcheck.io.cims;
 
 
-import com.google.common.base.Preconditions;
+import com.thelastcheck.commons.base.utils.Preconditions;
 import com.thelastcheck.commons.buffer.ByteArray;
 
 public class CimsSuspectRecord {
 
     public static final int RECORD_LENGTH = 32;
-    ByteArray buffer;
+    private final ByteArray buffer;
 
     /**
      * create default cims header, and set all predefined values
@@ -227,8 +227,7 @@ public class CimsSuspectRecord {
                         ELRHPATH_DISP,
                         ELRHPATH_LEN);
         value = value.substring(0, 1);
-        short number = Short.parseShort(value, 16);
-        return number;
+        return Short.parseShort(value, 16);
     }
 
     public short getFrontPathNumber() {
@@ -237,8 +236,7 @@ public class CimsSuspectRecord {
                         ELRHPATH_DISP,
                         ELRHPATH_LEN);
         value = value.substring(1, 2);
-        short number = Short.parseShort(value, 16);
-        return number;
+        return Short.parseShort(value, 16);
     }
 
     /**

@@ -1,59 +1,39 @@
-/* 
- *  Copyright 2009 The Last Check, LLC, All Rights Reserved
+/*
+ * Copyright (c) 2009-2020 The Last Check, LLC, All Rights Reserved
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0 
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
 
 package com.thelastcheck.commons.buffer;
 
-import java.io.IOException;
 import java.io.Writer;
 
-import org.slf4j.LoggerFactory;
-
-
-/**
- * @author Jerry Bowman
- * @copyright (c) 2009, The Last Check, All Rights Reserved.
- * @version $Date: 2010/11/15 17:42:05 $ $Revision: 1.3 $
- */
 public class ByteArrayWriter extends Writer {
-    private static final String CVS_ID       = "$Date: 2010/11/15 17:42:05 $ $Revision: 1.3 $";
-    static {
-        String className = ByteArrayWriter.class.getName();
-        LoggerFactory.getLogger("version").info(className + " | " + CVS_ID);
-    }
-
-    private static int          INITIAL_SIZE = 100;
+    private static final int    INITIAL_SIZE = 100;
 
     private ByteArray           buffer;
     private int                 position;
     private int                 limit;
-    private boolean             canResize;
+    private final boolean       canResize;
 
-    /**
-     * 
-     */
     public ByteArrayWriter() {
         this(INITIAL_SIZE);
     }
 
-    /**
-     * 
-     */
     public ByteArrayWriter(int initialSize) {
         if (initialSize < 0) {
-            throw new IllegalArgumentException("Negative buffer size");
+            throw new IllegalArgumentException("Negative initial size");
         }
         this.buffer = new ByteArray(initialSize);
         this.position = 0;
@@ -61,10 +41,9 @@ public class ByteArrayWriter extends Writer {
         this.canResize = true;
     }
 
-    /**
-     * 
-     */
     public ByteArrayWriter(ByteArray buffer) {
+        if (buffer == null)
+            throw new IllegalArgumentException("ByteArray cannot be null");
         this.buffer = buffer;
         this.position = 0;
         this.limit = buffer.getLength();
@@ -75,29 +54,24 @@ public class ByteArrayWriter extends Writer {
      * Closing a <tt>ByteArrayWriter</tt> has no effect. The methods in this
      * class can be called after the stream has been closed without generating
      * an <tt>IOException</tt>.
-     * 
+     *
      * @see java.io.Writer#close()
      */
     @Override
-    public void close() throws IOException {
+    public void close() {
     }
 
     /**
      * Flushing a <tt>ByteArrayWriter</tt> has no effect.
-     * 
+     *
      * @see java.io.Writer#flush()
      */
     @Override
-    public void flush() throws IOException {
+    public void flush() {
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.io.Writer#write(char[], int, int)
-     */
     @Override
-    public void write(char[] cbuf, int off, int len) throws IOException {
+    public void write(char[] cbuf, int off, int len) {
         ensureCapacity(position + len);
         if ((off < 0) || (off > cbuf.length) || (len < 0) ||
                 ((off + len) > cbuf.length) || ((off + len) < 0)) {
@@ -119,7 +93,7 @@ public class ByteArrayWriter extends Writer {
     /**
      * Return the total number of bytes written to the ByteArray using the write
      * methods.
-     * 
+     *
      * @return total bytes written
      */
     public int getTotalBytesWritten() {
@@ -145,7 +119,7 @@ public class ByteArrayWriter extends Writer {
 
     /**
      * Write a portion of a string.
-     * 
+     *
      * @param str
      *            String to be written
      * @param off

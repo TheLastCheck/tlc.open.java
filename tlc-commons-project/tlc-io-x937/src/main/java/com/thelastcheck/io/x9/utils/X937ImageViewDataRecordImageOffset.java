@@ -1,6 +1,5 @@
 package com.thelastcheck.io.x9.utils;
 
-import com.google.common.base.Throwables;
 import com.thelastcheck.commons.base.exception.InvalidDataException;
 import com.thelastcheck.io.x937.records.X937ImageViewDataRecord;
 
@@ -23,7 +22,7 @@ public class X937ImageViewDataRecordImageOffset {
         try {
             offset -= record.lengthOfImageDataAsInt();
         } catch (InvalidDataException e) {
-            Throwables.propagate(e);
+            throw new RuntimeException(e);
         }
         return offset;
     }

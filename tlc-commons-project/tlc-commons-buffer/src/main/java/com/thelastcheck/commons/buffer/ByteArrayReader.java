@@ -1,17 +1,18 @@
-/* 
- *  Copyright 2009 The Last Check, LLC, All Rights Reserved
+/*
+ * Copyright (c) 2009-2020 The Last Check, LLC, All Rights Reserved
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0 
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
  */
 
 package com.thelastcheck.commons.buffer;
@@ -19,24 +20,12 @@ package com.thelastcheck.commons.buffer;
 import java.io.IOException;
 import java.io.Reader;
 
-import org.slf4j.LoggerFactory;
-
-/**
- * @author Jerry Bowman
- * @copyright (c) 2009, The Last Check, All Rights Reserved.
- * @version $Date: 2010/11/15 17:42:05 $ $Revision: 1.4 $
- */
 public class ByteArrayReader extends Reader {
-    private static final String CVS_ID = "$Date: 2010/11/15 17:42:05 $ $Revision: 1.4 $";
-    static {
-        String className = ByteArrayReader.class.getName();
-        LoggerFactory.getLogger("version").info(className + " | " + CVS_ID);
-    }
-
-    private ByteArray           buffer;
-    private int                 limit;
+    private final ByteArray     buffer;
+    private final int           limit;
     private int                 position;
     private int                 mark;
+    private boolean             isOpen;
 
     /**
      * Create a new Reader that will return data from a ByteArray. This reader
@@ -45,19 +34,17 @@ public class ByteArrayReader extends Reader {
      * the read routines as Unicode characters.
      */
     public ByteArrayReader(ByteArray buffer) {
+        if (buffer == null)
+            throw new IllegalArgumentException("buffer cannot be null");
         this.buffer = buffer;
         this.position = 0;
         this.limit = buffer.getLength();
+        this.isOpen = true;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.io.Reader#close()
-     */
     @Override
-    public void close() throws IOException {
-        buffer = null;
+    public void close() {
+        isOpen = false;
     }
 
     /**
@@ -70,11 +57,6 @@ public class ByteArrayReader extends Reader {
         return position;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.io.Reader#read(char[], int, int)
-     */
     @Override
     public int read(char[] cbuf, int off, int len) throws IOException {
         ensureOpen();
@@ -105,7 +87,7 @@ public class ByteArrayReader extends Reader {
 
     /** Check to make sure that the stream has not been closed */
     private void ensureOpen() throws IOException {
-        if (buffer == null)
+        if (!isOpen)
             throw new IOException("Stream closed");
     }
 

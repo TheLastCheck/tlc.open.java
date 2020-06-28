@@ -298,8 +298,7 @@ public class ClassDefinitionList implements java.io.Serializable {
     /**
      * Sets the value of field 'package'.
      * 
-     * @param _package
-     * @param package the value of field 'package'.
+     * @param _package the value of field 'package'.
      */
     public void setPackage(
             final String _package) {

@@ -20,15 +20,13 @@ import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 
-import com.google.common.base.Throwables;
-
 public class Configurations {
 
     /**
      * static factory method for building properties files with no checked exception thrown
      *
-     * @param fileName
-     * @return
+     * @param fileName is the file name of the properties file
+     * @return a Configuration object
      */
     public static Configuration createConfigFromProperties(String fileName) {
         try {
@@ -37,7 +35,7 @@ public class Configurations {
             config.setThrowExceptionOnMissing(true);
             return config;
         } catch (ConfigurationException e) {
-            throw Throwables.propagate(e);
+            throw new RuntimeException(e);
         }
     }
 

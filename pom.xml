@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.thelastcheck</groupId>
     <artifactId>tlc-open-parent</artifactId>
-    <version>4</version>
+    <version>5</version>
     <packaging>pom</packaging>
     <name>tlc-open-parent</name>
     <description>
@@ -86,10 +86,12 @@
         <sonar-maven-version>2.5</sonar-maven-version>
         <nexus-staging-version>1.6.5</nexus-staging-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <git-commit-id-version>4.0.0</git-commit-id-version>
         <git.commit.id.abbrev>TBD</git.commit.id.abbrev>
         <git.build.time>TBD</git.build.time>
         <git.branch>TBD</git.branch>
         <git.revision>TBD</git.revision>
+        <properties-maven-version>1.0.0</properties-maven-version>
     </properties>
     <build>
         <pluginManagement>
@@ -167,7 +169,7 @@
                                         <version>[3.0.5,)</version>
                                     </requireMavenVersion>
                                     <requireJavaVersion>
-                                        <version>[1.7,)</version>
+                                        <version>[1.8,)</version>
                                     </requireJavaVersion>
                                 </rules>
                                 <fail>true</fail>
@@ -341,6 +343,16 @@
                     <artifactId>sonar-maven-plugin</artifactId>
                     <version>${sonar-maven-version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>pl.project13.maven</groupId>
+                    <artifactId>git-commit-id-plugin</artifactId>
+                    <version>${git-commit-id-version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>properties-maven-plugin</artifactId>
+                    <version>${properties-maven-version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -372,7 +384,7 @@
                                     <goal>sign</goal>
                                 </goals>
                                 <configuration>
-                                    <executable>/usr/local/bin/gpg</executable>
+                                    <executable>/usr/bin/gpg</executable>
                                     <keyname>${gpg.keyname}</keyname>
                                 </configuration>
                             </execution>

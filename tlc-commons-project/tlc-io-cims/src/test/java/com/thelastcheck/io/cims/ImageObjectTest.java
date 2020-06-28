@@ -18,13 +18,11 @@ package com.thelastcheck.io.cims;
 
 import org.junit.Test;
 
-import com.google.common.io.ByteSource;
-import com.google.common.io.Resources;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ImageObjectTest {
 
@@ -41,9 +39,8 @@ public class ImageObjectTest {
 
     private byte[] readTiffImage() {
         try {
-            ByteSource byteSource = Resources.asByteSource(new URL("file:target/test-classes/Classic.tif"));
-            byte[] bytes = byteSource.read();
-            return bytes;
+            Path path = Paths.get("target/test-classes/Classic.tif");
+            return Files.readAllBytes(path);
         } catch (Exception e) {
             System.out.println(e);
         }

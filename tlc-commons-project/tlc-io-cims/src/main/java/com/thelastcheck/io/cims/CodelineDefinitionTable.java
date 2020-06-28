@@ -16,37 +16,34 @@
 
 package com.thelastcheck.io.cims;
 
-import com.google.common.base.Preconditions;
+import com.thelastcheck.commons.base.utils.Preconditions;
 
 public class CodelineDefinitionTable extends CodelineDefinition {
 
     private static final int MAX_FIELDS = 16;
     private static final int BUFFER_LENGTH = 149;
-    private static int SS_DATA_DIS = 0;
-    private static int SS_DATA_LEN = 1;
-    private static int BYTE_1_2_DATA_DIS = SS_DATA_DIS + SS_DATA_LEN;
-    private static int BYTE_1_2_DATA_LEN = 2;
-    private static int HIGH_ORDER_DIGIT_ERRORS_DIS =
+    private static final int SS_DATA_DIS = 0;
+    private static final int SS_DATA_LEN = 1;
+    private static final int BYTE_1_2_DATA_DIS = SS_DATA_DIS + SS_DATA_LEN;
+    private static final int BYTE_1_2_DATA_LEN = 2;
+    private static final int HIGH_ORDER_DIGIT_ERRORS_DIS =
             BYTE_1_2_DATA_DIS + BYTE_1_2_DATA_LEN;
-    private static int HIGH_ORDER_DIGIT_ERRORS_LEN = 1;
-    private static int BYTE_4_DIS =
+    private static final int HIGH_ORDER_DIGIT_ERRORS_LEN = 1;
+    private static final int BYTE_4_DIS =
             HIGH_ORDER_DIGIT_ERRORS_DIS + HIGH_ORDER_DIGIT_ERRORS_LEN;
-    private static int BYTE_4_LEN = 1;
-    private static int FIELD_DEFINITION_DIS = BYTE_4_DIS + BYTE_4_LEN;
+    private static final int BYTE_4_LEN = 1;
+    private static final int FIELD_DEFINITION_DIS = BYTE_4_DIS + BYTE_4_LEN;
     // count of MAX_FIELDS, length of each field
-    private static int FIELD_DEFINITION_LEN = FieldDefinition.BUFFER_LENGTH;
+    private static final int FIELD_DEFINITION_LEN = FieldDefinition.BUFFER_LENGTH;
 
-    private FieldDefinition[] fieldDefinitionArray = new FieldDefinition[MAX_FIELDS];
+    private final FieldDefinition[] fieldDefinitionArray = new FieldDefinition[MAX_FIELDS];
 
     public CodelineDefinitionTable() {
         super();
-//        buffer = new ByteArray(getBufferLength());
     }
 
     public CodelineDefinitionTable(byte[] newBuffer) {
         setBuffer(newBuffer);
-        //create FieldDefinition objects
-//        buildFieldDefinitionArray();
     }
 
     public void setBuffer(byte[] newBuffer) {
@@ -267,8 +264,6 @@ public class CodelineDefinitionTable extends CodelineDefinition {
 
     /**
      * Byte  4,   bit 0   Is routing number transparency mode active.
-     *
-     * @return
      */
     public boolean getRoutingNumTransparency() {
         return buffer.testBit(BYTE_4_DIS, (byte) 0x80);
@@ -276,8 +271,6 @@ public class CodelineDefinitionTable extends CodelineDefinition {
 
     /**
      * Byte  4,   bit 0   Is routing number transparency mode active.
-     *
-     * @return
      */
     public void setRoutingNumTransparency(boolean flag) {
         buffer.setBit(BYTE_4_DIS, (byte) 0x80, flag);
@@ -285,8 +278,6 @@ public class CodelineDefinitionTable extends CodelineDefinition {
 
     /**
      * bit 1   Code line data match zero-for-able is active.
-     *
-     * @return
      */
     public boolean getCodeLineDataMatchZeroForAble() {
         return buffer.testBit(BYTE_4_DIS, (byte) 0x40);
@@ -294,8 +285,6 @@ public class CodelineDefinitionTable extends CodelineDefinition {
 
     /**
      * bit 1   Code line data match zero-for-able is active.
-     *
-     * @return
      */
     public void setCodeLineDataMatchZeroForAble(boolean flag) {
         buffer.setBit(BYTE_4_DIS, (byte) 0x40, flag);
@@ -303,8 +292,6 @@ public class CodelineDefinitionTable extends CodelineDefinition {
 
     /**
      * bit 2   Code line data match match don't-care-digit is active.
-     *
-     * @return
      */
     public boolean getCodeLineDataMatchDontCareDigit() {
         return buffer.testBit(BYTE_4_DIS, (byte) 0x20);
@@ -312,8 +299,6 @@ public class CodelineDefinitionTable extends CodelineDefinition {
 
     /**
      * bit 2   Code line data match match don't-care-digit is active.
-     *
-     * @return
      */
     public void setCodeLineDataMatchDontCareDigit(boolean flag) {
         buffer.setBit(BYTE_4_DIS, (byte) 0x20, flag);
@@ -335,8 +320,6 @@ public class CodelineDefinitionTable extends CodelineDefinition {
 
     /**
      * Returns array of FieldDefinition objects for this code line data definition table.
-     *
-     * @return
      */
     public FieldDefinition[] getFieldDefinitionArray() {
         return fieldDefinitionArray;
