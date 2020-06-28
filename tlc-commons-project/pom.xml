@@ -63,10 +63,9 @@
         <commons-configuration-version>1.10</commons-configuration-version>
         <commons-digester-version>2.1</commons-digester-version>
         <tlc-version>${project.version}</tlc-version>
-        <guava-version>19.0</guava-version>
         <jai-version>1.1.3</jai-version>
         <junit-version>4.12</junit-version>
-        <slf4j-version>1.6.1</slf4j-version>
+        <slf4j-version>1.7.10</slf4j-version>
     </properties>
     <dependencyManagement>
         <dependencies>
