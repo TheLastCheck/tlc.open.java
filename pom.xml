@@ -86,11 +86,6 @@
         <sonar-maven-version>2.5</sonar-maven-version>
         <nexus-staging-version>1.6.5</nexus-staging-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <git-commit-id-version>4.0.0</git-commit-id-version>
-        <git.commit.id.abbrev>TBD</git.commit.id.abbrev>
-        <git.build.time>TBD</git.build.time>
-        <git.branch>TBD</git.branch>
-        <git.revision>TBD</git.revision>
         <properties-maven-version>1.0.0</properties-maven-version>
     </properties>
     <build>
@@ -224,7 +219,7 @@
                                     <manifestEntries>
                                         <Official-Name>${project.name}</Official-Name>
                                         <Version>${project.version}</Version>
-                                        <Revision>${git.revision}</Revision>
+                                        <Revision>${git.commit.id}</Revision>
                                         <Build-Time>${git.build.time}</Build-Time>
                                         <ScmLocation>${git.branch}</ScmLocation>
                                     </manifestEntries>
@@ -319,7 +314,7 @@
                                     <manifestEntries>
                                         <Official-Name>${project.name}</Official-Name>
                                         <Version>${project.version}</Version>
-                                        <Revision>${git.revision}</Revision>
+                                        <Revision>${git.commit.id}</Revision>
                                         <Build-Time>${git.build.time}</Build-Time>
                                         <ScmLocation>${git.branch}</ScmLocation>
                                     </manifestEntries>
@@ -346,7 +341,30 @@
                 <plugin>
                     <groupId>pl.project13.maven</groupId>
                     <artifactId>git-commit-id-plugin</artifactId>
-                    <version>${git-commit-id-version}</version>
+                    <version>${git-commit-id-plugin-version}</version>
+                    <executions>
+                        <execution>
+                            <id>get-the-git-info</id>
+                            <goals>
+                                <goal>revision</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+                        <prefix>git</prefix>
+                        <verbose>false</verbose>
+                        <generateGitPropertiesFile>false</generateGitPropertiesFile>
+                        <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+                        <injectAllReactorProjects>true</injectAllReactorProjects>
+                        <useNativeGit>true</useNativeGit>
+                        <format>json</format>
+                        <gitDescribe>
+                            <skip>false</skip>
+                            <always>false</always>
+                            <dirty>-dirty</dirty>
+                        </gitDescribe>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -518,14 +536,6 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven-surefire-version}</version>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.apache.maven.surefire</groupId>
-                                <artifactId>surefire-junit47</artifactId>
-                                <version>${maven-surefire-version}</version>
-                            </dependency>
-                        </dependencies>
                         <configuration>
                             <skipTests>true</skipTests>
                             <testFailureIgnore>false</testFailureIgnore>
