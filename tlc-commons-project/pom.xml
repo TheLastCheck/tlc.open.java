@@ -56,7 +56,7 @@
     </repositories>
     <properties>
         <castor-xml-version>1.3.2</castor-xml-version>
-        <commons-io-version>2.5</commons-io-version>
+        <commons-io-version>2.7</commons-io-version>
         <commons-lang3-version>3.5</commons-lang3-version>
         <commons-chain-version>1.2</commons-chain-version>
         <commons-cli-version>1.3.1</commons-cli-version>
