@@ -218,6 +218,18 @@ public class X937RecordGraphRecordFilter implements RecordFilter {
         case X9Record.TYPE_CHECK_DETAIL_ADDENDUM_C:
             checkDetailAddendumCRecords.add((X937CheckDetailAddendumCRecord) x9Record);
             break;
+        case X9Record.TYPE_RETURN_ADDENDUM_A:
+            returnAddendumARecords.add((X937ReturnAddendumARecord) x9Record);
+            break;
+        case X9Record.TYPE_RETURN_ADDENDUM_B:
+            returnAddendumBRecord = (X937ReturnAddendumBRecord) x9Record;
+            break;
+        case X9Record.TYPE_RETURN_ADDENDUM_C:
+            returnAddendumCRecord = (X937ReturnAddendumCRecord) x9Record;
+            break;
+        case X9Record.TYPE_RETURN_ADDENDUM_D:
+            returnAddendumDRecords.add((X937ReturnAddendumDRecord) x9Record);
+            break;
         case X9Record.TYPE_RETURN:
             clearCheckReturnRecords();
             returnRecord = (X937ReturnRecord) x9Record;
