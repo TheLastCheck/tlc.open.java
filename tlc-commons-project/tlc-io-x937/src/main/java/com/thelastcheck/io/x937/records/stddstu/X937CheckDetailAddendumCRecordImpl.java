@@ -44,7 +44,7 @@ public class X937CheckDetailAddendumCRecordImpl extends X937CheckDetailAddendumC
         fields[8] = new Field("EndorsingBankCorrectionIndicator", 8, 38, 1, FieldType.STRING);
         fields[9] = new Field("ReturnReason", 9, 39, 1, FieldType.STRING);
         fields[10] = new Field("UserField", 10, 40, 15, FieldType.STRING);
-        fields[11] = new Field("Reserved", 11, 55, 15, FieldType.STRING);
+        fields[11] = new Field("Reserved", 11, 55, 25, FieldType.STRING);
     }
 
 
