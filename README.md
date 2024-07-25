@@ -1,7 +1,7 @@
 This is a project providing a Java implementation of various TLC API
 for managing byte arrays and X937 files.
 
- Copyright [2011-2015] [The Last Check, LLC]
+ Copyright [2011-2024] [The Last Check, LLC]
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
